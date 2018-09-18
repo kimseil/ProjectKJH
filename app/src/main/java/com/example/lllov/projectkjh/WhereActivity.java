@@ -1,12 +1,12 @@
 package com.example.lllov.projectkjh;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -26,11 +26,7 @@ public class WhereActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_where);
 
-        toolbar = findViewById(R.id.tBar);
-        toolbar.setTitle("");
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);
+        Toolbar toolbar = new ToolBar(this).setBack().setToolbar();
 
     }
 
@@ -61,5 +57,9 @@ public class WhereActivity extends AppCompatActivity {
         String place = tvPlace.getText().toString();
 
         Toast.makeText(this,place,Toast.LENGTH_SHORT).show();
+
+        //test
+        Intent intent = new Intent(WhereActivity.this, PlaceInfoActivity.class);
+        startActivity(intent);
     }
 }

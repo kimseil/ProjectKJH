@@ -18,10 +18,7 @@ public class MyTripActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mytrip);
 
-        Toolbar toolbar = new ToolBar(this).setTitle("내 여행").setToolbar();
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);
+        Toolbar toolbar = new ToolBar(this).setBack().setToolbar();
 
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
