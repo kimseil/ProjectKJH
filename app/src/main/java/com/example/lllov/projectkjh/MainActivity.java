@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         //햄버거메뉴 닫기 버튼
-        ((ImageView)navigationView.getHeaderView(0).findViewById(R.id.btnBack)).setOnClickListener(new View.OnClickListener() {
+        ((ImageView) navigationView.getHeaderView(0).findViewById(R.id.btnBack)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onBackPressed();
@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, WhereActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
             }
         });
 
@@ -78,8 +79,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         switch (item.getItemId()) {
             case R.id.nav_a:
-                Intent intent = new Intent(MainActivity.this,MyTripActivity.class);
+                Intent intent = new Intent(MainActivity.this, MyTripActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
                 break;
             case R.id.nav_b:
                 s = "B 선택";

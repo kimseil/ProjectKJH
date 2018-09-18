@@ -12,11 +12,11 @@ import java.util.ArrayList;
 
 public class MyTripAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView ivPlace;
-        TextView tvPlace,tvPeriod;
+        TextView tvPlace, tvPeriod;
 
-        MyViewHolder(View view){
+        MyViewHolder(View view) {
             super(view);
             ivPlace = view.findViewById(R.id.ivPlace);
             tvPlace = view.findViewById(R.id.tvPlace);
@@ -26,7 +26,7 @@ public class MyTripAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     private ArrayList<TripInfo> tripInfoArrayList;
 
-    MyTripAdapter(ArrayList<TripInfo> tripInfoArrayList){
+    MyTripAdapter(ArrayList<TripInfo> tripInfoArrayList) {
         this.tripInfoArrayList = tripInfoArrayList;
     }
 
@@ -34,7 +34,7 @@ public class MyTripAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_row,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_row, parent, false);
 
         return new MyViewHolder(v);
     }

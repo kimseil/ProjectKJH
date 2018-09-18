@@ -39,9 +39,10 @@ public class PlaceInfoAdapter extends RecyclerView.Adapter<PlaceInfoAdapter.View
         return data.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvItem;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvItem = itemView.findViewById(R.id.tvItem);
