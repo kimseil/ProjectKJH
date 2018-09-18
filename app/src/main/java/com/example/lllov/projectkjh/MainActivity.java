@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         btnFindTravel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, PlaceInfoActivity.class);
+                Intent intent = new Intent(MainActivity.this, WhereActivity.class);
                 startActivity(intent);
             }
         });
@@ -78,7 +78,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         switch (item.getItemId()) {
             case R.id.nav_a:
-                s = "A 선택";
+                Intent intent = new Intent(MainActivity.this,MyTripActivity.class);
+                startActivity(intent);
                 break;
             case R.id.nav_b:
                 s = "B 선택";

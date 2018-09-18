@@ -17,6 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".PlaceInfoActivity"/>
+        <activity android:name=".WhereActivity"/>
+        <activity android:name=".MyTripActivity"/>
     </application>
 
 </manifest>

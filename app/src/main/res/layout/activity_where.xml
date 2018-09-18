@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tBar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:layout_alignParentTop="true"
+            android:background="@color/LightSteelBlue"
+            app:contentInsetStart="0dp">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="여행지검색"
+                android:textColor="@color/White"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </android.support.v7.widget.Toolbar>
+
+        <TextView
+            android:id="@+id/tvP1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="일본"
+            android:textColor="@color/SkyBlue"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/guideline"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <LinearLayout
+            android:id="@+id/btnP1"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/tvP1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/btnP2">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/border_circle"/>
+
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="오사카"
+                android:textColor="@color/Black"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnP2"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:clickable="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/tvP1"
+            app:layout_constraintLeft_toRightOf="@+id/btnP1"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/border_circle"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="도쿄"
+                android:textColor="@color/Black"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnP3"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:clickable="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/btnP1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/btnP4">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/border_circle"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="후쿠오카"
+                android:textColor="@color/Black"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnP4"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:clickable="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/btnP2"
+            app:layout_constraintLeft_toRightOf="@+id/btnP3"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/border_circle"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="오키나와"
+                android:textColor="@color/Black"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvP2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:text="동남아시아"
+            android:textColor="@color/SkyBlue"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/btnP3"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <LinearLayout
+            android:id="@+id/btnP5"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:clickable="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/tvP2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/btnP6">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/border_circle"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="싱가포르"
+                android:textColor="@color/Black"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnP6"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:clickable="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/tvP2"
+            app:layout_constraintLeft_toRightOf="@+id/btnP5"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/border_circle"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="세부"
+                android:textColor="@color/Black"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="106dp" />
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
