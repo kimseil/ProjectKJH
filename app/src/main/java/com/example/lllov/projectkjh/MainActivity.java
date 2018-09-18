@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -28,7 +29,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
 
         //툴바
-        Toolbar toolbar = new ToolBar(this).setTitle("대동여지도").setToolbar();
+        Toolbar toolbar = new ToolBar(this).setToolbar();
+        TextView tvToolbarTitle = toolbar.findViewById(R.id.tvTitle);
 
         //햄버거메뉴
         DrawerLayout drawer = findViewById(R.id.dl);
