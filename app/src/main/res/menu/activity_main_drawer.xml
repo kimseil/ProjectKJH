@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_a"
+        android:title="테스트 A"
+        />
+
+    <item
+        android:id="@+id/nav_b"
+        android:title="테스트 B"
+        />
+</menu>
