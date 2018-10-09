@@ -6,17 +6,22 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-
-import java.util.ArrayList;
 
 public class PlaceInfoAdapter extends RecyclerView.Adapter<PlaceInfoAdapter.ViewHolder> {
 
+    /*
     ArrayList<String> data;
+    */
     Context context;
 
+    /*
     public PlaceInfoAdapter(ArrayList<String> data, Context context) {
         this.data = data;
+        this.context = context;
+    }
+    */
+
+    public PlaceInfoAdapter(Context context) {
         this.context = context;
     }
 
@@ -31,21 +36,30 @@ public class PlaceInfoAdapter extends RecyclerView.Adapter<PlaceInfoAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+        /*
         viewHolder.tvItem.setText(data.get(i));
+        */
     }
 
     @Override
     public int getItemCount() {
+        /*
         return data.size();
+        */
+        return 1;
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
+        /*
         TextView tvItem;
+        */
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            /*
             tvItem = itemView.findViewById(R.id.tvItem);
+            */
         }
     }
 }

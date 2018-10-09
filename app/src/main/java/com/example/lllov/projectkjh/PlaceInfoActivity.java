@@ -7,8 +7,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.WindowManager;
 
-import java.util.ArrayList;
-
 public class PlaceInfoActivity extends AppCompatActivity {
     RecyclerView rvPlaceInfo;
     LinearLayoutManager layoutManager;
@@ -25,12 +23,16 @@ public class PlaceInfoActivity extends AppCompatActivity {
         rvPlaceInfo = findViewById(R.id.rvPlaceInfo);
         layoutManager = new LinearLayoutManager(this);
 
+        /*
         ArrayList<String> list = new ArrayList<>();
         for (int i = 0; i < 30; i++) {
             list.add("추천여행지 " + i);
         }
 
         adapter = new PlaceInfoAdapter(list, this);
+        */
+
+        adapter = new PlaceInfoAdapter(this);
         rvPlaceInfo.setAdapter(adapter);
         rvPlaceInfo.setLayoutManager(layoutManager);
     }
