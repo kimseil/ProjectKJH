@@ -26,8 +26,7 @@ public class WhereActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_where);
 
-        Toolbar toolbar = new ToolBar(this).setBack().setToolbar();
-
+        toolbar = new ToolBar(this).setBack().setToolbar();
     }
 
     @Override

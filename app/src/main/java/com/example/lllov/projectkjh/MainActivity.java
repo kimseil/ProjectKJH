@@ -75,16 +75,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Intent intent;
         String s = "";
 
         switch (item.getItemId()) {
             case R.id.nav_a:
-                Intent intent = new Intent(MainActivity.this, MyTripActivity.class);
+                intent = new Intent(MainActivity.this, MyTripActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
                 break;
             case R.id.nav_b:
-                s = "B 선택";
+                intent = new Intent(MainActivity.this, ScheduleActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
                 break;
             default:
                 break;

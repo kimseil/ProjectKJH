@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/btnSelectDay"
+        android:layout_width="65dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="day0"
+        android:textColor="@color/White"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:background="@drawable/round_button"
+        android:minHeight="24dp"
+        android:minWidth="0dp"
+        style="?android:attr/borderlessButtonStyle"
+        />
+
+</LinearLayout>

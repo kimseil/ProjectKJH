@@ -19,6 +19,8 @@
         <activity android:name=".PlaceInfoActivity"/>
         <activity android:name=".WhereActivity"/>
         <activity android:name=".MyTripActivity"/>
+        <activity android:name=".RegistrationTravelActivity" />
+        <activity android:name=".ScheduleActivity" />
     </application>
 
 </manifest>
