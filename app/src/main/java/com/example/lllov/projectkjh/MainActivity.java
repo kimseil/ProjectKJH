@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
                 break;
             case R.id.nav_b:
-                intent = new Intent(MainActivity.this, ScheduleActivity.class);
+                intent = new Intent(MainActivity.this, RegistrationTravelActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
                 break;

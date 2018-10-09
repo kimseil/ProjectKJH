@@ -51,4 +51,10 @@ public class ScheduleActivity extends AppCompatActivity {
         rvSchedule.setAdapter(scheduleAdapter);
         rvSchedule.setLayoutManager(scheduleLayoutManager);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
+    }
 }
