@@ -1,5 +1,7 @@
 package com.example.lllov.projectkjh;
 
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -46,6 +48,10 @@ public class MyTripAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         myViewHolder.ivPlace.setImageResource(tripInfoArrayList.get(position).drawableId);
         myViewHolder.tvPlace.setText(tripInfoArrayList.get(position).place);
         myViewHolder.tvPeriod.setText(tripInfoArrayList.get(position).period);
+
+        //이미지 둥글게
+        myViewHolder.ivPlace.setBackground(new ShapeDrawable(new OvalShape()));
+        myViewHolder.ivPlace.setClipToOutline(true);
     }
 
     @Override
