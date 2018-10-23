@@ -25,6 +25,10 @@
         <activity android:name=".ScheduleActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity" />
+        <activity
+            android:name=".PlaceGuideActivity"
+            android:label="@string/title_activity_place_guide"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

@@ -146,4 +146,5 @@
     <color name="facebook">#3b5998</color>
     <color name="kakao">#fef01b</color>
     <color name="naver">#2DB400</color>
+    <color name="lightlightgray">#dddddd</color>
 </resources>
