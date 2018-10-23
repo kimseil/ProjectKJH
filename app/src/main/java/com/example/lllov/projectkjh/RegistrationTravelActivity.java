@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 
 import com.prolificinteractive.materialcalendarview.CalendarDay;
@@ -25,8 +24,7 @@ public class RegistrationTravelActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //스테이터스바 제거
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        deleteStatusBar();
         setContentView(R.layout.activity_registration_travel);
 
         //툴바

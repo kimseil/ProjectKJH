@@ -1,5 +1,13 @@
 package com.example.lllov.projectkjh;
 
-public class LoginActivity extends BaseActivity {
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 
+public class LoginActivity extends BaseActivity {
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        deleteStatusBar();
+        setContentView(R.layout.activitiy_login);
+    }
 }

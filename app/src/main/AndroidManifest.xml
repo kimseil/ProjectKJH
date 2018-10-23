@@ -21,6 +21,7 @@
         <activity android:name=".MyTripActivity"/>
         <activity android:name=".RegistrationTravelActivity" />
         <activity android:name=".ScheduleActivity" />
+        <activity android:name=".LoginActivity" />
     </application>
 
 </manifest>

@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.WindowManager;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -22,8 +21,7 @@ public class ScheduleActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //스테이터스바 제거
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        deleteStatusBar();
         setContentView(R.layout.activity_schedule);
 
         //툴바

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/LightSteelBlue">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="대동여지도"
+        android:textColor="@color/White"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guidelineT" />
+
+    <TextView
+        android:id="@+id/tvSubTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="손쉬운 여행플래너"
+        android:textColor="@color/White"
+        android:textSize="15sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+    <Button
+        android:id="@+id/btnLoginKakao"
+        style="?attr/borderlessButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/round_button_kakao"
+        android:text="카카오로 로그인"
+        android:textColor="@color/Black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnLoginFacebook"
+        app:layout_constraintLeft_toRightOf="@+id/guidelineL"
+        app:layout_constraintRight_toLeftOf="@+id/guidelineR" />
+
+    <Button
+        android:id="@+id/btnLoginFacebook"
+        style="?attr/borderlessButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/round_button_facebook"
+        android:text="페이스북으로 로그인"
+        android:textColor="@color/White"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnLoginNaver"
+        app:layout_constraintLeft_toLeftOf="@+id/btnLoginKakao"
+        app:layout_constraintRight_toRightOf="@+id/btnLoginKakao" />
+
+    <Button
+        android:id="@+id/btnLoginNaver"
+        style="?attr/borderlessButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/round_button_naver"
+        android:text="네이버로 로그인"
+        android:textColor="@color/White"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnLoginGuest"
+        app:layout_constraintLeft_toLeftOf="@+id/btnLoginKakao"
+        app:layout_constraintRight_toRightOf="@+id/btnLoginKakao" />
+
+    <TextView
+        android:id="@+id/btnLoginGuest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="게스트로 둘러보기"
+        android:textColor="@color/White"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineB"
+        app:layout_constraintLeft_toLeftOf="@id/btnLoginKakao"
+        app:layout_constraintRight_toRightOf="@id/btnLoginKakao" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
+</android.support.constraint.ConstraintLayout>

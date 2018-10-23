@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.WindowManager;
 
 public class PlaceInfoActivity extends BaseActivity {
     RecyclerView rvPlaceInfo;
@@ -15,8 +14,7 @@ public class PlaceInfoActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //스테이터스바 삭제
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        deleteStatusBar();
         setContentView(R.layout.activity_place_info);
 
         rvPlaceInfo = findViewById(R.id.rvPlaceInfo);
