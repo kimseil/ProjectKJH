@@ -3,7 +3,6 @@ package com.example.lllov.projectkjh;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -14,7 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class WhereActivity extends AppCompatActivity {
+public class WhereActivity extends BaseActivity {
 
     Toolbar toolbar;
     SearchView searchView;

@@ -1,6 +1,5 @@
 package com.example.lllov.projectkjh;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,7 +16,7 @@ import java.util.Locale;
 
 public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder> {
     private ArrayList<Long> scheduleList;
-    private Context context;
+    private BaseActivity activity;
 
     private SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy", Locale.KOREA);
     private SimpleDateFormat monthFormat = new SimpleDateFormat("MM", Locale.KOREA);
@@ -25,15 +24,15 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
 
     private String[] dayOfWeek = {"일", "월", "화", "수", "목", "금", "토"};
 
-    public ScheduleAdapter(ArrayList<Long> scheduleList, Context context) {
+    public ScheduleAdapter(ArrayList<Long> scheduleList, BaseActivity activity) {
         this.scheduleList = scheduleList;
-        this.context = context;
+        this.activity = activity;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(context);
+        LayoutInflater inflater = LayoutInflater.from(activity);
         View view = inflater.inflate(R.layout.item_schedule_row, parent, false);
 
         return new ViewHolder(view);

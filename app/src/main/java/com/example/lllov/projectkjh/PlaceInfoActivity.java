@@ -2,12 +2,11 @@ package com.example.lllov.projectkjh;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.WindowManager;
 
-public class PlaceInfoActivity extends AppCompatActivity {
+public class PlaceInfoActivity extends BaseActivity {
     RecyclerView rvPlaceInfo;
     LinearLayoutManager layoutManager;
     PlaceInfoAdapter adapter;

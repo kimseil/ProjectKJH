@@ -1,19 +1,18 @@
 package com.example.lllov.projectkjh;
 
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ToolBar {
-    private AppCompatActivity mActivity;
+    private BaseActivity mActivity;
     private Toolbar mToolbar;
     private ImageView btnBack;
     private TextView tvTitle;
 
     //툴바 호출한 액티비티 가져오기
-    public ToolBar(AppCompatActivity activity) {
+    public ToolBar(BaseActivity activity) {
         mActivity = activity;
 
         mToolbar = mActivity.findViewById(R.id.toolbar);

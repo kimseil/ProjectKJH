@@ -2,7 +2,6 @@ package com.example.lllov.projectkjh;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -11,7 +10,7 @@ import android.view.WindowManager;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class ScheduleActivity extends AppCompatActivity {
+public class ScheduleActivity extends BaseActivity {
     ScheduleDayAdapter scheduleDayAdapter;
     ScheduleAdapter scheduleAdapter;
     LinearLayoutManager scheduleDayLayoutManager, scheduleLayoutManager;

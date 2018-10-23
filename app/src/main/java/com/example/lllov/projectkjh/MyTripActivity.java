@@ -2,14 +2,13 @@ package com.example.lllov.projectkjh;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
 import java.util.ArrayList;
 
-public class MyTripActivity extends AppCompatActivity {
+public class MyTripActivity extends BaseActivity {
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
 
