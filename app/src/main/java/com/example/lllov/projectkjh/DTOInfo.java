@@ -4,6 +4,11 @@ public class DTOInfo {
     String title;
     String content;
 
+    public DTOInfo(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
+
     public String getTitle() {
         return title;
     }
