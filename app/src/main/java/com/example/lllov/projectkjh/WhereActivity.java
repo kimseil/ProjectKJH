@@ -3,18 +3,16 @@ package com.example.lllov.projectkjh;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class WhereActivity extends AppCompatActivity {
+public class WhereActivity extends BaseActivity {
 
     Toolbar toolbar;
     SearchView searchView;
@@ -22,8 +20,8 @@ public class WhereActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //스테이터스바 제거
+        deleteStatusBar();
         setContentView(R.layout.activity_where);
 
         toolbar = new ToolBar(this).setBack().setToolbar();

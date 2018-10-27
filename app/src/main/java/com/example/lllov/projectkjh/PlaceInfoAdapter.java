@@ -1,6 +1,5 @@
 package com.example.lllov.projectkjh;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,7 +11,7 @@ public class PlaceInfoAdapter extends RecyclerView.Adapter<PlaceInfoAdapter.View
     /*
     ArrayList<String> data;
     */
-    Context context;
+    BaseActivity activity;
 
     /*
     public PlaceInfoAdapter(ArrayList<String> data, Context context) {
@@ -21,14 +20,14 @@ public class PlaceInfoAdapter extends RecyclerView.Adapter<PlaceInfoAdapter.View
     }
     */
 
-    public PlaceInfoAdapter(Context context) {
-        this.context = context;
+    public PlaceInfoAdapter(BaseActivity activity) {
+        this.activity = activity;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(context);
+        LayoutInflater inflater = LayoutInflater.from(activity);
         View view = inflater.inflate(R.layout.item_place_info_row, parent, false);
 
         return new ViewHolder(view);
