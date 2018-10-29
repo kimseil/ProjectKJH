@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.lllov.projectkjh">
 
+    <uses-permission android:name="android.permission.INTERNETR"/>
+
     <application
         android:allowBackup="false"
         android:fullBackupContent="false"
@@ -11,7 +13,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:name=".Interlink.GlobalApplication"
         tools:ignore="GoogleAppIndexingWarning">
+
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="@string/kakao_app_key"/>
+
         <activity
             android:name=".SplashActivity"
             android:theme="@style/SplashTheme">
