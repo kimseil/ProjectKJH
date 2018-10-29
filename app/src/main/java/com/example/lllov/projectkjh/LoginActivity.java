@@ -10,6 +10,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
 import com.kakao.auth.AuthType;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
@@ -22,13 +30,20 @@ import com.nhn.android.naverlogin.OAuthLogin;
 import com.nhn.android.naverlogin.OAuthLoginHandler;
 import com.nhn.android.naverlogin.ui.view.OAuthLoginButton;
 
+import org.json.JSONObject;
+
+import java.util.Arrays;
+
 
 public class LoginActivity extends BaseActivity {
     private SessionCallback callback;
+    private LoginCallback mLoginCallback;
+    private CallbackManager mCallbackManager;
 
     TextView btnLoginGuest;
     private Button btnLoginKakao;
     private Button btnLoingNaver;
+    private Button btnLoginFacebook;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,6 +57,10 @@ public class LoginActivity extends BaseActivity {
         btnLoginGuest = findViewById(R.id.btnLoginGuest);
         btnLoginKakao = findViewById(R.id.btnLoginKakao);
         btnLoingNaver = findViewById(R.id.btnLoginNaver);
+        btnLoginFacebook = findViewById(R.id.btnLoginFacebook);
+
+        mCallbackManager = CallbackManager.Factory.create();
+        mLoginCallback = new LoginCallback();
 
         btnLoginGuest.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +82,16 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 setNaver();
+            }
+        });
+
+        btnLoginFacebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LoginManager loginManager = LoginManager.getInstance();
+                loginManager.logInWithReadPermissions(LoginActivity.this,
+                        Arrays.asList("public_profile","email"));
+                loginManager.registerCallback(mCallbackManager,mLoginCallback);
             }
         });
 
@@ -161,6 +190,43 @@ public class LoginActivity extends BaseActivity {
             }
         }
     };
+
+
+    //facebook_login
+
+    public class LoginCallback implements FacebookCallback<LoginResult> {
+        // 로그인 성공 시 호출 됩니다. Access Token 발급 성공.
+        @Override
+        public void onSuccess(LoginResult loginResult) {
+            Log.e("Callback :: ", "onSuccess");
+            requestMe(loginResult.getAccessToken());
+        }
+
+        // 로그인 창을 닫을 경우, 호출됩니다.
+        @Override
+        public void onCancel() {
+            Log.e("Callback :: ", "onCancel");
+        }
+        // 로그인 실패 시에 호출됩니다.
+        @Override
+        public void onError(FacebookException error) {
+            Log.e("Callback :: ", "onError : " + error.getMessage());
+        }
+        // 사용자 정보 요청
+        public void requestMe(AccessToken token) {
+            GraphRequest graphRequest = GraphRequest.newMeRequest(token,
+                    new GraphRequest.GraphJSONObjectCallback() {
+                        @Override
+                        public void onCompleted(JSONObject object, GraphResponse response) {
+                            Log.e("result",object.toString());
+                        }
+                    });
+            Bundle parameters = new Bundle();
+            parameters.putString("fields", "id,name,email,gender,birthday");
+            graphRequest.setParameters(parameters);
+            graphRequest.executeAsync();
+        }
+    }
 
     private void loginGuest() {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
