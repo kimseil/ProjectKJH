@@ -1,4 +1,4 @@
-package com.example.lllov.projectkjh;
+package com.example.lllov.projectkjh.Adapter;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,6 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.lllov.projectkjh.DTO.DTOInfo;
+import com.example.lllov.projectkjh.DTO.DTOPlaceGuide;
+import com.example.lllov.projectkjh.R;
 
 import java.util.ArrayList;
 

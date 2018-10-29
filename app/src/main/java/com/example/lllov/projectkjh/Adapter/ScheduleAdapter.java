@@ -1,4 +1,4 @@
-package com.example.lllov.projectkjh;
+package com.example.lllov.projectkjh.Adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
+
+import com.example.lllov.projectkjh.BaseActivity;
+import com.example.lllov.projectkjh.R;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

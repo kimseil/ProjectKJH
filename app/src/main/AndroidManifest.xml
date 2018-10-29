@@ -29,6 +29,7 @@
             android:name=".PlaceGuideActivity"
             android:label="@string/title_activity_place_guide"
             android:theme="@style/AppTheme"></activity>
+        <activity android:name=".PlaceRecommendActivity"></activity>
     </application>
 
 </manifest>

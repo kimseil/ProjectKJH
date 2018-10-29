@@ -6,6 +6,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
+import com.example.lllov.projectkjh.Adapter.MyTripAdapter;
+import com.example.lllov.projectkjh.DTO.TripInfo;
+
 import java.util.ArrayList;
 
 public class MyTripActivity extends BaseActivity {
@@ -32,11 +35,5 @@ public class MyTripActivity extends BaseActivity {
 
         mRecyclerView.setAdapter(myAdapter);
 
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.lllov.projectkjh;
+package com.example.lllov.projectkjh.DTO;
 
 import android.os.Parcel;
 import android.os.Parcelable;

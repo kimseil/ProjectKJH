@@ -6,6 +6,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
+import com.example.lllov.projectkjh.Adapter.ScheduleAdapter;
+import com.example.lllov.projectkjh.Adapter.ScheduleDayAdapter;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -47,11 +50,5 @@ public class ScheduleActivity extends BaseActivity {
         scheduleAdapter = new ScheduleAdapter(scheduleList, this);
         rvSchedule.setAdapter(scheduleAdapter);
         rvSchedule.setLayoutManager(scheduleLayoutManager);
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.lllov.projectkjh;
+package com.example.lllov.projectkjh.Adapter;
 
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.lllov.projectkjh.R;
+import com.example.lllov.projectkjh.DTO.TripInfo;
 
 import java.util.ArrayList;
 
@@ -28,7 +31,7 @@ public class MyTripAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     private ArrayList<TripInfo> tripInfoArrayList;
 
-    MyTripAdapter(ArrayList<TripInfo> tripInfoArrayList) {
+    public MyTripAdapter(ArrayList<TripInfo> tripInfoArrayList) {
         this.tripInfoArrayList = tripInfoArrayList;
     }
 

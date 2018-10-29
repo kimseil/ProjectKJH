@@ -32,4 +32,9 @@ public class LoginActivity extends BaseActivity {
         finish();
         overridePendingTransition(0, 0);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

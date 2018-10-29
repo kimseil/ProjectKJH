@@ -1,4 +1,4 @@
-package com.example.lllov.projectkjh;
+package com.example.lllov.projectkjh.Adapter;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
@@ -7,6 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.example.lllov.projectkjh.DTO.DTOInfo;
+import com.example.lllov.projectkjh.R;
 
 import java.util.ArrayList;
 

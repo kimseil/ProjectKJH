@@ -5,6 +5,10 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 
+import com.example.lllov.projectkjh.Adapter.PlaceGuidePagerAdapter;
+import com.example.lllov.projectkjh.DTO.DTOInfo;
+import com.example.lllov.projectkjh.DTO.DTOPlaceGuide;
+
 import java.util.ArrayList;
 
 public class PlaceGuideActivity extends BaseActivity {
@@ -60,11 +64,5 @@ public class PlaceGuideActivity extends BaseActivity {
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
     }
 }

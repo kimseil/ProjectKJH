@@ -8,11 +8,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.lllov.projectkjh.Adapter.PlaceInfoAdapter;
+
 public class PlaceInfoActivity extends BaseActivity {
     RecyclerView rvPlaceInfo;
     LinearLayoutManager layoutManager;
     PlaceInfoAdapter adapter;
-    TextView btnGuide;
+    TextView btnGuide, btnRestaurant, btnPlace;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,6 +40,8 @@ public class PlaceInfoActivity extends BaseActivity {
         rvPlaceInfo.setLayoutManager(layoutManager);
 
         btnGuide = findViewById(R.id.btnGuide);
+        btnRestaurant = findViewById(R.id.btnRestaurant);
+        btnPlace = findViewById(R.id.btnPlace);
 
         btnGuide.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,16 +49,29 @@ public class PlaceInfoActivity extends BaseActivity {
                 guide();
             }
         });
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
+        btnRestaurant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                commend(0);
+            }
+        });
+        btnPlace.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                commend(1);
+            }
+        });
     }
 
     private void guide() {
         Intent intent = new Intent(PlaceInfoActivity.this, PlaceGuideActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
+    }
+
+    private void commend(int type) {
+        Intent intent = new Intent(PlaceInfoActivity.this, PlaceRecommendActivity.class);
+        intent.putExtra("type", type);
         startActivity(intent);
         overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
     }
