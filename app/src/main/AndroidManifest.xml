@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.lllov.projectkjh">
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
+        android:fullBackupContent="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".SplashActivity"
             android:theme="@style/SplashTheme">
@@ -28,8 +31,9 @@
         <activity
             android:name=".PlaceGuideActivity"
             android:label="@string/title_activity_place_guide"
-            android:theme="@style/AppTheme"></activity>
-        <activity android:name=".PlaceRecommendActivity"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".PlaceRecommendActivity" />
+        <activity android:name=".AddPlaceActivity" />
     </application>
 
 </manifest>
