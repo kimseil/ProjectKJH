@@ -1,5 +1,6 @@
 package com.example.lllov.projectkjh;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -17,6 +18,9 @@ import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.MeResponseCallback;
 import com.kakao.usermgmt.response.model.UserProfile;
 import com.kakao.util.exception.KakaoException;
+import com.nhn.android.naverlogin.OAuthLogin;
+import com.nhn.android.naverlogin.OAuthLoginHandler;
+import com.nhn.android.naverlogin.ui.view.OAuthLoginButton;
 
 
 public class LoginActivity extends BaseActivity {
@@ -24,6 +28,7 @@ public class LoginActivity extends BaseActivity {
 
     TextView btnLoginGuest;
     private Button btnLoginKakao;
+    private Button btnLoingNaver;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,6 +41,7 @@ public class LoginActivity extends BaseActivity {
 
         btnLoginGuest = findViewById(R.id.btnLoginGuest);
         btnLoginKakao = findViewById(R.id.btnLoginKakao);
+        btnLoingNaver = findViewById(R.id.btnLoginNaver);
 
         btnLoginGuest.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,8 +59,16 @@ public class LoginActivity extends BaseActivity {
             }
         });
 
+        btnLoingNaver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setNaver();
+            }
+        });
+
     }
 
+    //kakao_login
     public class SessionCallback implements ISessionCallback {
 
         // 로그인에 성공한 상태
@@ -80,24 +94,18 @@ public class LoginActivity extends BaseActivity {
                 // 세션 오픈 실패. 세션이 삭제된 경우,
                 @Override
                 public void onSessionClosed(ErrorResult errorResult) {
-
                     Log.e("SessionCallback :: ", "onSessionClosed : " + errorResult.getErrorMessage());
-
                 }
-
                 // 회원이 아닌 경우,
                 @Override
 
                 public void onNotSignedUp() {
                     Log.e("SessionCallback :: ", "onNotSignedUp");
                 }
-
                 // 사용자정보 요청에 성공한 경우,
                 @Override
                 public void onSuccess(UserProfile userProfile) {
-
                     Log.e("SessionCallback :: ", "onSuccess");
-
                     String nickname = userProfile.getNickname();
                     String email = userProfile.getEmail();
                     String profileImagePath = userProfile.getProfileImagePath();
@@ -113,13 +121,11 @@ public class LoginActivity extends BaseActivity {
                     Log.e("Profile : ", UUID + "");
                     Log.e("Profile : ", id + "");
                     */
-
                     Toast.makeText(getApplicationContext(),nickname+"님 반갑습니다",Toast.LENGTH_SHORT).show();
                 }
 
                 // 사용자 정보 요청 실패
                 @Override
-
                 public void onFailure(ErrorResult errorResult) {
                     Log.e("SessionCallback :: ", "onFailure : " + errorResult.getErrorMessage());
                 }
@@ -127,6 +133,34 @@ public class LoginActivity extends BaseActivity {
         }
     }
 
+
+    //naver_login
+    public static OAuthLogin mOAuthLoginModule;
+    Context context;
+
+    private void setNaver(){
+        mOAuthLoginModule = OAuthLogin.getInstance();
+        mOAuthLoginModule.init(LoginActivity.this, "clientid", "clientSecret", "clientName");
+        mOAuthLoginModule.startOauthLoginActivity(LoginActivity.this,mOAuthLoginHandler);
+    }
+    private OAuthLoginHandler mOAuthLoginHandler = new OAuthLoginHandler() {
+        @Override
+        public void run(boolean success) {
+            if (success) {
+                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                startActivity(intent);
+                finish();
+                String accessToken = mOAuthLoginModule.getAccessToken(context);
+                String refreshToken = mOAuthLoginModule.getRefreshToken(context);
+                long expiresAt = mOAuthLoginModule.getExpiresAt(context);
+                String tokenType = mOAuthLoginModule.getTokenType(context);
+
+            } else {
+                String errorCode = mOAuthLoginModule.getLastErrorCode(context).getCode();
+                String errorDesc = mOAuthLoginModule.getLastErrorDesc(context);
+            }
+        }
+    };
 
     private void loginGuest() {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
