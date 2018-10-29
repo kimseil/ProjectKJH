@@ -56,11 +56,12 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@color/LightSteelBlue"
+        android:background="@drawable/button_base"
         android:textColor="@color/White"
         android:textStyle="bold"
         android:textSize="15sp"
         android:text="가는날 / 오는날을 선택해주세요."
+        android:enabled="false"
         android:layout_margin="10dp"
         style="?android:attr/borderlessButtonStyle"
         />

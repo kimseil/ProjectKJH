@@ -5,7 +5,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 public class BaseActivity extends AppCompatActivity {
+    SimpleDateFormat formatYMD = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
+    SimpleDateFormat formatMD = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
+    SimpleDateFormat formatYear = new SimpleDateFormat("yyyy", Locale.KOREA);
+    SimpleDateFormat formatMonth = new SimpleDateFormat("MM", Locale.KOREA);
+    SimpleDateFormat formatDay = new SimpleDateFormat("dd", Locale.KOREA);
+
+
     //dp를 px로 변환 (dp를 입력받아 px을 리턴)
     public float dpToPixel(float dp){
         Resources resources = getResources();

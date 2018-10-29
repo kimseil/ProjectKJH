@@ -3,6 +3,7 @@ package com.example.lllov.projectkjh;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -15,6 +16,7 @@ public class PlaceInfoActivity extends BaseActivity {
     LinearLayoutManager layoutManager;
     PlaceInfoAdapter adapter;
     TextView btnGuide, btnRestaurant, btnPlace;
+    FloatingActionButton btnAddTravel;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,6 +44,7 @@ public class PlaceInfoActivity extends BaseActivity {
         btnGuide = findViewById(R.id.btnGuide);
         btnRestaurant = findViewById(R.id.btnRestaurant);
         btnPlace = findViewById(R.id.btnPlace);
+        btnAddTravel = findViewById(R.id.btnAddTravel);
 
         btnGuide.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +64,12 @@ public class PlaceInfoActivity extends BaseActivity {
                 commend(1);
             }
         });
+        btnAddTravel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addTravel();
+            }
+        });
     }
 
     private void guide() {
@@ -72,6 +81,12 @@ public class PlaceInfoActivity extends BaseActivity {
     private void commend(int type) {
         Intent intent = new Intent(PlaceInfoActivity.this, PlaceRecommendActivity.class);
         intent.putExtra("type", type);
+        startActivity(intent);
+        overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
+    }
+
+    private void addTravel() {
+        Intent intent = new Intent(PlaceInfoActivity.this, RegistrationTravelActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
     }
