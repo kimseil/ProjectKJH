@@ -60,7 +60,7 @@ public class PlaceRecommendAdapter extends RecyclerView.Adapter<PlaceRecommendAd
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvTitle = itemView.findViewById(R.id.tvTitle);
+            tvTitle = itemView.findViewById(R.id.tvIntro);
             tvContent = itemView.findViewById(R.id.tvContent);
             tvLocation = itemView.findViewById(R.id.tvLocation);
             ivPicture = itemView.findViewById(R.id.ivPicture);

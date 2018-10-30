@@ -48,7 +48,7 @@ public class LocationGuideContentAdapter extends RecyclerView.Adapter<LocationGu
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvTitle = itemView.findViewById(R.id.tvTitle);
+            tvTitle = itemView.findViewById(R.id.tvIntro);
             tvContent = itemView.findViewById(R.id.tvContent);
         }
     }

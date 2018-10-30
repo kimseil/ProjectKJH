@@ -17,7 +17,7 @@ public class ToolBar {
 
         mToolbar = mActivity.findViewById(R.id.toolbar);
 
-        tvTitle = mActivity.findViewById(R.id.tvTitle);
+        tvTitle = mActivity.findViewById(R.id.tvIntro);
         btnBack = mActivity.findViewById(R.id.btnBack);
 
         btnBack.setOnClickListener(new View.OnClickListener() {

@@ -57,7 +57,7 @@ public class LocationGuidePagerAdapter extends FragmentPagerAdapter {
 
             View rootView = inflater.inflate(R.layout.fragment_location_guide, container, false);
             ImageView ivPicture = rootView.findViewById(R.id.ivPicture);
-            TextView tvTitle = rootView.findViewById(R.id.tvTitle);
+            TextView tvTitle = rootView.findViewById(R.id.tvIntro);
             RecyclerView rvContent = rootView.findViewById(R.id.rvContent);
             LocationGuideContentAdapter adapter;
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
