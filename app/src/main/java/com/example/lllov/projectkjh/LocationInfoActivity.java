@@ -6,10 +6,19 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.lllov.projectkjh.Adapter.LocationInfoAdapter;
+import com.example.lllov.projectkjh.DTO.DTOLocationInfo;
+import com.google.gson.GsonBuilder;
+
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LocationInfoActivity extends BaseActivity {
     RecyclerView rvLocationInfo;
@@ -28,18 +37,33 @@ public class LocationInfoActivity extends BaseActivity {
         rvLocationInfo = findViewById(R.id.rvLocationInfo);
         layoutManager = new LinearLayoutManager(this);
 
-        /*
-        ArrayList<String> list = new ArrayList<>();
-        for (int i = 0; i < 30; i++) {
-            list.add("추천여행지 " + i);
-        }
+        ApiService service = ApiClient.getClient().create(ApiService.class);
 
-        adapter = new LocationInfoAdapter(list, this);
-        */
+        Intent inIntent = getIntent();
+        String name = inIntent.getStringExtra("name");
+        Call<ArrayList<DTOLocationInfo>> call = service.getLocationInfo(name);
 
-        adapter = new LocationInfoAdapter(this);
-        rvLocationInfo.setAdapter(adapter);
-        rvLocationInfo.setLayoutManager(layoutManager);
+        call.enqueue(new Callback<ArrayList<DTOLocationInfo>>() {
+            @Override
+            public void onResponse(Call<ArrayList<DTOLocationInfo>> call, Response<ArrayList<DTOLocationInfo>> response) {
+                ArrayList<DTOLocationInfo> data = response.body();
+
+                Log.e("@@@@@@@@", new GsonBuilder().setPrettyPrinting().create().toJson(data));
+
+                for(int i = 0; i < data.size(); i++) {
+                    data.add(new DTOLocationInfo(data.get(i).getTitle(), data.get(i).getContent()));
+                }
+
+                adapter = new LocationInfoAdapter(data, LocationInfoActivity.this);
+                rvLocationInfo.setAdapter(adapter);
+                rvLocationInfo.setLayoutManager(layoutManager);
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<DTOLocationInfo>> call, Throwable t) {
+
+            }
+        });
 
         btnGuide = findViewById(R.id.btnGuide);
         btnRestaurant = findViewById(R.id.btnRestaurant);

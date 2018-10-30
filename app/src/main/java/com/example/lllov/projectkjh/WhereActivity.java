@@ -1,6 +1,8 @@
 package com.example.lllov.projectkjh;
 
 import android.content.Intent;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.SearchView;
@@ -8,14 +10,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 
 public class WhereActivity extends BaseActivity {
 
     Toolbar toolbar;
     SearchView searchView;
+    ImageView iv1, iv2, iv3, iv4, iv5, iv6;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -24,7 +29,32 @@ public class WhereActivity extends BaseActivity {
         deleteStatusBar();
         setContentView(R.layout.activity_where);
 
+        iv1 = findViewById(R.id.iv1);
+        iv2 = findViewById(R.id.iv2);
+        iv3 = findViewById(R.id.iv3);
+        iv4 = findViewById(R.id.iv4);
+        iv5 = findViewById(R.id.iv5);
+        iv6 = findViewById(R.id.iv6);
+
         toolbar = new ToolBar(this).setBack().setToolbar();
+        Glide.with(this).load("https://cdn.pixabay.com/photo/2016/05/17/13/52/osaka-castle-1398118_960_720.jpg").into(iv1);
+        Glide.with(this).load("https://d2ur7st6jjikze.cloudfront.net/offer_photos/7462/40659_large_1525259846.jpg?1525259846").into(iv2);
+        Glide.with(this).load("https://svcstrg2.navitime.jp/curation/img/NTJtrv0132-ko/top.jpg").into(iv3);
+        Glide.with(this).load("https://travelblog.expedia.co.kr/wp-content/uploads/2016/05/04.jpg").into(iv4);
+        Glide.with(this).load("https://www.singaporeair.com/saar5/images/plan-travel/packages/singapore-stepover-holiday/sg-stepover-holiday.jpg").into(iv5);
+        Glide.with(this).load("http://www.passnjoy.com/family/cebu/assets/img/g_img16.png").into(iv6);
+        iv1.setBackground(new ShapeDrawable(new OvalShape()));
+        iv1.setClipToOutline(true);
+        iv2.setBackground(new ShapeDrawable(new OvalShape()));
+        iv2.setClipToOutline(true);
+        iv3.setBackground(new ShapeDrawable(new OvalShape()));
+        iv3.setClipToOutline(true);
+        iv4.setBackground(new ShapeDrawable(new OvalShape()));
+        iv4.setClipToOutline(true);
+        iv5.setBackground(new ShapeDrawable(new OvalShape()));
+        iv5.setClipToOutline(true);
+        iv6.setBackground(new ShapeDrawable(new OvalShape()));
+        iv6.setClipToOutline(true);
     }
 
     @Override

@@ -5,25 +5,21 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.lllov.projectkjh.BaseActivity;
+import com.example.lllov.projectkjh.DTO.DTOLocationInfo;
 import com.example.lllov.projectkjh.R;
+
+import java.util.ArrayList;
 
 public class LocationInfoAdapter extends RecyclerView.Adapter<LocationInfoAdapter.ViewHolder> {
 
-    /*
-    ArrayList<String> data;
-    */
+    ArrayList<DTOLocationInfo> data;
     BaseActivity context;
 
-    /*
-    public LocationInfoAdapter(ArrayList<String> data, Context context) {
+    public LocationInfoAdapter(ArrayList<DTOLocationInfo> data, BaseActivity context) {
         this.data = data;
-        this.context = context;
-    }
-    */
-
-    public LocationInfoAdapter(BaseActivity context) {
         this.context = context;
     }
 
@@ -32,36 +28,29 @@ public class LocationInfoAdapter extends RecyclerView.Adapter<LocationInfoAdapte
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.item_location_info_row, parent, false);
-
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        /*
-        viewHolder.tvItem.setText(data.get(i));
-        */
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
+        viewHolder.tvTitle.setText(data.get(position).getTitle());
+        viewHolder.tvContent.setText(data.get(position).getContent());
     }
 
     @Override
     public int getItemCount() {
-        /*
         return data.size();
-        */
-        return 1;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        /*
-        TextView tvItem;
-        */
+        TextView tvTitle, tvContent;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            /*
-            tvItem = itemView.findViewById(R.id.tvItem);
-            */
+
+            tvTitle = itemView.findViewById(R.id.tvTitle);
+            tvContent = itemView.findViewById(R.id.tvContent);
         }
     }
 }

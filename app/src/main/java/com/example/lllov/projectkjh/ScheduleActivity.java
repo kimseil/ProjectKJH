@@ -6,9 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.lllov.projectkjh.Adapter.ScheduleAdapter;
 import com.example.lllov.projectkjh.Adapter.ScheduleDayAdapter;
@@ -39,7 +37,7 @@ public class ScheduleActivity extends BaseActivity {
         //선택한 일정이 며칠인지.
         int dayNumber = inIntent.getIntExtra("dayNumber", 0);
         long startDay = inIntent.getLongExtra("startDay", 0);
-        long endDay = inIntent.getLongExtra("endDay", 0);
+        //long endDay = inIntent.getLongExtra("endDay", 0);
 
         rvDay = findViewById(R.id.rvDay);
         scheduleDayLayoutManager = new LinearLayoutManager(this);
