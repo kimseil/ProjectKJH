@@ -17,7 +17,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -103,7 +102,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Intent intent;
-        String s = "";
 
         switch (item.getItemId()) {
             case R.id.nav_a:
@@ -112,7 +110,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
                 break;
             case R.id.nav_b:
-                intent = new Intent(MainActivity.this, RegistrationTravelActivity.class);
+                intent = new Intent(MainActivity.this, MyInfoActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
                 break;
@@ -120,7 +118,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 break;
         }
 
-        Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
         DrawerLayout drawer = findViewById(R.id.dl);
         drawer.closeDrawer(GravityCompat.START);
         return false;

@@ -43,6 +43,7 @@
         <activity android:name=".ScheduleActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".MyInfoActivity"/>
         <activity
             android:name=".LocationGuideActivity"
             android:label="@string/title_activity_place_guide"
