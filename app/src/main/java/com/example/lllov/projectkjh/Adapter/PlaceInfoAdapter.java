@@ -31,7 +31,7 @@ public class PlaceInfoAdapter extends RecyclerView.Adapter<PlaceInfoAdapter.View
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(activity);
-        View view = inflater.inflate(R.layout.item_place_info_row, parent, false);
+        View view = inflater.inflate(R.layout.item_location_info_row, parent, false);
 
         return new ViewHolder(view);
     }

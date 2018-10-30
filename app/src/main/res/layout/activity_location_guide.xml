@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:background="@color/White"
             app:tabSelectedTextColor="@color/Black"
-            app:tabTextColor="@color/lightlightgray">
+            app:tabTextColor="@color/LightLightGray">
 
             <android.support.design.widget.TabItem
                 android:id="@+id/tabItem"

@@ -13,12 +13,12 @@ import com.example.lllov.projectkjh.R;
 
 import java.util.ArrayList;
 
-public class PlaceGuideContentAdapter extends RecyclerView.Adapter<PlaceGuideContentAdapter.ViewHolder> {
+public class LocationGuideContentAdapter extends RecyclerView.Adapter<LocationGuideContentAdapter.ViewHolder> {
 
     private ArrayList<DTOInfo> data;
     private Activity activity;
 
-    public PlaceGuideContentAdapter(ArrayList<DTOInfo> data, Activity activity) {
+    public LocationGuideContentAdapter(ArrayList<DTOInfo> data, Activity activity) {
         this.data = data;
         this.activity = activity;
     }
@@ -27,7 +27,7 @@ public class PlaceGuideContentAdapter extends RecyclerView.Adapter<PlaceGuideCon
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(activity);
-        View view = inflater.inflate(R.layout.item_place_guide_content_row, parent, false);
+        View view = inflater.inflate(R.layout.item_location_guide_content_row, parent, false);
 
         return new ViewHolder(view);
     }

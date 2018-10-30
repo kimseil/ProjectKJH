@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.lllov.projectkjh.Adapter.ScheduleAdapter;
@@ -20,6 +22,7 @@ public class ScheduleActivity extends BaseActivity {
     ScheduleAdapter scheduleAdapter;
     LinearLayoutManager scheduleDayLayoutManager, scheduleLayoutManager;
     Toolbar toolbar;
+    Button btnAddPlace, btnAddMemo;
 
     RecyclerView rvDay, rvSchedule;
 

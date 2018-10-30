@@ -20,10 +20,10 @@ import com.example.lllov.projectkjh.R;
 
 import java.util.ArrayList;
 
-public class PlaceGuidePagerAdapter extends FragmentPagerAdapter {
+public class LocationGuidePagerAdapter extends FragmentPagerAdapter {
     ArrayList<DTOPlaceGuide> data;
 
-    public PlaceGuidePagerAdapter(FragmentManager fm, ArrayList<DTOPlaceGuide> data) {
+    public LocationGuidePagerAdapter(FragmentManager fm, ArrayList<DTOPlaceGuide> data) {
         super(fm);
         this.data = data;
     }
@@ -55,18 +55,18 @@ public class PlaceGuidePagerAdapter extends FragmentPagerAdapter {
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
             int position = getArguments().getInt("position");
 
-            View rootView = inflater.inflate(R.layout.fragment_place_guide, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_location_guide, container, false);
             ImageView ivPicture = rootView.findViewById(R.id.ivPicture);
             TextView tvTitle = rootView.findViewById(R.id.tvTitle);
             RecyclerView rvContent = rootView.findViewById(R.id.rvContent);
-            PlaceGuideContentAdapter adapter;
+            LocationGuideContentAdapter adapter;
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
 
             DTOPlaceGuide data = getArguments().getParcelable("data");
             tvTitle.setText(data.getTitle());
 
             ArrayList<DTOInfo> info = data.getInfo();
-            adapter = new PlaceGuideContentAdapter(info, getActivity());
+            adapter = new LocationGuideContentAdapter(info, getActivity());
             rvContent.setAdapter(adapter);
             rvContent.setLayoutManager(linearLayoutManager);
 

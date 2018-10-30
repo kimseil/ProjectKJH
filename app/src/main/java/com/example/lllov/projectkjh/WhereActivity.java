@@ -57,7 +57,7 @@ public class WhereActivity extends BaseActivity {
         Toast.makeText(this, place, Toast.LENGTH_SHORT).show();
 
         //test
-        Intent intent = new Intent(WhereActivity.this, PlaceInfoActivity.class);
+        Intent intent = new Intent(WhereActivity.this, LocationInfoActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
     }

@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.example.lllov.projectkjh.Adapter.PlaceInfoAdapter;
 
-public class PlaceInfoActivity extends BaseActivity {
+public class LocationInfoActivity extends BaseActivity {
     RecyclerView rvPlaceInfo;
     LinearLayoutManager layoutManager;
     PlaceInfoAdapter adapter;
@@ -23,7 +23,7 @@ public class PlaceInfoActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         //스테이터스바 삭제
         deleteStatusBar();
-        setContentView(R.layout.activity_place_info);
+        setContentView(R.layout.activity_location_info);
 
         rvPlaceInfo = findViewById(R.id.rvPlaceInfo);
         layoutManager = new LinearLayoutManager(this);
@@ -73,20 +73,20 @@ public class PlaceInfoActivity extends BaseActivity {
     }
 
     private void guide() {
-        Intent intent = new Intent(PlaceInfoActivity.this, PlaceGuideActivity.class);
+        Intent intent = new Intent(LocationInfoActivity.this, LocationGuideActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
     }
 
     private void commend(int type) {
-        Intent intent = new Intent(PlaceInfoActivity.this, PlaceRecommendActivity.class);
+        Intent intent = new Intent(LocationInfoActivity.this, PlaceRecommendActivity.class);
         intent.putExtra("type", type);
         startActivity(intent);
         overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
     }
 
     private void addTravel() {
-        Intent intent = new Intent(PlaceInfoActivity.this, RegistrationTravelActivity.class);
+        Intent intent = new Intent(LocationInfoActivity.this, RegistrationTravelActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
     }

@@ -36,7 +36,7 @@
                 <data android:scheme="@string/fb_login_protocol_scheme"/>
             </intent-filter>
         </activity>
-        <activity android:name=".PlaceInfoActivity" />
+        <activity android:name=".LocationInfoActivity" />
         <activity android:name=".WhereActivity" />
         <activity android:name=".MyTripActivity" />
         <activity android:name=".RegistrationTravelActivity" />
@@ -44,7 +44,7 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity" />
         <activity
-            android:name=".PlaceGuideActivity"
+            android:name=".LocationGuideActivity"
             android:label="@string/title_activity_place_guide"
             android:theme="@style/AppTheme" />
         <activity android:name=".PlaceRecommendActivity" />
