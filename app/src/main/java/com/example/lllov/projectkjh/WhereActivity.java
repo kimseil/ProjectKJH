@@ -50,11 +50,10 @@ public class WhereActivity extends BaseActivity {
     }
 
     public void onClick(View view) {
-        LinearLayout btnPlace = (LinearLayout) view;
-        TextView tvPlace = btnPlace.findViewById(R.id.tv1);
-        String place = tvPlace.getText().toString();
+        TextView tvLocation = view.findViewById(R.id.tv1);
+        String location = tvLocation.getText().toString();
 
-        Toast.makeText(this, place, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, location, Toast.LENGTH_SHORT).show();
 
         //test
         Intent intent = new Intent(WhereActivity.this, LocationInfoActivity.class);

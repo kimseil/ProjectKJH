@@ -9,7 +9,7 @@
     android:orientation="horizontal">
 
     <ImageView
-        android:id="@+id/ivPlace"
+        android:id="@+id/ivLocation"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_gravity="center_vertical"
@@ -24,7 +24,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvPlace"
+            android:id="@+id/tvLocation"
             android:layout_width="match_parent"
             android:layout_height="24dp"
             android:layout_gravity="center_vertical"

@@ -18,13 +18,13 @@ import java.util.ArrayList;
 public class MyTripAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        ImageView ivPlace;
-        TextView tvPlace, tvPeriod;
+        ImageView ivPicture;
+        TextView tvLocation, tvPeriod;
 
         MyViewHolder(View view) {
             super(view);
-            ivPlace = view.findViewById(R.id.ivPlace);
-            tvPlace = view.findViewById(R.id.tvPlace);
+            ivPicture = view.findViewById(R.id.ivLocation);
+            tvLocation = view.findViewById(R.id.tvLocation);
             tvPeriod = view.findViewById(R.id.tvPeriod);
         }
     }
@@ -48,13 +48,13 @@ public class MyTripAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         MyViewHolder myViewHolder = (MyViewHolder) holder;
 
-        myViewHolder.ivPlace.setImageResource(tripInfoArrayList.get(position).drawableId);
-        myViewHolder.tvPlace.setText(tripInfoArrayList.get(position).place);
+        myViewHolder.ivPicture.setImageResource(tripInfoArrayList.get(position).drawableId);
+        myViewHolder.tvLocation.setText(tripInfoArrayList.get(position).location);
         myViewHolder.tvPeriod.setText(tripInfoArrayList.get(position).period);
 
         //이미지 둥글게
-        myViewHolder.ivPlace.setBackground(new ShapeDrawable(new OvalShape()));
-        myViewHolder.ivPlace.setClipToOutline(true);
+        myViewHolder.ivPicture.setBackground(new ShapeDrawable(new OvalShape()));
+        myViewHolder.ivPicture.setClipToOutline(true);
     }
 
     @Override

@@ -43,7 +43,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/btnPlace"
+            android:id="@+id/btnLocation"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="16dp"
@@ -57,7 +57,7 @@
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvPlaceInfo"
+        android:id="@+id/rvLocationInfo"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

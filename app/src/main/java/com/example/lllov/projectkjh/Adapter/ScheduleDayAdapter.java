@@ -13,17 +13,17 @@ import com.example.lllov.projectkjh.R;
 
 public class ScheduleDayAdapter extends RecyclerView.Adapter<ScheduleDayAdapter.ViewHolder> {
     int dayNumber;
-    BaseActivity activity;
+    BaseActivity context;
 
-    public ScheduleDayAdapter(int dayNumber, BaseActivity activity) {
+    public ScheduleDayAdapter(int dayNumber, BaseActivity context) {
         this.dayNumber = dayNumber;
-        this.activity = activity;
+        this.context = context;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(activity);
+        LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.item_schedule_day_column, parent, false);
 
         return new ViewHolder(view);
@@ -36,7 +36,7 @@ public class ScheduleDayAdapter extends RecyclerView.Adapter<ScheduleDayAdapter.
         //첫번째 버튼 앞에 마진을 줌(디자인)
         if (i == 0) {
             LinearLayout.LayoutParams param = (LinearLayout.LayoutParams) viewHolder.btnSelectDay.getLayoutParams();
-            param.leftMargin = (int) activity.dpToPixel(24);
+            param.leftMargin = (int) context.dpToPixel(24);
             viewHolder.btnSelectDay.setLayoutParams(param);
         }
     }

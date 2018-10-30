@@ -9,13 +9,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.lllov.projectkjh.Adapter.PlaceInfoAdapter;
+import com.example.lllov.projectkjh.Adapter.LocationInfoAdapter;
 
 public class LocationInfoActivity extends BaseActivity {
-    RecyclerView rvPlaceInfo;
+    RecyclerView rvLocationInfo;
     LinearLayoutManager layoutManager;
-    PlaceInfoAdapter adapter;
-    TextView btnGuide, btnRestaurant, btnPlace;
+    LocationInfoAdapter adapter;
+    TextView btnGuide, btnRestaurant, btnLocation;
     FloatingActionButton btnAddTravel;
 
     @Override
@@ -25,7 +25,7 @@ public class LocationInfoActivity extends BaseActivity {
         deleteStatusBar();
         setContentView(R.layout.activity_location_info);
 
-        rvPlaceInfo = findViewById(R.id.rvPlaceInfo);
+        rvLocationInfo = findViewById(R.id.rvLocationInfo);
         layoutManager = new LinearLayoutManager(this);
 
         /*
@@ -34,16 +34,16 @@ public class LocationInfoActivity extends BaseActivity {
             list.add("추천여행지 " + i);
         }
 
-        adapter = new PlaceInfoAdapter(list, this);
+        adapter = new LocationInfoAdapter(list, this);
         */
 
-        adapter = new PlaceInfoAdapter(this);
-        rvPlaceInfo.setAdapter(adapter);
-        rvPlaceInfo.setLayoutManager(layoutManager);
+        adapter = new LocationInfoAdapter(this);
+        rvLocationInfo.setAdapter(adapter);
+        rvLocationInfo.setLayoutManager(layoutManager);
 
         btnGuide = findViewById(R.id.btnGuide);
         btnRestaurant = findViewById(R.id.btnRestaurant);
-        btnPlace = findViewById(R.id.btnPlace);
+        btnLocation = findViewById(R.id.btnLocation);
         btnAddTravel = findViewById(R.id.btnAddTravel);
 
         btnGuide.setOnClickListener(new View.OnClickListener() {
@@ -58,7 +58,7 @@ public class LocationInfoActivity extends BaseActivity {
                 commend(0);
             }
         });
-        btnPlace.setOnClickListener(new View.OnClickListener() {
+        btnLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 commend(1);

@@ -5,18 +5,18 @@ import android.os.Parcelable;
 
 import java.util.ArrayList;
 
-public class DTOPlaceGuide implements Parcelable {
+public class DTOLocationGuide implements Parcelable {
     String picture;
     String title;
     ArrayList<DTOInfo> info;
 
-    public DTOPlaceGuide(String picture, String title, ArrayList<DTOInfo> info) {
+    public DTOLocationGuide(String picture, String title, ArrayList<DTOInfo> info) {
         this.picture = picture;
         this.title = title;
         this.info = info;
     }
 
-    protected DTOPlaceGuide(Parcel in) {
+    protected DTOLocationGuide(Parcel in) {
         picture = in.readString();
         title = in.readString();
         info = in.readArrayList(null);
@@ -34,15 +34,15 @@ public class DTOPlaceGuide implements Parcelable {
         return 0;
     }
 
-    public static final Creator<DTOPlaceGuide> CREATOR = new Creator<DTOPlaceGuide>() {
+    public static final Creator<DTOLocationGuide> CREATOR = new Creator<DTOLocationGuide>() {
         @Override
-        public DTOPlaceGuide createFromParcel(Parcel in) {
-            return new DTOPlaceGuide(in);
+        public DTOLocationGuide createFromParcel(Parcel in) {
+            return new DTOLocationGuide(in);
         }
 
         @Override
-        public DTOPlaceGuide[] newArray(int size) {
-            return new DTOPlaceGuide[size];
+        public DTOLocationGuide[] newArray(int size) {
+            return new DTOLocationGuide[size];
         }
     };
 

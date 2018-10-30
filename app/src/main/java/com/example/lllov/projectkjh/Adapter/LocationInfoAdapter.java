@@ -9,28 +9,28 @@ import android.view.ViewGroup;
 import com.example.lllov.projectkjh.BaseActivity;
 import com.example.lllov.projectkjh.R;
 
-public class PlaceInfoAdapter extends RecyclerView.Adapter<PlaceInfoAdapter.ViewHolder> {
+public class LocationInfoAdapter extends RecyclerView.Adapter<LocationInfoAdapter.ViewHolder> {
 
     /*
     ArrayList<String> data;
     */
-    BaseActivity activity;
+    BaseActivity context;
 
     /*
-    public PlaceInfoAdapter(ArrayList<String> data, Context context) {
+    public LocationInfoAdapter(ArrayList<String> data, Context context) {
         this.data = data;
         this.context = context;
     }
     */
 
-    public PlaceInfoAdapter(BaseActivity activity) {
-        this.activity = activity;
+    public LocationInfoAdapter(BaseActivity context) {
+        this.context = context;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(activity);
+        LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.item_location_info_row, parent, false);
 
         return new ViewHolder(view);

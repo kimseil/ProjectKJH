@@ -3,8 +3,6 @@ package com.example.lllov.projectkjh.Adapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
-import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +12,6 @@ import android.widget.TextView;
 
 import com.example.lllov.projectkjh.DTO.DTOAddPlace;
 import com.example.lllov.projectkjh.R;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -57,7 +53,7 @@ public class AddPlaceAdapter extends RecyclerView.Adapter<AddPlaceAdapter.ViewHo
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ivPicture = itemView.findViewById(R.id.ivPicture);
-            tvPlace = itemView.findViewById(R.id.tvPlace);
+            tvPlace = itemView.findViewById(R.id.tvLocation);
             tvLocation = itemView.findViewById(R.id.tvLocation);
             btnSelect = itemView.findViewById(R.id.btnSelect);
         }

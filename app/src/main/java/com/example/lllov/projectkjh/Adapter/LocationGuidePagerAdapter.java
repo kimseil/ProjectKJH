@@ -15,15 +15,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.lllov.projectkjh.DTO.DTOInfo;
-import com.example.lllov.projectkjh.DTO.DTOPlaceGuide;
+import com.example.lllov.projectkjh.DTO.DTOLocationGuide;
 import com.example.lllov.projectkjh.R;
 
 import java.util.ArrayList;
 
 public class LocationGuidePagerAdapter extends FragmentPagerAdapter {
-    ArrayList<DTOPlaceGuide> data;
+    ArrayList<DTOLocationGuide> data;
 
-    public LocationGuidePagerAdapter(FragmentManager fm, ArrayList<DTOPlaceGuide> data) {
+    public LocationGuidePagerAdapter(FragmentManager fm, ArrayList<DTOLocationGuide> data) {
         super(fm);
         this.data = data;
     }
@@ -41,7 +41,7 @@ public class LocationGuidePagerAdapter extends FragmentPagerAdapter {
     public static class PlaceHolderFragment extends Fragment {
         public PlaceHolderFragment() {}
 
-        public static PlaceHolderFragment newInstance(int position, DTOPlaceGuide data) {
+        public static PlaceHolderFragment newInstance(int position, DTOLocationGuide data) {
             PlaceHolderFragment fragment = new PlaceHolderFragment();
             Bundle args = new Bundle();
             args.putInt("position", position);
@@ -62,7 +62,7 @@ public class LocationGuidePagerAdapter extends FragmentPagerAdapter {
             LocationGuideContentAdapter adapter;
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
 
-            DTOPlaceGuide data = getArguments().getParcelable("data");
+            DTOLocationGuide data = getArguments().getParcelable("data");
             tvTitle.setText(data.getTitle());
 
             ArrayList<DTOInfo> info = data.getInfo();
