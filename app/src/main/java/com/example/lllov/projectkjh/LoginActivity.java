@@ -28,7 +28,6 @@ import com.kakao.usermgmt.response.model.UserProfile;
 import com.kakao.util.exception.KakaoException;
 import com.nhn.android.naverlogin.OAuthLogin;
 import com.nhn.android.naverlogin.OAuthLoginHandler;
-import com.nhn.android.naverlogin.ui.view.OAuthLoginButton;
 
 import org.json.JSONObject;
 
@@ -137,15 +136,6 @@ public class LoginActivity extends BaseActivity {
                     String thumnailPath = userProfile.getThumbnailImagePath();
                     String UUID = userProfile.getUUID();
                     long id = userProfile.getId();
-
-                    /*
-                    Log.e("Profile : ", nickname + "");
-                    Log.e("Profile : ", email + "");
-                    Log.e("Profile : ", profileImagePath  + "");
-                    Log.e("Profile : ", thumnailPath + "");
-                    Log.e("Profile : ", UUID + "");
-                    Log.e("Profile : ", id + "");
-                    */
 
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     intent.putExtra("name",nickname);
