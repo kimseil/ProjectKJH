@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.example.lllov.projectkjh.Adapter.PlaceRecommendAdapter;
 import com.example.lllov.projectkjh.DTO.DTORecommned;

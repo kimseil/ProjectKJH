@@ -49,6 +49,7 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".PlaceRecommendActivity" />
         <activity android:name=".AddPlaceActivity" />
+        <activity android:name=".PlaceInfoActivity"/>
     </application>
 
 </manifest>

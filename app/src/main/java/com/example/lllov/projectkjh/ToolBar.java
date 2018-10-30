@@ -9,7 +9,7 @@ public class ToolBar {
     private BaseActivity mActivity;
     private Toolbar mToolbar;
     private ImageView btnBack;
-    private TextView tvTitle;
+    private TextView tvToolbarTitle;
 
     //툴바 호출한 액티비티 가져오기
     public ToolBar(BaseActivity activity) {
@@ -17,7 +17,7 @@ public class ToolBar {
 
         mToolbar = mActivity.findViewById(R.id.toolbar);
 
-        tvTitle = mActivity.findViewById(R.id.tvIntro);
+        tvToolbarTitle = mActivity.findViewById(R.id.tvTitle);
         btnBack = mActivity.findViewById(R.id.btnBack);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -37,7 +37,7 @@ public class ToolBar {
 
     //타이틀
     public ToolBar setTitle(String title) {
-        tvTitle.setText(title);
+        tvToolbarTitle.setText(title);
 
         return this;
     }

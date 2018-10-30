@@ -1,7 +1,8 @@
 package com.example.lllov.projectkjh.Adapter;
 
-import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.lllov.projectkjh.BaseActivity;
 import com.example.lllov.projectkjh.DTO.DTORecommned;
+import com.example.lllov.projectkjh.PlaceInfoActivity;
 import com.example.lllov.projectkjh.R;
 
 import java.util.ArrayList;
@@ -18,9 +21,9 @@ import java.util.ArrayList;
 public class PlaceRecommendAdapter extends RecyclerView.Adapter<PlaceRecommendAdapter.ViewHolder> {
 
     ArrayList<DTORecommned> data;
-    Context context;
+    BaseActivity context;
 
-    public PlaceRecommendAdapter(ArrayList<DTORecommned> data, Context context) {
+    public PlaceRecommendAdapter(ArrayList<DTORecommned> data, BaseActivity context) {
         this.data = data;
         this.context = context;
     }
@@ -46,6 +49,15 @@ public class PlaceRecommendAdapter extends RecyclerView.Adapter<PlaceRecommendAd
                 onFavorite(viewHolder);
             }
         });
+
+        viewHolder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, PlaceInfoActivity.class);
+                context.startActivity(intent);
+                context.overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
+            }
+        });
     }
 
     @Override
@@ -54,13 +66,15 @@ public class PlaceRecommendAdapter extends RecyclerView.Adapter<PlaceRecommendAd
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
+        ConstraintLayout layout;
         TextView tvTitle, tvContent, tvLocation;
         ImageView ivPicture, btnFavorite;
         boolean isFavorite;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvTitle = itemView.findViewById(R.id.tvIntro);
+            layout = itemView.findViewById(R.id.layout);
+            tvTitle = itemView.findViewById(R.id.tvTitle);
             tvContent = itemView.findViewById(R.id.tvContent);
             tvLocation = itemView.findViewById(R.id.tvLocation);
             ivPicture = itemView.findViewById(R.id.ivPicture);

@@ -19,13 +19,14 @@
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="60dp">
 
             <TextView
                 android:id="@+id/tvLocation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="50dp"
                 android:text="장소이름"
                 android:textColor="@color/Black"
                 android:textSize="26sp"
@@ -37,7 +38,7 @@
                 android:id="@+id/ivPicture"
                 android:layout_width="0dp"
                 android:layout_height="200dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="60dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/dokyo"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -60,9 +61,9 @@
                 android:id="@+id/ivPicture2"
                 android:layout_width="0dp"
                 android:layout_height="350dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="60dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/dokyo"
+                android:src="@drawable/osaka"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvIntro" />
@@ -71,7 +72,7 @@
                 android:id="@+id/tvTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="24dp"
                 android:text="소개 제목이 들어가는 곳입니다."
                 android:textColor="@color/Black"
                 android:textSize="20sp"
@@ -86,15 +87,34 @@
                 android:layout_marginTop="12dp"
                 android:text="소개 내용이 들어가는 곳입니다. 소개 내용이 들어가는 곳입니다. 소개 내용이 들어가는 곳입니다. 소개 내용이 들어가는 곳입니다. 소개 내용이 들어가는 곳입니다. 소개 내용이 들어가는 곳입니다. 소개 내용이 들어가는 곳입니다. 소개 내용이 들어가는 곳입니다."
                 android:textColor="@color/DimGray"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 app:layout_constraintLeft_toLeftOf="@+id/guidelineL"
                 app:layout_constraintRight_toRightOf="@+id/guidelineR"
                 app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
-            <android.support.v7.widget.RecyclerView
+            <TextView
+                android:id="@+id/tvPlaceInfo"
                 android:layout_width="0dp"
-                android:layout_height="0dp">
-                
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="주요 볼거리"
+                android:textColor="@color/Black"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="@+id/guidelineL"
+                app:layout_constraintRight_toRightOf="@+id/guidelineR"
+                app:layout_constraintTop_toBottomOf="@+id/tvContent" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvPlaceInfo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:orientation="horizontal"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvPlaceInfo">
+
             </android.support.v7.widget.RecyclerView>
 
             <android.support.constraint.Guideline

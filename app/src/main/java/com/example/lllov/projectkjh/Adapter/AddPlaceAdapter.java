@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.lllov.projectkjh.BaseActivity;
 import com.example.lllov.projectkjh.DTO.DTOAddPlace;
 import com.example.lllov.projectkjh.R;
 
@@ -18,9 +19,9 @@ import java.util.ArrayList;
 public class AddPlaceAdapter extends RecyclerView.Adapter<AddPlaceAdapter.ViewHolder> {
 
     ArrayList<DTOAddPlace> data;
-    Context context;
+    BaseActivity context;
 
-    public AddPlaceAdapter(ArrayList<DTOAddPlace> data, Context context) {
+    public AddPlaceAdapter(ArrayList<DTOAddPlace> data, BaseActivity context) {
         this.data = data;
         this.context = context;
     }
