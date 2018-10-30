@@ -14,10 +14,11 @@
         app:layout_constraintGuide_percent="0.3" />
 
     <TextView
+        android:id="@+id/tv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:text="Guest 님,\n어디로 떠나세요?"
+        android:text=""
         android:textColor="@color/Black"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -25,6 +26,18 @@
         app:layout_constraintLeft_toRightOf="@+id/guidelineL"
         app:layout_constraintRight_toLeftOf="@+id/guidelineR"
         app:layout_constraintTop_toBottomOf="@+id/guidelineT" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:text="어디로 떠나세요?"
+        android:textColor="@color/Black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@+id/guidelineL"
+        app:layout_constraintRight_toLeftOf="@+id/guidelineR"
+        app:layout_constraintTop_toBottomOf="@+id/tv" />
 
     <LinearLayout
         android:id="@+id/btnFindTravel"

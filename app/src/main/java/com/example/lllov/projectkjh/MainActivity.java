@@ -12,10 +12,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
     LinearLayout btnFindTravel;
+    TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,13 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 onBackPressed();
             }
         });
+
+        Intent intent = getIntent();
+
+        String name = intent.getExtras().getString("name");
+        tv = findViewById(R.id.tv);
+        tv.setText(name+"님");
+
 
         btnFindTravel = findViewById(R.id.btnFindTravel);
         btnFindTravel.setOnClickListener(new View.OnClickListener() {

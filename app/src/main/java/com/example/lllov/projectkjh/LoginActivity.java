@@ -103,10 +103,6 @@ public class LoginActivity extends BaseActivity {
         // 로그인에 성공한 상태
         @Override
         public void onSessionOpened() {
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
-            overridePendingTransition(0, 0);
             requestMe();
         }
 
@@ -150,6 +146,12 @@ public class LoginActivity extends BaseActivity {
                     Log.e("Profile : ", UUID + "");
                     Log.e("Profile : ", id + "");
                     */
+
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.putExtra("name",nickname);
+                    startActivity(intent);
+                    finish();
+                    overridePendingTransition(0, 0);
                     Toast.makeText(getApplicationContext(),nickname+"님 반갑습니다",Toast.LENGTH_SHORT).show();
                 }
 
@@ -230,6 +232,7 @@ public class LoginActivity extends BaseActivity {
 
     private void loginGuest() {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        intent.putExtra("name","GUEST");
         startActivity(intent);
         finish();
         overridePendingTransition(0, 0);
