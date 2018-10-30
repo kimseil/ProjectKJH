@@ -1,6 +1,9 @@
 package com.example.lllov.projectkjh;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -8,6 +11,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,10 +19,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
     LinearLayout btnFindTravel;
-    TextView tv;
+    TextView tv,tvName;
+    ImageView profile;
 
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,12 +54,26 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             }
         });
 
+
+        //LoginActivity에서 송신한 데이터 수신
         Intent intent = getIntent();
 
         String name = intent.getExtras().getString("name");
-        tv = findViewById(R.id.tv);
-        tv.setText(name+"님");
+        final String profilePath = intent.getExtras().getString("profile");
+        Log.d("PROFILE", profilePath);
 
+        tv = findViewById(R.id.tv);
+
+        final View headerView = navigationView.getHeaderView(0);
+        profile = headerView.findViewById(R.id.ivProfile);
+        profile.setBackground(new ShapeDrawable(new OvalShape()));
+        profile.setClipToOutline(true);
+        Glide.with(this).load(profilePath).into(profile);
+
+        tvName = headerView.findViewById(R.id.tvName);
+        tvName.setText(name+"님");
+
+        tv.setText(name + "님");
 
         btnFindTravel = findViewById(R.id.btnFindTravel);
         btnFindTravel.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +84,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
             }
         });
-
 
     }
 

@@ -149,6 +149,7 @@ public class LoginActivity extends BaseActivity {
 
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     intent.putExtra("name",nickname);
+                    intent.putExtra("profile",profileImagePath);
                     startActivity(intent);
                     finish();
                     overridePendingTransition(0, 0);
