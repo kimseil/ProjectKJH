@@ -1,5 +1,6 @@
 package com.example.lllov.projectkjh;
 
+import com.example.lllov.projectkjh.DTO.DTOLocationGroup;
 import com.example.lllov.projectkjh.DTO.DTOLocationInfo;
 import com.example.lllov.projectkjh.DTO.DTOWhere;
 
@@ -36,12 +37,16 @@ public interface ApiService {
     Call<DTORegisterReceive> sendReply(@Query("shop_id") int shopId, @Query("member_id") String memberId, @Query("content") String content);
     */
 
-    @GET("getLocationInfo")
-    Call<ArrayList<DTOLocationInfo>> getLocationInfo(@Query("name") String name);
-
+    //지역 그룹명
     @GET("getLocationGroup")
-    Call<ArrayList<String>> getLocationGroup();
+    Call<ArrayList<DTOLocationGroup>> getLocationGroup();
 
+    //지역명, 사진
     @GET("getLocations")
-    Call<ArrayList<DTOWhere>> getLocations(@Query("name") String name);
+    Call<ArrayList<DTOWhere>> getLocations(@Query("groupid") int groupid);
+
+    //지역 간략한 정보
+    @GET("getLocationInfo")
+    Call<ArrayList<DTOLocationInfo>> getLocationInfo(@Query("locationid") int locationid);
+
 }

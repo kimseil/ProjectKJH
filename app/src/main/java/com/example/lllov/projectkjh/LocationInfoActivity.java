@@ -40,8 +40,8 @@ public class LocationInfoActivity extends BaseActivity {
         ApiService service = ApiClient.getClient().create(ApiService.class);
 
         Intent inIntent = getIntent();
-        String name = inIntent.getStringExtra("name");
-        Call<ArrayList<DTOLocationInfo>> call = service.getLocationInfo(name);
+        int groupid = inIntent.getIntExtra("groupid", 1);
+        Call<ArrayList<DTOLocationInfo>> call = service.getLocationInfo(groupid);
 
         call.enqueue(new Callback<ArrayList<DTOLocationInfo>>() {
             @Override

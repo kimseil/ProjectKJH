@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.lllov.projectkjh.Adapter.WhereAdapter;
+import com.example.lllov.projectkjh.DTO.DTOLocationGroup;
 import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
@@ -39,12 +40,12 @@ public class WhereActivity extends BaseActivity {
         layoutManager = new LinearLayoutManager(this);
 
         ApiService service = ApiClient.getClient().create(ApiService.class);
-        Call<ArrayList<String>> call = service.getLocationGroup();
+        Call<ArrayList<DTOLocationGroup>> call = service.getLocationGroup();
 
-        call.enqueue(new Callback<ArrayList<String>>() {
+        call.enqueue(new Callback<ArrayList<DTOLocationGroup>>() {
             @Override
-            public void onResponse(Call<ArrayList<String>> call, Response<ArrayList<String>> response) {
-                ArrayList<String> data = response.body();
+            public void onResponse(Call<ArrayList<DTOLocationGroup>> call, Response<ArrayList<DTOLocationGroup>> response) {
+                ArrayList<DTOLocationGroup> data = response.body();
 
 
                 Log.e("@@@@@@@@", new GsonBuilder().setPrettyPrinting().create().toJson(data));
@@ -55,7 +56,7 @@ public class WhereActivity extends BaseActivity {
             }
 
             @Override
-            public void onFailure(Call<ArrayList<String>> call, Throwable t) {
+            public void onFailure(Call<ArrayList<DTOLocationGroup>> call, Throwable t) {
 
             }
         });

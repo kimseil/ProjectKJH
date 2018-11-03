@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.lllov.projectkjh.ApiClient;
 import com.example.lllov.projectkjh.ApiService;
 import com.example.lllov.projectkjh.BaseActivity;
+import com.example.lllov.projectkjh.DTO.DTOLocationGroup;
 import com.example.lllov.projectkjh.DTO.DTOWhere;
 import com.example.lllov.projectkjh.R;
 import com.google.gson.GsonBuilder;
@@ -24,9 +25,9 @@ import retrofit2.Response;
 
 public class WhereAdapter extends RecyclerView.Adapter<WhereAdapter.ViewHolder> {
 
-    ArrayList<String> data;
+    ArrayList<DTOLocationGroup> data;
 
-    public WhereAdapter(ArrayList<String> data, BaseActivity context) {
+    public WhereAdapter(ArrayList<DTOLocationGroup> data, BaseActivity context) {
         this.data = data;
         this.context = context;
     }
@@ -41,16 +42,22 @@ public class WhereAdapter extends RecyclerView.Adapter<WhereAdapter.ViewHolder> 
         return new ViewHolder(view);
     }
 
+    public DTOLocationGroup getItem(int position) {
+        if(data == null) {
+            return null;
+        }
+        return data.get(position);
+    }
+
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int position) {
-        String name = data.get(position);
+        DTOLocationGroup data = getItem(position);
+        String name = data.getName();
+        int id = data.getId();
         viewHolder.tvTitle.setText(name);
 
-        viewHolder.layoutManager = new GridLayoutManager(context, 2);
-
         ApiService service = ApiClient.getClient().create(ApiService.class);
-        Call<ArrayList<DTOWhere>> call = service.getLocations(name);
-
+        Call<ArrayList<DTOWhere>> call = service.getLocations(id);
         call.enqueue(new Callback<ArrayList<DTOWhere>>() {
             @Override
             public void onResponse(Call<ArrayList<DTOWhere>> call, Response<ArrayList<DTOWhere>> response) {
@@ -60,8 +67,15 @@ public class WhereAdapter extends RecyclerView.Adapter<WhereAdapter.ViewHolder> 
                 Log.e("@@@@@@@@", new GsonBuilder().setPrettyPrinting().create().toJson(data));
 
                 viewHolder.adapter = new WhereGridAdapter(data, context);
-                viewHolder.rvContent.setAdapter(viewHolder.adapter);
+                viewHolder.layoutManager = new GridLayoutManager(context, 2);
+                viewHolder.layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                    @Override
+                    public int getSpanSize(int position) {
+                        return 2;
+                    }
+                });
                 viewHolder.rvContent.setLayoutManager(viewHolder.layoutManager);
+                viewHolder.rvContent.setAdapter(viewHolder.adapter);
             }
 
             @Override

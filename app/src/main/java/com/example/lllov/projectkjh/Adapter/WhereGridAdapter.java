@@ -5,6 +5,7 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,14 +40,20 @@ public class WhereGridAdapter extends RecyclerView.Adapter<WhereGridAdapter.View
     }
 
     public DTOWhere getItem(int position) {
+        if (data == null) {
+            return null;
+        }
         return data.get(position);
     }
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int position) {
-        final DTOWhere data = getItem(position);
+        DTOWhere data = getItem(position);
+        String name = data.getName();
+        final int id = data.getId();
 
-        viewHolder.tvName.setText(data.getLocation());
+        Log.e("아앙 태그라능~", "하하");
+        viewHolder.tvName.setText(data.getName());
 
         Glide.with(context).load(data.getImageUrl()).into(viewHolder.ivPicture);
         viewHolder.ivPicture.setBackground(new ShapeDrawable(new OvalShape()));
@@ -54,7 +61,7 @@ public class WhereGridAdapter extends RecyclerView.Adapter<WhereGridAdapter.View
         viewHolder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewHolder.locationOnClick(view, data.getLocation());
+                viewHolder.locationOnClick(view, id);
             }
         });
     }
@@ -74,11 +81,12 @@ public class WhereGridAdapter extends RecyclerView.Adapter<WhereGridAdapter.View
             ivPicture = itemView.findViewById(R.id.ivPicture);
             tvName = itemView.findViewById(R.id.tvName);
             container = itemView.findViewById(R.id.container);
+            Log.e("아앙 태그라능~", "하하");
         }
 
-        public void locationOnClick(View view, String name) {
+        public void locationOnClick(View view, int id) {
             Intent intent = new Intent(view.getContext(), LocationInfoActivity.class);
-            intent.putExtra("name", name);
+            intent.putExtra("groupid", id);
             view.getContext().startActivity(intent);
             ((BaseActivity)view.getContext()).overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
         }

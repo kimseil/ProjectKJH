@@ -7,6 +7,14 @@ public class DTOLocationInfo {
     private String title;
     @SerializedName("content")
     private String content;
+    @SerializedName("id")
+    private int id;
+
+    public DTOLocationInfo(String title, String content, int id) {
+        this.title = title;
+        this.content = content;
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
@@ -21,12 +29,6 @@ public class DTOLocationInfo {
     }
 
     public void setContent(String content) {
-        this.content = content;
-    }
-
-    public DTOLocationInfo(String title, String content) {
-
-        this.title = title;
         this.content = content;
     }
 }
