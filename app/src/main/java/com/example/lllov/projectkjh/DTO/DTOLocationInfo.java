@@ -1,7 +1,11 @@
 package com.example.lllov.projectkjh.DTO;
 
+import com.google.gson.annotations.SerializedName;
+
 public class DTOLocationInfo {
+    @SerializedName("title")
     private String title;
+    @SerializedName("content")
     private String content;
 
     public String getTitle() {

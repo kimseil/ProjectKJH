@@ -50,10 +50,6 @@ public class LocationInfoActivity extends BaseActivity {
 
                 Log.e("@@@@@@@@", new GsonBuilder().setPrettyPrinting().create().toJson(data));
 
-                for(int i = 0; i < data.size(); i++) {
-                    data.add(new DTOLocationInfo(data.get(i).getTitle(), data.get(i).getContent()));
-                }
-
                 adapter = new LocationInfoAdapter(data, LocationInfoActivity.this);
                 rvLocationInfo.setAdapter(adapter);
                 rvLocationInfo.setLayoutManager(layoutManager);

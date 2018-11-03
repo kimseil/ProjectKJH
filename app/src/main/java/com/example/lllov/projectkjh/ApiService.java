@@ -1,6 +1,7 @@
 package com.example.lllov.projectkjh;
 
 import com.example.lllov.projectkjh.DTO.DTOLocationInfo;
+import com.example.lllov.projectkjh.DTO.DTOWhere;
 
 import java.util.ArrayList;
 
@@ -35,6 +36,12 @@ public interface ApiService {
     Call<DTORegisterReceive> sendReply(@Query("shop_id") int shopId, @Query("member_id") String memberId, @Query("content") String content);
     */
 
-    @GET("LocationInfo")
+    @GET("getLocationInfo")
     Call<ArrayList<DTOLocationInfo>> getLocationInfo(@Query("name") String name);
+
+    @GET("getLocationGroup")
+    Call<ArrayList<String>> getLocationGroup();
+
+    @GET("getLocations")
+    Call<ArrayList<DTOWhere>> getLocations(@Query("name") String name);
 }
