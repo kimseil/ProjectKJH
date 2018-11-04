@@ -34,23 +34,33 @@ public class WhereActivity extends BaseActivity {
         setContentView(R.layout.activity_where);
         toolbar = new ToolBar(this).setBack().setToolbar();
 
-        rvContent = findViewById(R.id.rvContent);
-        layoutManager = new GridLayoutManager(this, 2);
-
         ApiService service = ApiClient.getClient().create(ApiService.class);
-        Call<DTOWhere> call = service.getLocation();
+        Call<DTOWhere> call = service.getLocationList();
 
         call.enqueue(new Callback<DTOWhere>() {
             @Override
             public void onResponse(Call<DTOWhere> call, Response<DTOWhere> response) {
                 DTOWhere where = response.body();
 
+                rvContent = findViewById(R.id.rvContent);
+                layoutManager = new GridLayoutManager(WhereActivity.this, 2);
+
+
+                /*
+                layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                    @Override
+                    public int getSpanSize(int position) {
+                        return 1;
+                    }
+                });
+                */
+
 
                 Log.e("@@@@@@@@", new GsonBuilder().setPrettyPrinting().create().toJson(where));
 
-                //adapter = new WhereAdapter(data, WhereActivity.this);
-                //rvContent.setAdapter(adapter);
-                //rvContent.setLayoutManager(layoutManager);
+                adapter = new WhereAdapter(where, WhereActivity.this);
+                rvContent.setAdapter(adapter);
+                rvContent.setLayoutManager(layoutManager);
             }
 
             @Override

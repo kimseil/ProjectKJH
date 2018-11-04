@@ -38,15 +38,15 @@ public interface ApiService {
     */
 
     //지역 그룹명
-    @GET("getLocationGroup")
-    Call<ArrayList<DTOLocationGroup>> getLocationGroup();
+    @GET("getLocationGroupList")
+    Call<ArrayList<DTOLocationGroup>> getLocationGroupList();
 
     //지역명, 사진
-    @GET("getLocation")
-    Call<DTOWhere> getLocation();
+    @GET("getLocationList")
+    Call<DTOWhere> getLocationList();
 
     //지역 간략한 정보
-    @GET("getLocationInfo")
-    Call<ArrayList<DTOLocationInfo>> getLocationInfo(@Query("locationid") int locationid);
+    @GET("getLocationInfoList")
+    Call<ArrayList<DTOLocationInfo>> getLocationInfoList(@Query("locationid") int locationid);
 
 }

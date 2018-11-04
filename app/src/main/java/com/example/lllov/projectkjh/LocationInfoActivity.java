@@ -41,7 +41,7 @@ public class LocationInfoActivity extends BaseActivity {
 
         Intent inIntent = getIntent();
         int groupid = inIntent.getIntExtra("groupid", 1);
-        Call<ArrayList<DTOLocationInfo>> call = service.getLocationInfo(groupid);
+        Call<ArrayList<DTOLocationInfo>> call = service.getLocationInfoList(groupid);
 
         call.enqueue(new Callback<ArrayList<DTOLocationInfo>>() {
             @Override

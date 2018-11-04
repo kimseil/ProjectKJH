@@ -1,8 +1,8 @@
 package com.example.lllov.projectkjh.DTO;
 
 public class DTOInfo {
-    String title;
-    String content;
+    private String title;
+    private String content;
 
     public DTOInfo(String title, String content) {
         this.title = title;

@@ -4,9 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class DTOLocationGroup {
     @SerializedName("name")
-    String name;
+    private String name;
     @SerializedName("id")
-    int id;
+    private int id;
 
     public DTOLocationGroup(String name, int id) {
         this.name = name;
