@@ -4,6 +4,7 @@
     package="com.example.lllov.projectkjh">
 
     <uses-permission android:name="android.permission.INTERNETR"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:allowBackup="false"
@@ -48,6 +49,7 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".MyInfoActivity"/>
+        <activity android:name=".MapActivity"/>
         <activity
             android:name=".LocationGuideActivity"
             android:label="@string/title_activity_place_guide"

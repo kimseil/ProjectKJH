@@ -32,7 +32,7 @@ public class WhereActivity extends BaseActivity {
         //스테이터스바 제거
         deleteStatusBar();
         setContentView(R.layout.activity_where);
-        toolbar = new ToolBar(this).setBack().setToolbar();
+        toolbar = new ToolBar(this).setBack().setMap().setToolbar();
 
         ApiService service = ApiClient.getClient().create(ApiService.class);
         Call<DTOWhere> call = service.getLocationList();

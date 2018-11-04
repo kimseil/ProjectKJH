@@ -104,6 +104,7 @@ public class LoginActivity extends BaseActivity {
 
     }
 
+    //KeyHash
     private void getHashKey(){
         PackageInfo packageInfo = null;
         try {

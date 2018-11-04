@@ -3,8 +3,9 @@
 buildscript {
     
     repositories {
-        google()
         jcenter()
+        maven { url 'https://maven.google.com' }
+        google()
 
     }
     dependencies {
@@ -23,8 +24,10 @@ allprojects {
         maven { url 'https://jitpack.io' }
         mavenCentral()
         maven { url 'http://devrepo.kakao.com:8088/nexus/content/groups/public/' }
-
-
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
     }
 }
 
