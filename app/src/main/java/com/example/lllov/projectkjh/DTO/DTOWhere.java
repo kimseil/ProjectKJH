@@ -3,40 +3,29 @@ package com.example.lllov.projectkjh.DTO;
 import com.google.gson.annotations.SerializedName;
 
 public class DTOWhere {
-    @SerializedName("name")
-    private String name;
-    @SerializedName("imageUrl")
-    private String imageUrl;
-    @SerializedName("id")
-    private int id;
+    @SerializedName("locationGroup")
+    private DTOLocationGroup locationGroup;
+    @SerializedName("location")
+    private DTOLocation location;
 
-    public DTOWhere(String name, String imageUrl, int id) {
-        this.name = name;
-        this.imageUrl = imageUrl;
-        this.id = id;
+    public DTOWhere(DTOLocationGroup locationGroup, DTOLocation location) {
+        this.locationGroup = locationGroup;
+        this.location = location;
     }
 
-    public String getName() {
-        return name;
+    public DTOLocationGroup getLocationGroup() {
+        return locationGroup;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLocationGroup(DTOLocationGroup locationGroup) {
+        this.locationGroup = locationGroup;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public DTOLocation getLocation() {
+        return location;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public void setLocation(DTOLocation location) {
+        this.location = location;
     }
 }

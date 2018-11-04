@@ -57,15 +57,16 @@ public class WhereAdapter extends RecyclerView.Adapter<WhereAdapter.ViewHolder> 
         viewHolder.tvTitle.setText(name);
 
         ApiService service = ApiClient.getClient().create(ApiService.class);
-        Call<ArrayList<DTOWhere>> call = service.getLocations(id);
-        call.enqueue(new Callback<ArrayList<DTOWhere>>() {
+        Call<DTOWhere> call = service.getLocation();
+        call.enqueue(new Callback<DTOWhere>() {
             @Override
-            public void onResponse(Call<ArrayList<DTOWhere>> call, Response<ArrayList<DTOWhere>> response) {
-                ArrayList<DTOWhere> data = response.body();
+            public void onResponse(Call<DTOWhere> call, Response<DTOWhere> response) {
+                DTOWhere data = response.body();
 
 
                 Log.e("@@@@@@@@", new GsonBuilder().setPrettyPrinting().create().toJson(data));
 
+                /*
                 viewHolder.adapter = new WhereGridAdapter(data, context);
                 viewHolder.layoutManager = new GridLayoutManager(context, 2);
                 viewHolder.layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
@@ -76,10 +77,11 @@ public class WhereAdapter extends RecyclerView.Adapter<WhereAdapter.ViewHolder> 
                 });
                 viewHolder.rvContent.setLayoutManager(viewHolder.layoutManager);
                 viewHolder.rvContent.setAdapter(viewHolder.adapter);
+                */
             }
 
             @Override
-            public void onFailure(Call<ArrayList<DTOWhere>> call, Throwable t) {
+            public void onFailure(Call<DTOWhere> call, Throwable t) {
 
             }
         });

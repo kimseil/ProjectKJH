@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.lllov.projectkjh.BaseActivity;
-import com.example.lllov.projectkjh.DTO.DTOWhere;
+import com.example.lllov.projectkjh.DTO.DTOLocation;
 import com.example.lllov.projectkjh.LocationInfoActivity;
 import com.example.lllov.projectkjh.R;
 
@@ -23,10 +23,10 @@ import java.util.ArrayList;
 
 public class WhereGridAdapter extends RecyclerView.Adapter<WhereGridAdapter.ViewHolder> {
 
-    ArrayList<DTOWhere> data;
+    ArrayList<DTOLocation> data;
     BaseActivity context;
 
-    public WhereGridAdapter(ArrayList<DTOWhere> data, BaseActivity context) {
+    public WhereGridAdapter(ArrayList<DTOLocation> data, BaseActivity context) {
         this.data = data;
         this.context = context;
     }
@@ -39,7 +39,7 @@ public class WhereGridAdapter extends RecyclerView.Adapter<WhereGridAdapter.View
         return new ViewHolder(view);
     }
 
-    public DTOWhere getItem(int position) {
+    public DTOLocation getItem(int position) {
         if (data == null) {
             return null;
         }
@@ -48,7 +48,7 @@ public class WhereGridAdapter extends RecyclerView.Adapter<WhereGridAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int position) {
-        DTOWhere data = getItem(position);
+        DTOLocation data = getItem(position);
         String name = data.getName();
         final int id = data.getId();
 

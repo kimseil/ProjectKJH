@@ -2,7 +2,7 @@ package com.example.lllov.projectkjh;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
@@ -11,10 +11,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.lllov.projectkjh.Adapter.WhereAdapter;
-import com.example.lllov.projectkjh.DTO.DTOLocationGroup;
+import com.example.lllov.projectkjh.DTO.DTOWhere;
 import com.google.gson.GsonBuilder;
-
-import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,7 +24,7 @@ public class WhereActivity extends BaseActivity {
     SearchView searchView;
     RecyclerView rvContent;
     WhereAdapter adapter;
-    LinearLayoutManager layoutManager;
+    GridLayoutManager layoutManager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,26 +35,26 @@ public class WhereActivity extends BaseActivity {
         toolbar = new ToolBar(this).setBack().setToolbar();
 
         rvContent = findViewById(R.id.rvContent);
-        layoutManager = new LinearLayoutManager(this);
+        layoutManager = new GridLayoutManager(this, 2);
 
         ApiService service = ApiClient.getClient().create(ApiService.class);
-        Call<ArrayList<DTOLocationGroup>> call = service.getLocationGroup();
+        Call<DTOWhere> call = service.getLocation();
 
-        call.enqueue(new Callback<ArrayList<DTOLocationGroup>>() {
+        call.enqueue(new Callback<DTOWhere>() {
             @Override
-            public void onResponse(Call<ArrayList<DTOLocationGroup>> call, Response<ArrayList<DTOLocationGroup>> response) {
-                ArrayList<DTOLocationGroup> data = response.body();
+            public void onResponse(Call<DTOWhere> call, Response<DTOWhere> response) {
+                DTOWhere where = response.body();
 
 
-                Log.e("@@@@@@@@", new GsonBuilder().setPrettyPrinting().create().toJson(data));
+                Log.e("@@@@@@@@", new GsonBuilder().setPrettyPrinting().create().toJson(where));
 
-                adapter = new WhereAdapter(data, WhereActivity.this);
-                rvContent.setAdapter(adapter);
-                rvContent.setLayoutManager(layoutManager);
+                //adapter = new WhereAdapter(data, WhereActivity.this);
+                //rvContent.setAdapter(adapter);
+                //rvContent.setLayoutManager(layoutManager);
             }
 
             @Override
-            public void onFailure(Call<ArrayList<DTOLocationGroup>> call, Throwable t) {
+            public void onFailure(Call<DTOWhere> call, Throwable t) {
 
             }
         });
