@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -26,6 +27,7 @@ public class LocationInfoActivity extends BaseActivity {
     LocationInfoAdapter adapter;
     TextView btnGuide, btnRestaurant, btnLocation;
     FloatingActionButton btnAddTravel;
+    Toolbar tbar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,11 +39,12 @@ public class LocationInfoActivity extends BaseActivity {
         rvLocationInfo = findViewById(R.id.rvLocationInfo);
         layoutManager = new LinearLayoutManager(this);
 
-        ApiService service = ApiClient.getClient().create(ApiService.class);
-
+        tbar = findViewById(R.id.tbar);
         Intent inIntent = getIntent();
-        int groupid = inIntent.getIntExtra("groupid", 1);
-        Call<ArrayList<DTOLocationInfo>> call = service.getLocationInfoList(groupid);
+        tbar.setTitle(inIntent.getStringExtra("locationname"));
+        ApiService service = ApiClient.getClient().create(ApiService.class);
+        int locationid = inIntent.getIntExtra("locationid", 1);
+        Call<ArrayList<DTOLocationInfo>> call = service.getLocationInfoList(locationid);
 
         call.enqueue(new Callback<ArrayList<DTOLocationInfo>>() {
             @Override

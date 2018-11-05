@@ -11,8 +11,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.lllov.projectkjh.Adapter.WhereAdapter;
+import com.example.lllov.projectkjh.DTO.DTOLocation;
 import com.example.lllov.projectkjh.DTO.DTOWhere;
 import com.google.gson.GsonBuilder;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,36 +38,24 @@ public class WhereActivity extends BaseActivity {
         toolbar = new ToolBar(this).setBack().setMap().setToolbar();
 
         ApiService service = ApiClient.getClient().create(ApiService.class);
-        Call<DTOWhere> call = service.getLocationList();
+        Call<ArrayList<DTOLocation>> call = service.getLocationList();
 
-        call.enqueue(new Callback<DTOWhere>() {
+        call.enqueue(new Callback<ArrayList<DTOLocation>>() {
             @Override
-            public void onResponse(Call<DTOWhere> call, Response<DTOWhere> response) {
-                DTOWhere where = response.body();
+            public void onResponse(Call<ArrayList<DTOLocation>> call, Response<ArrayList<DTOLocation>> response) {
+                ArrayList<DTOLocation> data = response.body();
+                Log.e("@@@@@@@@", new GsonBuilder().setPrettyPrinting().create().toJson(data));
 
                 rvContent = findViewById(R.id.rvContent);
                 layoutManager = new GridLayoutManager(WhereActivity.this, 2);
 
-
-                /*
-                layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-                    @Override
-                    public int getSpanSize(int position) {
-                        return 1;
-                    }
-                });
-                */
-
-
-                Log.e("@@@@@@@@", new GsonBuilder().setPrettyPrinting().create().toJson(where));
-
-                adapter = new WhereAdapter(where, WhereActivity.this);
+                adapter = new WhereAdapter(data, WhereActivity.this);
                 rvContent.setAdapter(adapter);
                 rvContent.setLayoutManager(layoutManager);
             }
 
             @Override
-            public void onFailure(Call<DTOWhere> call, Throwable t) {
+            public void onFailure(Call<ArrayList<DTOLocation>> call, Throwable t) {
 
             }
         });

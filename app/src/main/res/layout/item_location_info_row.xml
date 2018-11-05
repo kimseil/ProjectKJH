@@ -23,7 +23,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/White">
 
     <LinearLayout
@@ -41,6 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="제목입니다"
+            android:textStyle="bold"
             android:textColor="@color/Black"
             android:textSize="20sp" />
 
@@ -50,15 +51,17 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="내용입니다"
-            android:textSize="15sp" />
+            android:textSize="18sp" />
 
-        <Button
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:background="#00ff0000"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
             android:text="자세히"
+            android:focusable="true"
+            android:clickable="true"
             android:textColor="@color/Navy" />
 
         <View

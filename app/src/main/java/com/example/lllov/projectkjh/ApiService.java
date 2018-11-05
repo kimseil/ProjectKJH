@@ -1,10 +1,12 @@
 package com.example.lllov.projectkjh;
 
+import com.example.lllov.projectkjh.DTO.DTOLocation;
 import com.example.lllov.projectkjh.DTO.DTOLocationGroup;
 import com.example.lllov.projectkjh.DTO.DTOLocationInfo;
 import com.example.lllov.projectkjh.DTO.DTOWhere;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -43,7 +45,7 @@ public interface ApiService {
 
     //지역명, 사진
     @GET("getLocationList")
-    Call<DTOWhere> getLocationList();
+    Call<ArrayList<DTOLocation>> getLocationList();
 
     //지역 간략한 정보
     @GET("getLocationInfoList")
