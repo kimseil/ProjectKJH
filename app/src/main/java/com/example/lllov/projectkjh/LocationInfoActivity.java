@@ -94,13 +94,13 @@ public class LocationInfoActivity extends BaseActivity {
         btnRestaurant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                commend(0);
+                commend(1);
             }
         });
         btnLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                commend(1);
+                commend(2);
             }
         });
         btnAddTravel.setOnClickListener(new View.OnClickListener() {

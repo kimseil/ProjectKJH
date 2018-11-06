@@ -5,11 +5,14 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -50,6 +53,19 @@ public class WhereAdapter extends RecyclerView.Adapter<WhereAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
+        //첫번째 버튼 앞에 마진을 줌(디자인)
+        if (position == 0 || position == 1) {
+            GridLayoutManager.LayoutParams param = (GridLayoutManager.LayoutParams) viewHolder.container.getLayoutParams();
+            param.topMargin = (int) context.dpToPixel(40);
+            viewHolder.container.setLayoutParams(param);
+        }
+
+        if (position == data.size() - 1 || position == data.size() - 2) {
+            GridLayoutManager.LayoutParams param = (GridLayoutManager.LayoutParams) viewHolder.container.getLayoutParams();
+            param.bottomMargin = (int) context.dpToPixel(400);
+            viewHolder.container.setLayoutParams(param);
+        }
+
         final LocationVO data = getItem(position);
         String name = data.getName();
         String imageUrl = data.getImageUrl();

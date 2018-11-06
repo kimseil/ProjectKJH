@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvContent"
+        android:id="@+id/tvIntro"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="이곳은 설명이 들어가는 부분입니다."
@@ -34,15 +34,15 @@
         app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
     <TextView
-        android:id="@+id/tvLocation"
+        android:id="@+id/tvType"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="주소정보"
+        android:text="장소타입"
         android:textColor="@color/Gray"
         android:textSize="16sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="@+id/tvTitle"
-        app:layout_constraintTop_toBottomOf="@+id/tvContent" />
+        app:layout_constraintTop_toBottomOf="@+id/tvIntro" />
 
     <ImageView
         android:id="@+id/ivPicture"

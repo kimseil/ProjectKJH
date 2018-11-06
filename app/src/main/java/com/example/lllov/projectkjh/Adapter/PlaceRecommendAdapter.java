@@ -1,9 +1,11 @@
 package com.example.lllov.projectkjh.Adapter;
 
 import android.content.Intent;
+import android.os.Parcel;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,19 +13,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.lllov.projectkjh.BaseActivity;
 import com.example.lllov.projectkjh.DTO.DTORecommned;
+import com.example.lllov.projectkjh.DTO.PlaceVO;
 import com.example.lllov.projectkjh.PlaceInfoActivity;
 import com.example.lllov.projectkjh.R;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
 public class PlaceRecommendAdapter extends RecyclerView.Adapter<PlaceRecommendAdapter.ViewHolder> {
 
-    ArrayList<DTORecommned> data;
+    ArrayList<PlaceVO> data;
     BaseActivity context;
 
-    public PlaceRecommendAdapter(ArrayList<DTORecommned> data, BaseActivity context) {
+    public PlaceRecommendAdapter(ArrayList<PlaceVO> data, BaseActivity context) {
         this.data = data;
         this.context = context;
     }
@@ -36,12 +42,27 @@ public class PlaceRecommendAdapter extends RecyclerView.Adapter<PlaceRecommendAd
         return new ViewHolder(view);
     }
 
+    public PlaceVO getItem(int position) {
+        if (data == null) {
+            return null;
+        }
+        return data.get(position);
+    }
+
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int position) {
-        viewHolder.tvTitle.setText(data.get(position).getTitle());
-        viewHolder.tvContent.setText(data.get(position).getContent());
-        viewHolder.tvLocation.setText(data.get(position).getLocation());
+        final PlaceVO data = getItem(position);
+
+        viewHolder.tvTitle.setText(data.getTitle());
+        viewHolder.tvIntro.setText(data.getIntro());
+        viewHolder.tvType.setText(context.PLACE_TYPE.get(data.getType()));
         viewHolder.isFavorite = false;
+
+        //이미지 있으면 로드
+        String imageUrl = data.getImageUrl();
+        if(!TextUtils.isEmpty(imageUrl)) {
+            Glide.with(context).load(imageUrl).into(viewHolder.ivPicture);
+        }
 
         viewHolder.btnFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +75,7 @@ public class PlaceRecommendAdapter extends RecyclerView.Adapter<PlaceRecommendAd
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, PlaceInfoActivity.class);
+                intent.putExtra("place", Parcels.wrap(data));
                 context.startActivity(intent);
                 context.overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
             }
@@ -67,7 +89,7 @@ public class PlaceRecommendAdapter extends RecyclerView.Adapter<PlaceRecommendAd
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ConstraintLayout layout;
-        TextView tvTitle, tvContent, tvLocation;
+        TextView tvTitle, tvIntro, tvType;
         ImageView ivPicture, btnFavorite;
         boolean isFavorite;
 
@@ -75,8 +97,8 @@ public class PlaceRecommendAdapter extends RecyclerView.Adapter<PlaceRecommendAd
             super(itemView);
             layout = itemView.findViewById(R.id.layout);
             tvTitle = itemView.findViewById(R.id.tvTitle);
-            tvContent = itemView.findViewById(R.id.tvContent);
-            tvLocation = itemView.findViewById(R.id.tvLocation);
+            tvIntro = itemView.findViewById(R.id.tvIntro);
+            tvType = itemView.findViewById(R.id.tvType);
             ivPicture = itemView.findViewById(R.id.ivPicture);
             btnFavorite = itemView.findViewById(R.id.btnFavorite);
         }
