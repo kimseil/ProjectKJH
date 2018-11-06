@@ -2,6 +2,9 @@ package com.example.lllov.projectkjh.DTO;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+@Parcel(Parcel.Serialization.BEAN)
 public class LocationGuideVO {
     @SerializedName("id")
     private int id;
@@ -38,5 +41,29 @@ public class LocationGuideVO {
 
     public int getLocationId() {
         return locationId;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setIntro(String intro) {
+        this.intro = intro;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public void setLocationId(int locationId) {
+        this.locationId = locationId;
     }
 }

@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.lllov.projectkjh.BaseActivity;
 import com.example.lllov.projectkjh.DTO.LocationGuideVO;
 import com.example.lllov.projectkjh.DTO.DTOLocationGuide;
 import com.example.lllov.projectkjh.DTO.LocationVO;
@@ -80,7 +81,7 @@ public class LocationGuidePagerAdapter extends FragmentPagerAdapter {
             }
             Glide.with(getActivity()).load(data.getLocation().getImageUrl()).into(ivPicture);
 
-            adapter = new LocationGuideContentAdapter(data.getData(), getActivity());
+            adapter = new LocationGuideContentAdapter(data.getData(), (BaseActivity)getActivity());
             rvContent.setAdapter(adapter);
             rvContent.setLayoutManager(linearLayoutManager);
 

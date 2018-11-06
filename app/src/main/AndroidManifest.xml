@@ -57,6 +57,7 @@
         <activity android:name=".PlaceRecommendActivity" />
         <activity android:name=".AddPlaceActivity" />
         <activity android:name=".PlaceInfoActivity"/>
+        <activity android:name=".LocationGuideInfoActivity"/>
     </application>
 
 </manifest>

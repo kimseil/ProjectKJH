@@ -1,5 +1,6 @@
 package com.example.lllov.projectkjh;
 
+import com.example.lllov.projectkjh.DTO.LocationGuideInfoVO;
 import com.example.lllov.projectkjh.DTO.LocationGuideVO;
 import com.example.lllov.projectkjh.DTO.LocationVO;
 import com.example.lllov.projectkjh.DTO.LocationGroupVO;
@@ -52,4 +53,7 @@ public interface ApiService {
 
     @GET("getLocationGuideList")
     Call<ArrayList<LocationGuideVO>> getLocationGuideList(@Query("locationId") int locationId);
+
+    @GET("getLocationGuideInfoList")
+    Call<ArrayList<LocationGuideInfoVO>> getLocationGuideInfoList(@Query("guideId") int guideId);
 }
