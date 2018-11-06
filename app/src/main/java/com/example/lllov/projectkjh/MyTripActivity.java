@@ -28,8 +28,8 @@ public class MyTripActivity extends BaseActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         ArrayList<DTOTripInfo> tripInfoArrayList = new ArrayList<>();
-        tripInfoArrayList.add(new DTOTripInfo(R.drawable.osaka, "오사카", "2015-2016"));
-        tripInfoArrayList.add(new DTOTripInfo(R.drawable.dokyo, "도쿄", "2016-2017"));
+        tripInfoArrayList.add(new DTOTripInfo(R.drawable.praha, "프라하", "2018.12.27 ~ 2019.01.02"));
+        tripInfoArrayList.add(new DTOTripInfo(R.drawable.paris, "파리", "2019.01.02 ~ 2019.01.07"));
 
         MyTripAdapter myAdapter = new MyTripAdapter(tripInfoArrayList);
 

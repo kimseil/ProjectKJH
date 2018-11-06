@@ -16,8 +16,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.kakao.auth.Session;
+import com.kakao.usermgmt.UserManagement;
+import com.kakao.usermgmt.callback.LogoutResponseCallback;
 
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
     LinearLayout btnFindTravel;
@@ -112,6 +116,12 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 startActivity(intent);
                 overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
                 break;
+            case R.id.nav_c:
+                if(Session.getCurrentSession().isOpened())
+                    onClickLogout();
+                else
+                    Toast.makeText(this,"이미 로그아웃 되어있습니다.",Toast.LENGTH_SHORT).show();
+                break;
             default:
                 break;
         }
@@ -119,5 +129,14 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         DrawerLayout drawer = findViewById(R.id.dl);
         drawer.closeDrawer(GravityCompat.START);
         return false;
+    }
+
+    private void onClickLogout() {
+        UserManagement.getInstance().requestLogout(new LogoutResponseCallback() {
+            @Override
+            public void onCompleteLogout() {
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            }
+        });
     }
 }
