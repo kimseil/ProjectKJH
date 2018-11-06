@@ -8,17 +8,17 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.lllov.projectkjh.BaseActivity;
-import com.example.lllov.projectkjh.DTO.DTOLocationInfo;
+import com.example.lllov.projectkjh.DTO.LocationInfoVO;
 import com.example.lllov.projectkjh.R;
 
 import java.util.ArrayList;
 
 public class LocationInfoAdapter extends RecyclerView.Adapter<LocationInfoAdapter.ViewHolder> {
 
-    ArrayList<DTOLocationInfo> data;
+    ArrayList<LocationInfoVO> data;
     BaseActivity context;
 
-    public LocationInfoAdapter(ArrayList<DTOLocationInfo> data, BaseActivity context) {
+    public LocationInfoAdapter(ArrayList<LocationInfoVO> data, BaseActivity context) {
         this.data = data;
         this.context = context;
     }

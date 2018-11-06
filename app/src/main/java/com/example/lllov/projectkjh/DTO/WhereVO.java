@@ -4,17 +4,18 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-public class DTOWhere {
+//현재 안쓰이는 중
+public class WhereVO {
     @SerializedName("locationGroupList")
-    private ArrayList<DTOLocationGroup> locationGroupList;
+    private ArrayList<LocationGroupVO> locationGroupList;
     @SerializedName("listLocationList")
-    private ArrayList<DTOListLocation> listLocationList;
+    private ArrayList<ListLocationVO> listLocationList;
 
-    public ArrayList<DTOLocationGroup> getLocationGroupList() {
+    public ArrayList<LocationGroupVO> getLocationGroupList() {
         return locationGroupList;
     }
 
-    public ArrayList<DTOListLocation> getListLocationList() {
+    public ArrayList<ListLocationVO> getListLocationList() {
         return listLocationList;
     }
 }

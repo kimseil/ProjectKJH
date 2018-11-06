@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
 import com.example.lllov.projectkjh.Adapter.MyTripAdapter;
-import com.example.lllov.projectkjh.DTO.TripInfo;
+import com.example.lllov.projectkjh.DTO.DTOTripInfo;
 
 import java.util.ArrayList;
 
@@ -27,9 +27,9 @@ public class MyTripActivity extends BaseActivity {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        ArrayList<TripInfo> tripInfoArrayList = new ArrayList<>();
-        tripInfoArrayList.add(new TripInfo(R.drawable.osaka, "오사카", "2015-2016"));
-        tripInfoArrayList.add(new TripInfo(R.drawable.dokyo, "도쿄", "2016-2017"));
+        ArrayList<DTOTripInfo> tripInfoArrayList = new ArrayList<>();
+        tripInfoArrayList.add(new DTOTripInfo(R.drawable.osaka, "오사카", "2015-2016"));
+        tripInfoArrayList.add(new DTOTripInfo(R.drawable.dokyo, "도쿄", "2016-2017"));
 
         MyTripAdapter myAdapter = new MyTripAdapter(tripInfoArrayList);
 

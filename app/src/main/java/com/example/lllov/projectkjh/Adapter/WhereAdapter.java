@@ -14,19 +14,20 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.lllov.projectkjh.BaseActivity;
-import com.example.lllov.projectkjh.DTO.DTOLocation;
-import com.example.lllov.projectkjh.DTO.DTOWhere;
+import com.example.lllov.projectkjh.DTO.LocationVO;
 import com.example.lllov.projectkjh.LocationInfoActivity;
 import com.example.lllov.projectkjh.R;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
 public class WhereAdapter extends RecyclerView.Adapter<WhereAdapter.ViewHolder> {
 
-    ArrayList<DTOLocation> data;
+    ArrayList<LocationVO> data;
     BaseActivity context;
 
-    public WhereAdapter(ArrayList<DTOLocation> data, BaseActivity context) {
+    public WhereAdapter(ArrayList<LocationVO> data, BaseActivity context) {
         this.data = data;
         this.context = context;
     }
@@ -40,7 +41,7 @@ public class WhereAdapter extends RecyclerView.Adapter<WhereAdapter.ViewHolder> 
     }
 
     //list에서 해당 position의 data를 가져옴
-    public DTOLocation getItem(int position) {
+    public LocationVO getItem(int position) {
         if (data == null) {
             return null;
         }
@@ -49,10 +50,9 @@ public class WhereAdapter extends RecyclerView.Adapter<WhereAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
-        DTOLocation data = getItem(position);
-        final String name = data.getName();
+        final LocationVO data = getItem(position);
+        String name = data.getName();
         String imageUrl = data.getImageUrl();
-        final int id = data.getId();
 
         viewHolder.tvName.setText(name);
         Glide.with(context).load(imageUrl).into(viewHolder.ivPicture);
@@ -63,17 +63,16 @@ public class WhereAdapter extends RecyclerView.Adapter<WhereAdapter.ViewHolder> 
         viewHolder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                locationOnClick(view, id, name);
+                locationOnClick(view, data);
             }
         });
     }
 
     //버튼 클릭시 해당 location의 정보 화면으로 이동
-    public void locationOnClick(View view, int id, String name) {
+    public void locationOnClick(View view, LocationVO location) {
         Intent intent = new Intent(context, LocationInfoActivity.class);
-        intent.putExtra("locationid", id);
-        intent.putExtra("locationname", name);
-        view.getContext().startActivity(intent);
+        intent.putExtra("location", Parcels.wrap(location));
+        context.startActivity(intent);
         context.overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
     }
 

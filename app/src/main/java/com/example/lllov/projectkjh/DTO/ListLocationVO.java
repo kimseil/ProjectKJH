@@ -4,11 +4,11 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-public class DTOListLocation {
+public class ListLocationVO {
     @SerializedName("locationList")
-    private ArrayList<DTOLocation> locationList;
+    private ArrayList<LocationVO> locationList;
 
-    public ArrayList<DTOLocation> getLocationList() {
+    public ArrayList<LocationVO> getLocationList() {
         return locationList;
     }
 }

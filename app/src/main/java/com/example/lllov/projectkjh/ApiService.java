@@ -1,12 +1,11 @@
 package com.example.lllov.projectkjh;
 
-import com.example.lllov.projectkjh.DTO.DTOLocation;
-import com.example.lllov.projectkjh.DTO.DTOLocationGroup;
-import com.example.lllov.projectkjh.DTO.DTOLocationInfo;
-import com.example.lllov.projectkjh.DTO.DTOWhere;
+import com.example.lllov.projectkjh.DTO.LocationGuideVO;
+import com.example.lllov.projectkjh.DTO.LocationVO;
+import com.example.lllov.projectkjh.DTO.LocationGroupVO;
+import com.example.lllov.projectkjh.DTO.LocationInfoVO;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -41,14 +40,16 @@ public interface ApiService {
 
     //지역 그룹명
     @GET("getLocationGroupList")
-    Call<ArrayList<DTOLocationGroup>> getLocationGroupList();
+    Call<ArrayList<LocationGroupVO>> getLocationGroupList();
 
     //지역명, 사진
     @GET("getLocationList")
-    Call<ArrayList<DTOLocation>> getLocationList();
+    Call<ArrayList<LocationVO>> getLocationList();
 
     //지역 간략한 정보
     @GET("getLocationInfoList")
-    Call<ArrayList<DTOLocationInfo>> getLocationInfoList(@Query("locationid") int locationid);
+    Call<ArrayList<LocationInfoVO>> getLocationInfoList(@Query("locationId") int locationId);
 
+    @GET("getLocationGuideList")
+    Call<ArrayList<LocationGuideVO>> getLocationGuideList(@Query("locationId") int locationId);
 }

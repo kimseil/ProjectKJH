@@ -8,17 +8,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.lllov.projectkjh.DTO.DTOInfo;
+import com.example.lllov.projectkjh.DTO.LocationGuideVO;
 import com.example.lllov.projectkjh.R;
 
 import java.util.ArrayList;
 
 public class LocationGuideContentAdapter extends RecyclerView.Adapter<LocationGuideContentAdapter.ViewHolder> {
 
-    private ArrayList<DTOInfo> data;
+    private ArrayList<LocationGuideVO> data;
     private Activity activity;
 
-    public LocationGuideContentAdapter(ArrayList<DTOInfo> data, Activity activity) {
+    public LocationGuideContentAdapter(ArrayList<LocationGuideVO> data, Activity activity) {
         this.data = data;
         this.activity = activity;
     }
@@ -35,7 +35,7 @@ public class LocationGuideContentAdapter extends RecyclerView.Adapter<LocationGu
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
         viewHolder.tvTitle.setText(data.get(position).getTitle());
-        viewHolder.tvContent.setText(data.get(position).getContent());
+        viewHolder.tvContent.setText(data.get(position).getIntro());
     }
 
     @Override

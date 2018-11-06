@@ -14,10 +14,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.lllov.projectkjh.DTO.DTOInfo;
+import com.bumptech.glide.Glide;
+import com.example.lllov.projectkjh.DTO.LocationGuideVO;
 import com.example.lllov.projectkjh.DTO.DTOLocationGuide;
+import com.example.lllov.projectkjh.DTO.LocationVO;
 import com.example.lllov.projectkjh.R;
 
+import org.parceler.Parcels;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class LocationGuidePagerAdapter extends FragmentPagerAdapter {
@@ -45,7 +50,7 @@ public class LocationGuidePagerAdapter extends FragmentPagerAdapter {
             PlaceHolderFragment fragment = new PlaceHolderFragment();
             Bundle args = new Bundle();
             args.putInt("position", position);
-            args.putParcelable("data", data);
+            args.putParcelable("data", Parcels.wrap(data));
             fragment.setArguments(args);
             return fragment;
         }
@@ -53,20 +58,29 @@ public class LocationGuidePagerAdapter extends FragmentPagerAdapter {
         @Nullable
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            int position = getArguments().getInt("position");
-
             View rootView = inflater.inflate(R.layout.fragment_location_guide, container, false);
             ImageView ivPicture = rootView.findViewById(R.id.ivPicture);
             TextView tvTitle = rootView.findViewById(R.id.tvTitle);
             RecyclerView rvContent = rootView.findViewById(R.id.rvContent);
             LocationGuideContentAdapter adapter;
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+            int position = getArguments().getInt("position");
+            DTOLocationGuide data = Parcels.unwrap(getArguments().getParcelable("data"));
 
-            DTOLocationGuide data = getArguments().getParcelable("data");
-            tvTitle.setText(data.getTitle());
+            switch (position) {
+                case 0:
+                    tvTitle.setText("정말 유용한\n" + data.getLocation().getName() + " 정보와 팁");
+                    break;
+                case 1:
+                    tvTitle.setText(data.getLocation().getName() + "볼거리, 즐길거리의\n모든 것");
+                    break;
+                case 2:
+                    tvTitle.setText(data.getLocation().getName() + "\n먹킷리스트");
+                    break;
+            }
+            Glide.with(getActivity()).load(data.getLocation().getImageUrl()).into(ivPicture);
 
-            ArrayList<DTOInfo> info = data.getInfo();
-            adapter = new LocationGuideContentAdapter(info, getActivity());
+            adapter = new LocationGuideContentAdapter(data.getData(), getActivity());
             rvContent.setAdapter(adapter);
             rvContent.setLayoutManager(linearLayoutManager);
 

@@ -11,8 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.lllov.projectkjh.Adapter.WhereAdapter;
-import com.example.lllov.projectkjh.DTO.DTOLocation;
-import com.example.lllov.projectkjh.DTO.DTOWhere;
+import com.example.lllov.projectkjh.DTO.LocationVO;
 import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
@@ -38,12 +37,12 @@ public class WhereActivity extends BaseActivity {
         toolbar = new ToolBar(this).setBack().setMap().setToolbar();
 
         ApiService service = ApiClient.getClient().create(ApiService.class);
-        Call<ArrayList<DTOLocation>> call = service.getLocationList();
+        Call<ArrayList<LocationVO>> call = service.getLocationList();
 
-        call.enqueue(new Callback<ArrayList<DTOLocation>>() {
+        call.enqueue(new Callback<ArrayList<LocationVO>>() {
             @Override
-            public void onResponse(Call<ArrayList<DTOLocation>> call, Response<ArrayList<DTOLocation>> response) {
-                ArrayList<DTOLocation> data = response.body();
+            public void onResponse(Call<ArrayList<LocationVO>> call, Response<ArrayList<LocationVO>> response) {
+                ArrayList<LocationVO> data = response.body();
                 Log.e("@@@@@@@@", new GsonBuilder().setPrettyPrinting().create().toJson(data));
 
                 rvContent = findViewById(R.id.rvContent);
@@ -55,7 +54,7 @@ public class WhereActivity extends BaseActivity {
             }
 
             @Override
-            public void onFailure(Call<ArrayList<DTOLocation>> call, Throwable t) {
+            public void onFailure(Call<ArrayList<LocationVO>> call, Throwable t) {
 
             }
         });

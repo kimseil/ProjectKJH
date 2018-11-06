@@ -2,21 +2,21 @@ package com.example.lllov.projectkjh.DTO;
 
 import com.google.gson.annotations.SerializedName;
 
-public class DTOLocationInfo {
+public class LocationInfoVO {
     @SerializedName("title")
     private String title;
     @SerializedName("content")
     private String content;
     @SerializedName("id")
     private int id;
-    @SerializedName("locationid")
-    private int locationid;
+    @SerializedName("locationId")
+    private int locationId;
 
-    public DTOLocationInfo(String title, String content, int id, int locationid) {
+    public LocationInfoVO(String title, String content, int id, int locationId) {
         this.title = title;
         this.content = content;
         this.id = id;
-        this.locationid = locationid;
+        this.locationId = locationId;
     }
 
     public String getTitle() {
@@ -41,5 +41,13 @@ public class DTOLocationInfo {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(int locationId) {
+        this.locationId = locationId;
     }
 }

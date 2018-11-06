@@ -1,6 +1,7 @@
 package com.example.lllov.projectkjh;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -9,11 +10,16 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.lllov.projectkjh.Adapter.LocationInfoAdapter;
-import com.example.lllov.projectkjh.DTO.DTOLocationInfo;
+import com.example.lllov.projectkjh.DTO.LocationInfoVO;
+import com.example.lllov.projectkjh.DTO.LocationVO;
 import com.google.gson.GsonBuilder;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -25,9 +31,14 @@ public class LocationInfoActivity extends BaseActivity {
     RecyclerView rvLocationInfo;
     LinearLayoutManager layoutManager;
     LocationInfoAdapter adapter;
+
     TextView btnGuide, btnRestaurant, btnLocation;
+    ImageView ivPicture;
+
     FloatingActionButton btnAddTravel;
     Toolbar tbar;
+
+    private LocationVO location;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,17 +50,16 @@ public class LocationInfoActivity extends BaseActivity {
         rvLocationInfo = findViewById(R.id.rvLocationInfo);
         layoutManager = new LinearLayoutManager(this);
 
-        tbar = findViewById(R.id.tbar);
         Intent inIntent = getIntent();
-        tbar.setTitle(inIntent.getStringExtra("locationname"));
-        ApiService service = ApiClient.getClient().create(ApiService.class);
-        int locationid = inIntent.getIntExtra("locationid", 1);
-        Call<ArrayList<DTOLocationInfo>> call = service.getLocationInfoList(locationid);
+        location = Parcels.unwrap(inIntent.getParcelableExtra("location"));
 
-        call.enqueue(new Callback<ArrayList<DTOLocationInfo>>() {
+        ApiService service = ApiClient.getClient().create(ApiService.class);
+        Call<ArrayList<LocationInfoVO>> call = service.getLocationInfoList(location.getId());
+
+        call.enqueue(new Callback<ArrayList<LocationInfoVO>>() {
             @Override
-            public void onResponse(Call<ArrayList<DTOLocationInfo>> call, Response<ArrayList<DTOLocationInfo>> response) {
-                ArrayList<DTOLocationInfo> data = response.body();
+            public void onResponse(Call<ArrayList<LocationInfoVO>> call, Response<ArrayList<LocationInfoVO>> response) {
+                ArrayList<LocationInfoVO> data = response.body();
 
                 Log.e("@@@@@@@@", new GsonBuilder().setPrettyPrinting().create().toJson(data));
 
@@ -59,10 +69,16 @@ public class LocationInfoActivity extends BaseActivity {
             }
 
             @Override
-            public void onFailure(Call<ArrayList<DTOLocationInfo>> call, Throwable t) {
+            public void onFailure(Call<ArrayList<LocationInfoVO>> call, Throwable t) {
 
             }
         });
+
+        tbar = findViewById(R.id.tbar);
+        ivPicture = findViewById(R.id.ivPicture);
+
+        tbar.setTitle(location.getName());
+        Glide.with(this).load(location.getImageUrl()).into(ivPicture);
 
         btnGuide = findViewById(R.id.btnGuide);
         btnRestaurant = findViewById(R.id.btnRestaurant);
@@ -97,12 +113,14 @@ public class LocationInfoActivity extends BaseActivity {
 
     private void guide() {
         Intent intent = new Intent(LocationInfoActivity.this, LocationGuideActivity.class);
+        intent.putExtra("location", Parcels.wrap(location));
         startActivity(intent);
         overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
     }
 
     private void commend(int type) {
         Intent intent = new Intent(LocationInfoActivity.this, PlaceRecommendActivity.class);
+        intent.putExtra("location", Parcels.wrap(location));
         intent.putExtra("type", type);
         startActivity(intent);
         overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
@@ -110,6 +128,7 @@ public class LocationInfoActivity extends BaseActivity {
 
     private void addTravel() {
         Intent intent = new Intent(LocationInfoActivity.this, RegistrationTravelActivity.class);
+        intent.putExtra("location", Parcels.wrap(location));
         startActivity(intent);
         overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
     }

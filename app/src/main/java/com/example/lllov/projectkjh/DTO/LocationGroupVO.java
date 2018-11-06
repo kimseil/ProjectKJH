@@ -2,13 +2,13 @@ package com.example.lllov.projectkjh.DTO;
 
 import com.google.gson.annotations.SerializedName;
 
-public class DTOLocationGroup {
+public class LocationGroupVO {
     @SerializedName("name")
     private String name;
     @SerializedName("id")
     private int id;
 
-    public DTOLocationGroup(String name, int id) {
+    public LocationGroupVO(String name, int id) {
         this.name = name;
         this.id = id;
     }
