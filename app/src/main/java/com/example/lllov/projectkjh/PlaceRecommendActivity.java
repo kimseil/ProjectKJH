@@ -44,7 +44,7 @@ public class PlaceRecommendActivity extends BaseActivity {
         location = Parcels.unwrap(inIntent.getParcelableExtra("location"));
 
         ApiService service = ApiClient.getClient().create(ApiService.class);
-        Call<ArrayList<PlaceVO>> call = service.getPlaceList(location.getId(), type);
+        Call<ArrayList<PlaceVO>> call = service.getPlaceList(location.getId(), type, sUserId);
 
         call.enqueue(new Callback<ArrayList<PlaceVO>>() {
             @Override

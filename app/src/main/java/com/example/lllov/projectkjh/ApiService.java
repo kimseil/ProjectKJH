@@ -61,7 +61,7 @@ public interface ApiService {
 
     //user id도 같이 보내줘야함
     @GET("getPlaceList")
-    Call<ArrayList<PlaceVO>> getPlaceList(@Query("locationId") int locationId, @Query("type") int type);
+    Call<ArrayList<PlaceVO>> getPlaceList(@Query("locationId") int locationId, @Query("type") int type, @Query("userId") long userId);
 
     @GET("getPlaceInfoList")
     Call<ArrayList<PlaceInfoVO>> getPlaceInfoList(@Query("placeId") int placeId);
