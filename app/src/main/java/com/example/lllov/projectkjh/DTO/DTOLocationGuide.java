@@ -5,7 +5,7 @@ import org.parceler.ParcelConstructor;
 
 import java.util.ArrayList;
 
-@Parcel
+@Parcel(Parcel.Serialization.BEAN)
 public class DTOLocationGuide {
     private LocationVO location;
     private ArrayList<LocationGuideVO> data;

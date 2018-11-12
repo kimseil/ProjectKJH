@@ -3,14 +3,19 @@ package com.example.lllov.projectkjh.Adapter;
 import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.lllov.projectkjh.BaseActivity;
 import com.example.lllov.projectkjh.DTO.LocationGuideVO;
 import com.example.lllov.projectkjh.LocationGuideInfoActivity;
@@ -49,16 +54,29 @@ public class LocationGuideContentAdapter extends RecyclerView.Adapter<LocationGu
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int position) {
         final LocationGuideVO data = getItem(position);
 
         viewHolder.tvTitle.setText(data.getTitle());
         viewHolder.tvContent.setText(data.getIntro());
 
+        String imageUrl = data.getImageUrl();
+        if (!TextUtils.isEmpty(imageUrl)) {
+            Glide.with(context).load(imageUrl).into(viewHolder.ivPicture);
+            viewHolder.ivPicture.setVisibility(View.VISIBLE);
+        }
+
         viewHolder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 guideOnClick(view, data);
+            }
+        });
+
+        viewHolder.btnFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onFavorite(viewHolder);
             }
         });
     }
@@ -76,14 +94,30 @@ public class LocationGuideContentAdapter extends RecyclerView.Adapter<LocationGu
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        LinearLayout container;
+        ConstraintLayout container;
         TextView tvTitle, tvContent;
+        ImageView ivPicture, btnFavorite;
+        boolean isFavorite;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             container = itemView.findViewById(R.id.container);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvContent = itemView.findViewById(R.id.tvContent);
+            ivPicture = itemView.findViewById(R.id.ivPicture);
+            btnFavorite = itemView.findViewById(R.id.btnFavorite);
+        }
+    }
+
+    public void onFavorite(LocationGuideContentAdapter.ViewHolder viewHolder) {
+        if(viewHolder.isFavorite) {
+            viewHolder.isFavorite = false;
+            viewHolder.btnFavorite.setImageResource(R.drawable.ic_favorite_border_black);
+            Toast.makeText(context, "좋아요 취소", Toast.LENGTH_SHORT).show();
+        } else {
+            viewHolder.isFavorite = true;
+            viewHolder.btnFavorite.setImageResource(R.drawable.ic_favorite_red);
+            Toast.makeText(context, "좋아요", Toast.LENGTH_SHORT).show();
         }
     }
 }

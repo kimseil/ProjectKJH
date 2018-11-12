@@ -3,6 +3,7 @@ package com.example.lllov.projectkjh.DTO;
 import com.google.gson.annotations.SerializedName;
 
 import org.parceler.Parcel;
+import org.parceler.ParcelConstructor;
 
 @Parcel(Parcel.Serialization.BEAN)
 public class PlaceVO {
@@ -16,16 +17,24 @@ public class PlaceVO {
     private String intro;
     @SerializedName("imageUrl")
     private String imageUrl;
-    @SerializedName("subTitle")
-    private String subTitle;
-    @SerializedName("content")
-    private String content;
     @SerializedName("latitude")
     private String latitude;
     @SerializedName("longitude")
     private String longitude;
     @SerializedName("locationId")
     private int locationId;
+
+    @ParcelConstructor
+    public PlaceVO(int id, int type, String title, String intro, String imageUrl, String latitude, String longitude, int locationId) {
+        this.id = id;
+        this.type = type;
+        this.title = title;
+        this.intro = intro;
+        this.imageUrl = imageUrl;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.locationId = locationId;
+    }
 
     public int getId() {
         return id;
@@ -65,22 +74,6 @@ public class PlaceVO {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
-    }
-
-    public String getSubTitle() {
-        return subTitle;
-    }
-
-    public void setSubTitle(String subTitle) {
-        this.subTitle = subTitle;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
     }
 
     public String getLatitude() {

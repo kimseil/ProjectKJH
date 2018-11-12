@@ -19,6 +19,7 @@ public class BaseActivity extends AppCompatActivity {
     SimpleDateFormat formatDay = new SimpleDateFormat("dd", Locale.KOREA);
 
     public final static HashMap<Integer, String> PLACE_TYPE = new HashMap<>();
+    public static int sUserId;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

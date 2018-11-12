@@ -5,6 +5,7 @@ import com.example.lllov.projectkjh.DTO.LocationGuideVO;
 import com.example.lllov.projectkjh.DTO.LocationVO;
 import com.example.lllov.projectkjh.DTO.LocationGroupVO;
 import com.example.lllov.projectkjh.DTO.LocationInfoVO;
+import com.example.lllov.projectkjh.DTO.PlaceInfoVO;
 import com.example.lllov.projectkjh.DTO.PlaceVO;
 
 import java.util.ArrayList;
@@ -60,4 +61,10 @@ public interface ApiService {
 
     @GET("getPlaceList")
     Call<ArrayList<PlaceVO>> getPlaceList(@Query("locationId") int locationId, @Query("type") int type);
+
+    @GET("getPlaceInfoList")
+    Call<ArrayList<PlaceInfoVO>> getPlaceInfoList(@Query("placeId") int placeId);
+
+    @GET("getPlaceRelevantList")
+    Call<ArrayList<PlaceInfoVO>> getPlaceRelevantList(@Query("placeId") int placeId);
 }

@@ -8,7 +8,7 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
 
-    <ScrollView
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
@@ -23,7 +23,7 @@
             android:paddingBottom="60dp">
 
             <TextView
-                android:id="@+id/tvLocation"
+                android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
@@ -39,11 +39,11 @@
                 android:layout_width="0dp"
                 android:layout_height="200dp"
                 android:layout_marginTop="60dp"
-                android:scaleType="fitXY"
+                android:scaleType="centerCrop"
                 android:src="@drawable/dokyo"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvLocation" />
+                app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
             <TextView
                 android:id="@+id/tvIntro"
@@ -52,68 +52,48 @@
                 android:layout_marginTop="40dp"
                 android:text="소개 문구가 들어가는 곳입니다."
                 android:textColor="@color/Black"
-                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textSize="24sp"
                 app:layout_constraintLeft_toLeftOf="@+id/guidelineL"
                 app:layout_constraintRight_toRightOf="@+id/guidelineR"
                 app:layout_constraintTop_toBottomOf="@+id/ivPicture" />
 
-            <ImageView
-                android:id="@+id/ivPicture2"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvContent"
                 android:layout_width="0dp"
-                android:layout_height="350dp"
-                android:layout_marginTop="60dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/osaka"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:scrollbars="none"
+                android:nestedScrollingEnabled="false"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvIntro" />
+                app:layout_constraintTop_toBottomOf="@+id/tvIntro">
+
+            </android.support.v7.widget.RecyclerView>
 
             <TextView
-                android:id="@+id/tvTitle"
+                android:id="@+id/tvText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="소개 제목이 들어가는 곳입니다."
-                android:textColor="@color/Black"
-                android:textSize="20sp"
-                app:layout_constraintLeft_toLeftOf="@+id/guidelineL"
-                app:layout_constraintRight_toRightOf="@+id/guidelineR"
-                app:layout_constraintTop_toBottomOf="@+id/ivPicture2" />
-
-            <TextView
-                android:id="@+id/tvContent"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="소개 내용이 들어가는 곳입니다. 소개 내용이 들어가는 곳입니다. 소개 내용이 들어가는 곳입니다. 소개 내용이 들어가는 곳입니다. 소개 내용이 들어가는 곳입니다. 소개 내용이 들어가는 곳입니다. 소개 내용이 들어가는 곳입니다. 소개 내용이 들어가는 곳입니다."
-                android:textColor="@color/DimGray"
-                android:textSize="18sp"
-                app:layout_constraintLeft_toLeftOf="@+id/guidelineL"
-                app:layout_constraintRight_toRightOf="@+id/guidelineR"
-                app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
-
-            <TextView
-                android:id="@+id/tvPlaceInfo"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:text="주요 장소"
                 android:layout_marginTop="40dp"
-                android:text="주요 볼거리"
                 android:textColor="@color/Black"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="@+id/guidelineL"
                 app:layout_constraintRight_toRightOf="@+id/guidelineR"
-                app:layout_constraintTop_toBottomOf="@+id/tvContent" />
+                app:layout_constraintTop_toBottomOf="@+id/rvContent" />
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/rvPlaceInfo"
+                android:id="@+id/rvPlaceRelevant"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:orientation="horizontal"
+                android:scrollbars="none"
+                app:layout_constraintTop_toBottomOf="@+id/tvText"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvPlaceInfo">
+                app:layout_constraintRight_toRightOf="parent">
 
             </android.support.v7.widget.RecyclerView>
 
@@ -131,6 +111,6 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.95" />
         </android.support.constraint.ConstraintLayout>
-    </ScrollView>
+    </android.support.v4.widget.NestedScrollView>
 
 </android.support.constraint.ConstraintLayout>

@@ -167,6 +167,8 @@ public class LoginActivity extends BaseActivity {
                     String UUID = userProfile.getUUID();
                     long id = userProfile.getId();
 
+
+
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     intent.putExtra("name",nickname);
                     intent.putExtra("profile",profileImagePath); 
