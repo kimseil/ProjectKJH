@@ -23,9 +23,11 @@ public class PlaceVO {
     private String longitude;
     @SerializedName("locationId")
     private int locationId;
+    @SerializedName("isFavorite")
+    private boolean isFavorite;
 
     @ParcelConstructor
-    public PlaceVO(int id, int type, String title, String intro, String imageUrl, String latitude, String longitude, int locationId) {
+    public PlaceVO(int id, int type, String title, String intro, String imageUrl, String latitude, String longitude, int locationId, boolean isFavorite) {
         this.id = id;
         this.type = type;
         this.title = title;
@@ -34,6 +36,7 @@ public class PlaceVO {
         this.latitude = latitude;
         this.longitude = longitude;
         this.locationId = locationId;
+        this.isFavorite = isFavorite;
     }
 
     public int getId() {
@@ -98,5 +101,13 @@ public class PlaceVO {
 
     public void setLocationId(int locationId) {
         this.locationId = locationId;
+    }
+
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
     }
 }

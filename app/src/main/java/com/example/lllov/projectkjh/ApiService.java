@@ -59,6 +59,7 @@ public interface ApiService {
     @GET("getLocationGuideInfoList")
     Call<ArrayList<LocationGuideInfoVO>> getLocationGuideInfoList(@Query("guideId") int guideId);
 
+    //user id도 같이 보내줘야함
     @GET("getPlaceList")
     Call<ArrayList<PlaceVO>> getPlaceList(@Query("locationId") int locationId, @Query("type") int type);
 
@@ -67,4 +68,7 @@ public interface ApiService {
 
     @GET("getPlaceRelevantList")
     Call<ArrayList<PlaceInfoVO>> getPlaceRelevantList(@Query("placeId") int placeId);
+
+    @GET("login")
+    Call<Integer> login(@Query("id") long id, @Query("nickname") String nickname);
 }

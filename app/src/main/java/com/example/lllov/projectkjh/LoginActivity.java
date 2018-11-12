@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +15,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.lllov.projectkjh.Adapter.LocationGuideInfoAdapter;
+import com.example.lllov.projectkjh.Adapter.LocationInfoAdapter;
+import com.example.lllov.projectkjh.DTO.LocationGuideInfoVO;
+import com.example.lllov.projectkjh.DTO.LocationInfoVO;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -22,6 +27,7 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+import com.google.gson.GsonBuilder;
 import com.kakao.auth.AuthType;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
@@ -37,7 +43,12 @@ import org.json.JSONObject;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Arrays;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class LoginActivity extends BaseActivity {
@@ -167,7 +178,21 @@ public class LoginActivity extends BaseActivity {
                     String UUID = userProfile.getUUID();
                     long id = userProfile.getId();
 
+                    BaseActivity.sUserId = id;
 
+                    ApiService service = ApiClient.getClient().create(ApiService.class);
+                    Call<Integer> call = service.login(id, nickname);
+
+                    call.enqueue(new Callback<Integer>() {
+                        @Override
+                        public void onResponse(Call<Integer> call, Response<Integer> response) {
+                        }
+
+                        @Override
+                        public void onFailure(Call<Integer> call, Throwable t) {
+
+                        }
+                    });
 
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     intent.putExtra("name",nickname);
