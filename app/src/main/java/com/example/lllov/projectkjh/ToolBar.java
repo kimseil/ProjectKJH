@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.parceler.Parcels;
+
 public class ToolBar {
     private BaseActivity mActivity;
     private Toolbar mToolbar;
@@ -71,6 +73,7 @@ public class ToolBar {
 
     private void onBtnMap() {
         Intent intent = new Intent(mActivity,MapActivity.class);
+        intent.putExtra("place",Parcels.wrap(((PlaceInfoActivity)mActivity).place));
         mActivity.startActivity(intent);
     }
 }

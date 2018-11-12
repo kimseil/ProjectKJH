@@ -3,7 +3,6 @@ package com.example.lllov.projectkjh;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -14,11 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.lllov.projectkjh.Adapter.LocationGuidePagerAdapter;
 import com.example.lllov.projectkjh.Adapter.PlaceInfoAdapter;
 import com.example.lllov.projectkjh.Adapter.PlaceRelevantAdapter;
-import com.example.lllov.projectkjh.DTO.DTOLocationGuide;
-import com.example.lllov.projectkjh.DTO.LocationGuideVO;
 import com.example.lllov.projectkjh.DTO.PlaceInfoVO;
 import com.example.lllov.projectkjh.DTO.PlaceVO;
 import com.google.gson.GsonBuilder;
@@ -45,7 +41,7 @@ public class PlaceInfoActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_info);
-        Toolbar toolbar = new ToolBar(this).setBack().setToolbar();
+        Toolbar toolbar = new ToolBar(this).setBack().setMap().setToolbar();
 
         tvTitle = findViewById(R.id.tvTitle);
         tvIntro = findViewById(R.id.tvIntro);
