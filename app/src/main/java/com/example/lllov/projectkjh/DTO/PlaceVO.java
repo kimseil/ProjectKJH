@@ -103,11 +103,11 @@ public class PlaceVO {
         this.locationId = locationId;
     }
 
-    public boolean isFavorite() {
+    public boolean getIsFavorite() {
         return isFavorite;
     }
 
-    public void setFavorite(boolean favorite) {
+    public void setIsFavorite(boolean favorite) {
         isFavorite = favorite;
     }
 }
