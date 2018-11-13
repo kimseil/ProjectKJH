@@ -2,21 +2,19 @@ package com.example.lllov.projectkjh;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 
-import com.example.lllov.projectkjh.Adapter.MyTripAdapter;
-import com.example.lllov.projectkjh.DTO.DTOTripInfo;
-
-import java.util.ArrayList;
+import com.example.lllov.projectkjh.Adapter.MyTripFragmentAdapter;
 
 /*==================================================================================================
  *
  *=================================================================================================*/
 public class MyTripActivity extends BaseActivity {
-    RecyclerView mRecyclerView;
-    RecyclerView.LayoutManager mLayoutManager;
+    private MyTripFragmentAdapter myTripFragmentAdapter;
+    private ViewPager mViewPager;
+    private TabLayout tabs;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,18 +23,32 @@ public class MyTripActivity extends BaseActivity {
 
         Toolbar toolbar = new ToolBar(this).setBack().setToolbar();
 
-        mRecyclerView = findViewById(R.id.recyclerView);
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
+        tabs = findViewById(R.id.tabs);
+        mViewPager = findViewById(R.id.viewPager);
+        myTripFragmentAdapter = new MyTripFragmentAdapter(getSupportFragmentManager(),this);
+        mViewPager.setAdapter(myTripFragmentAdapter);
 
-        ArrayList<DTOTripInfo> tripInfoArrayList = new ArrayList<>();
-        tripInfoArrayList.add(new DTOTripInfo(R.drawable.praha, "프라하", "2018.12.27 ~ 2019.01.02"));
-        tripInfoArrayList.add(new DTOTripInfo(R.drawable.paris, "파리", "2019.01.02 ~ 2019.01.07"));
+        tabs.addTab(tabs.newTab().setText("내 여행"),0,true);
+        tabs.addTab(tabs.newTab().setText("찜한 장소"),1);
 
-        MyTripAdapter myAdapter = new MyTripAdapter(tripInfoArrayList);
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabs));
+        tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                mViewPager.setCurrentItem(tab.getPosition());
+            }
 
-        mRecyclerView.setAdapter(myAdapter);
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
 
     }
 }

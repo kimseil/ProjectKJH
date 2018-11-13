@@ -50,6 +50,6 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback{
 
         mMap.addMarker(markerOptions);
 
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(osaka,5));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(osaka,15));
     }
 }
