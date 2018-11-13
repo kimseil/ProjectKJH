@@ -1,17 +1,16 @@
 package com.example.lllov.projectkjh;
 
 import com.example.lllov.projectkjh.DTO.FavoritePlaceVO;
+import com.example.lllov.projectkjh.DTO.LocationGroupVO;
 import com.example.lllov.projectkjh.DTO.LocationGuideInfoVO;
 import com.example.lllov.projectkjh.DTO.LocationGuideVO;
-import com.example.lllov.projectkjh.DTO.LocationVO;
-import com.example.lllov.projectkjh.DTO.LocationGroupVO;
 import com.example.lllov.projectkjh.DTO.LocationInfoVO;
+import com.example.lllov.projectkjh.DTO.LocationVO;
 import com.example.lllov.projectkjh.DTO.PlaceInfoVO;
 import com.example.lllov.projectkjh.DTO.PlaceVO;
 import com.example.lllov.projectkjh.DTO.ScheduleVO;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -92,12 +91,19 @@ public interface ApiService {
     @GET("setIsFavoritePlace")
     Call<Boolean> setIsFavoritePlace(@Query("userId") long userId, @Query("placeId") int placeId);
 
+    //여행 일정 등록
     @GET("registrationTravel")
     Call<Integer> registrationTravel(@Query("startDay") long startDay, @Query("endDay") long endDay, @Query("locationId") int locationId, @Query("userId") long userId);
 
+    //일정 리스트 가져옴
     @GET("getScheduleList")
     Call<ArrayList<ScheduleVO>> getScheduleList(@Query("userId") long userId);
 
+    //찜한 장소 리스트 가져옴
     @GET("getFavoritePlaceList")
     Call<ArrayList<FavoritePlaceVO>> getFavoritePlaceList(@Query("userId") long userId);
+
+    //특정 지역의 찜한 장소 리스트 가져옴
+    @GET("getFavoriteLocationPlaceList")
+    Call<ArrayList<FavoritePlaceVO>> getFavoriteLocationPlaceList(@Query("userId") long userId, @Query("locationId") int locationId);
 }
