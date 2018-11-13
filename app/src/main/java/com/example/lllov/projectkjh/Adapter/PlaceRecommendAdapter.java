@@ -71,13 +71,13 @@ public class PlaceRecommendAdapter extends RecyclerView.Adapter<PlaceRecommendAd
 
         //좋아요 여부 확인
         if(viewHolder.isFavorite) {
-            Glide.with(context).load(R.drawable.ic_favorite_red).into(viewHolder.ivPicture);
+            Glide.with(context).load(R.drawable.ic_favorite_red).into(viewHolder.btnFavorite);
         }
 
         //이미지 있으면 로드
         String imageUrl = data.getPlace().getImageUrl();
         if(!TextUtils.isEmpty(imageUrl)) {
-            Glide.with(context).load(imageUrl).into(viewHolder.btnFavorite);
+            Glide.with(context).load(imageUrl).into(viewHolder.ivPicture);
         }
 
         viewHolder.btnFavorite.setOnClickListener(new View.OnClickListener() {

@@ -73,6 +73,7 @@ public class LocationGuideContentAdapter extends RecyclerView.Adapter<LocationGu
             Glide.with(context).load(R.drawable.ic_favorite_red).into(viewHolder.btnFavorite);
         }
 
+        //데이터 있으면 이미지 로딩
         String imageUrl = data.getLocationGuide().getImageUrl();
         if (!TextUtils.isEmpty(imageUrl)) {
             Glide.with(context).load(imageUrl).into(viewHolder.ivPicture);
