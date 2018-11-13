@@ -92,7 +92,7 @@ public class PlaceInfoActivity extends BaseActivity {
             @Override
             public void onResponse(Call<ArrayList<PlaceInfoVO>> call, Response<ArrayList<PlaceInfoVO>> response) {
                 ArrayList<PlaceInfoVO> data = response.body();
-                Log.e("@@@@@@@@", new GsonBuilder().setPrettyPrinting().create().toJson(data));
+                //Log.e("@@@@@@@@", new GsonBuilder().setPrettyPrinting().create().toJson(data));
                 LinearLayoutManager layoutManager = new LinearLayoutManager(PlaceInfoActivity.this);
                 layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
 

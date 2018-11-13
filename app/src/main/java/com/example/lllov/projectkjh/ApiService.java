@@ -1,5 +1,6 @@
 package com.example.lllov.projectkjh;
 
+import com.example.lllov.projectkjh.DTO.FavoritePlaceVO;
 import com.example.lllov.projectkjh.DTO.LocationGuideInfoVO;
 import com.example.lllov.projectkjh.DTO.LocationGuideVO;
 import com.example.lllov.projectkjh.DTO.LocationVO;
@@ -7,8 +8,10 @@ import com.example.lllov.projectkjh.DTO.LocationGroupVO;
 import com.example.lllov.projectkjh.DTO.LocationInfoVO;
 import com.example.lllov.projectkjh.DTO.PlaceInfoVO;
 import com.example.lllov.projectkjh.DTO.PlaceVO;
+import com.example.lllov.projectkjh.DTO.ScheduleVO;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -88,4 +91,13 @@ public interface ApiService {
     //현재 사용중인 회원이 찜한 장소인지 여부
     @GET("setIsFavoritePlace")
     Call<Boolean> setIsFavoritePlace(@Query("userId") long userId, @Query("placeId") int placeId);
+
+    @GET("registrationTravel")
+    Call<Integer> registrationTravel(@Query("startDay") long startDay, @Query("endDay") long endDay, @Query("locationId") int locationId, @Query("userId") long userId);
+
+    @GET("getScheduleList")
+    Call<ArrayList<ScheduleVO>> getScheduleList(@Query("userId") long userId);
+
+    @GET("getFavoritePlaceList")
+    Call<ArrayList<FavoritePlaceVO>> getFavoritePlaceList(@Query("userId") long userId);
 }

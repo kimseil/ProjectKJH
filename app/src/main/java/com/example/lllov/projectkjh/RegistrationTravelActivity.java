@@ -5,22 +5,35 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.lllov.projectkjh.Adapter.LocationInfoAdapter;
+import com.example.lllov.projectkjh.DTO.LocationInfoVO;
+import com.example.lllov.projectkjh.DTO.LocationVO;
+import com.example.lllov.projectkjh.DTO.ScheduleVO;
 import com.example.lllov.projectkjh.Decorator.SaturdayDecorator;
 import com.example.lllov.projectkjh.Decorator.SundayDecorator;
 import com.example.lllov.projectkjh.Decorator.TodayDecorator;
 import com.example.lllov.projectkjh.Decorator.YesterdayDecorator;
+import com.google.gson.GsonBuilder;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.CalendarMode;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 import com.prolificinteractive.materialcalendarview.OnRangeSelectedListener;
 
+import org.parceler.Parcels;
+
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /*==================================================================================================
  * 여행 일정을 등록하기 위해 날짜를 선택하는 화면
@@ -36,6 +49,9 @@ public class RegistrationTravelActivity extends BaseActivity {
     MaterialCalendarView cv;
     long startDay, endDay;
 
+    LocationVO location;
+    int locationId;
+
     static RegistrationTravelActivity sRegistrationTravelActivity;
 
     @Override
@@ -49,6 +65,10 @@ public class RegistrationTravelActivity extends BaseActivity {
         toolbar = new ToolBar(this).setBack().setToolbar();
         //다른 액티비티에서 현재 액티비티 컨트롤용
         sRegistrationTravelActivity = this;
+
+        Intent inIntent = getIntent();
+        location = Parcels.unwrap(inIntent.getParcelableExtra("location"));
+        locationId = location.getId();
 
         btnCommit = findViewById(R.id.btnCommit);
         btnCommit.setOnClickListener(new View.OnClickListener() {
@@ -99,12 +119,25 @@ public class RegistrationTravelActivity extends BaseActivity {
 
     //선택할 날짜 정보를 바탕으로 일정을 만들어 화면 이동
     public void commit() {
-        Intent intent = new Intent(RegistrationTravelActivity.this, ScheduleActivity.class);
-        intent.putExtra("startDay", startDay);
-        intent.putExtra("endDay", endDay);
-        intent.putExtra("dayNumber", (int)((endDay - startDay) / (1000 * 60 * 60 * 24)) + 1);
-        startActivity(intent);
-        overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
+        //스케쥴 등록
+        ApiService service = ApiClient.getClient().create(ApiService.class);
+        Call<Integer> call = service.registrationTravel(startDay, endDay, locationId, sUserId);
+
+        call.enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                ScheduleVO schedule = new ScheduleVO(0, startDay, endDay, locationId, sUserId);
+                Intent intent = new Intent(RegistrationTravelActivity.this, ScheduleActivity.class);
+                intent.putExtra("schedule", Parcels.wrap(schedule));
+                startActivity(intent);
+                overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+
+            }
+        });
     }
 
     //decorator를 초기화, 업데이트 시켜줌

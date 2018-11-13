@@ -49,7 +49,6 @@ public class WhereActivity extends BaseActivity {
             @Override
             public void onResponse(Call<ArrayList<LocationVO>> call, Response<ArrayList<LocationVO>> response) {
                 ArrayList<LocationVO> data = response.body();
-                Log.e("@@@@@@@@", new GsonBuilder().setPrettyPrinting().create().toJson(data));
 
                 rvContent = findViewById(R.id.rvContent);
                 layoutManager = new GridLayoutManager(WhereActivity.this, 2);

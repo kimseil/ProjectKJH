@@ -10,6 +10,9 @@ import android.widget.Button;
 
 import com.example.lllov.projectkjh.Adapter.ScheduleAdapter;
 import com.example.lllov.projectkjh.Adapter.ScheduleDayAdapter;
+import com.example.lllov.projectkjh.DTO.ScheduleVO;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -29,6 +32,8 @@ public class ScheduleActivity extends BaseActivity {
 
     RecyclerView rvDay, rvSchedule;
 
+    ScheduleVO schedule;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,11 +43,13 @@ public class ScheduleActivity extends BaseActivity {
         //툴바
         toolbar = new ToolBar(this).setBack().setToolbar();
 
+        //Parcelable 형태의 schedule 데이터를 가져옴
         Intent inIntent = getIntent();
+        schedule = Parcels.unwrap(inIntent.getParcelableExtra("schedule"));
+        long startDay = schedule.getStartDay();
+        long endDay = schedule.getEndDay();
         //선택한 일정이 며칠인지.
-        int dayNumber = inIntent.getIntExtra("dayNumber", 0);
-        long startDay = inIntent.getLongExtra("startDay", 0);
-        //long endDay = inIntent.getLongExtra("endDay", 0);
+        int dayNumber = (int)(((endDay - startDay) / (1000 * 60 * 60 * 24)) + 1);
 
         rvDay = findViewById(R.id.rvDay);
         scheduleDayLayoutManager = new LinearLayoutManager(this);

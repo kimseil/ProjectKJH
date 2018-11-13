@@ -68,8 +68,6 @@ public class LocationInfoActivity extends BaseActivity {
             public void onResponse(Call<ArrayList<LocationInfoVO>> call, Response<ArrayList<LocationInfoVO>> response) {
                 ArrayList<LocationInfoVO> data = response.body();
 
-                Log.e("@@@@@@@@", new GsonBuilder().setPrettyPrinting().create().toJson(data));
-
                 adapter = new LocationInfoAdapter(data, LocationInfoActivity.this);
                 rvLocationInfo.setAdapter(adapter);
                 rvLocationInfo.setLayoutManager(layoutManager);
