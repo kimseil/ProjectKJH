@@ -70,9 +70,7 @@ public class PlaceRecommendAdapter extends RecyclerView.Adapter<PlaceRecommendAd
         viewHolder.isFavorite = data.getIsFavorite();
 
         //좋아요 여부 확인
-        if(viewHolder.isFavorite) {
-            Glide.with(context).load(R.drawable.ic_favorite_red).into(viewHolder.btnFavorite);
-        }
+        Glide.with(context).load(viewHolder.isFavorite?R.drawable.ic_favorite_red:R.drawable.ic_favorite_border_black).into(viewHolder.btnFavorite);
 
         //이미지 있으면 로드
         String imageUrl = data.getPlace().getImageUrl();
