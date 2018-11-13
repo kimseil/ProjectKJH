@@ -45,7 +45,7 @@ public class LocationGuideActivity extends BaseActivity {
         location = Parcels.unwrap(inIntent.getParcelableExtra("location"));
 
         ApiService service = ApiClient.getClient().create(ApiService.class);
-        Call<ArrayList<LocationGuideVO>> call = service.getLocationGuideList(location.getId());
+        Call<ArrayList<LocationGuideVO>> call = service.getLocationGuideList(location.getId(), sUserId);
 
         call.enqueue(new Callback<ArrayList<LocationGuideVO>>() {
             @Override
@@ -58,7 +58,7 @@ public class LocationGuideActivity extends BaseActivity {
                 outData.add(new DTOLocationGuide(location, new ArrayList<LocationGuideVO>()));
                 outData.add(new DTOLocationGuide(location, new ArrayList<LocationGuideVO>()));
                 for(int i = 0; i < data.size(); i++) {
-                    outData.get(data.get(i).getType() - 1).getData().add(data.get(i));
+                    outData.get(data.get(i).getLocationGuide().getType() - 1).getData().add(data.get(i));
                 }
                 mSectionsPagerAdapter = new LocationGuidePagerAdapter(getSupportFragmentManager(), outData);
 

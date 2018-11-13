@@ -28,7 +28,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PlaceInfoActivity extends BaseActivity {
-    TextView tvTitle, tvIntro;
+    TextView tvTitle, tvIntro, tvText;
     ImageView ivPicture;
 
     PlaceRelevantAdapter placeRelevantAdapter;
@@ -45,18 +45,22 @@ public class PlaceInfoActivity extends BaseActivity {
 
         tvTitle = findViewById(R.id.tvTitle);
         tvIntro = findViewById(R.id.tvIntro);
+        tvText = findViewById(R.id.tvText);
         ivPicture = findViewById(R.id.ivPicture);
         rvContent = findViewById(R.id.rvContent);
         rvPlaceRelevant = findViewById(R.id.rvPlaceRelevant);
 
         Intent inIntent = getIntent();
         place = Parcels.unwrap(inIntent.getParcelableExtra("place"));
-        String title = place.getTitle();
-        String intro = place.getIntro();
-        String imageUrl = place.getImageUrl();
+        String title = place.getPlace().getTitle();
+        String intro = place.getPlace().getIntro();
+        String imageUrl = place.getPlace().getImageUrl();
+        int type = place.getPlace().getType();
+
+        tvText.setText(type/100 == 2?"":"주요장소");
 
         ApiService service = ApiClient.getClient().create(ApiService.class);
-        Call<ArrayList<PlaceInfoVO>> call1 = service.getPlaceInfoList(place.getId());
+        Call<ArrayList<PlaceInfoVO>> call1 = service.getPlaceInfoList(place.getPlace().getId());
 
         call1.enqueue(new Callback<ArrayList<PlaceInfoVO>>() {
             @Override
@@ -76,7 +80,7 @@ public class PlaceInfoActivity extends BaseActivity {
             }
         });
 
-        Call<ArrayList<PlaceInfoVO>> call2 = service.getPlaceRelevantList(place.getId());
+        Call<ArrayList<PlaceInfoVO>> call2 = service.getPlaceRelevantList(place.getPlace().getId());
 
         call2.enqueue(new Callback<ArrayList<PlaceInfoVO>>() {
             @Override

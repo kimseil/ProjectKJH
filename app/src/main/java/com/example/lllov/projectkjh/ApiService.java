@@ -54,7 +54,7 @@ public interface ApiService {
     Call<ArrayList<LocationInfoVO>> getLocationInfoList(@Query("locationId") int locationId);
 
     @GET("getLocationGuideList")
-    Call<ArrayList<LocationGuideVO>> getLocationGuideList(@Query("locationId") int locationId);
+    Call<ArrayList<LocationGuideVO>> getLocationGuideList(@Query("locationId") int locationId, @Query("userId") long userId);
 
     @GET("getLocationGuideInfoList")
     Call<ArrayList<LocationGuideInfoVO>> getLocationGuideInfoList(@Query("guideId") int guideId);

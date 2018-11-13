@@ -57,10 +57,10 @@ public class LocationGuideContentAdapter extends RecyclerView.Adapter<LocationGu
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int position) {
         final LocationGuideVO data = getItem(position);
 
-        viewHolder.tvTitle.setText(data.getTitle());
-        viewHolder.tvContent.setText(data.getIntro());
+        viewHolder.tvTitle.setText(data.getLocationGuide().getTitle());
+        viewHolder.tvContent.setText(data.getLocationGuide().getIntro());
 
-        String imageUrl = data.getImageUrl();
+        String imageUrl = data.getLocationGuide().getImageUrl();
         if (!TextUtils.isEmpty(imageUrl)) {
             Glide.with(context).load(imageUrl).into(viewHolder.ivPicture);
             viewHolder.ivPicture.setVisibility(View.VISIBLE);

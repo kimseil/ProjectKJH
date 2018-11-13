@@ -28,9 +28,9 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback{
         Intent inIntent = getIntent();
         place = Parcels.unwrap(inIntent.getParcelableExtra("place"));
 
-        latitude = Double.parseDouble(place.getLatitude());
-        longitude = Double.parseDouble(place.getLongitude());
-        name = place.getTitle();
+        latitude = Double.parseDouble(place.getPlace().getLatitude());
+        longitude = Double.parseDouble(place.getPlace().getLongitude());
+        name = place.getPlace().getTitle();
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);

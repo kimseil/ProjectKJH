@@ -53,13 +53,13 @@ public class PlaceRecommendAdapter extends RecyclerView.Adapter<PlaceRecommendAd
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int position) {
         final PlaceVO data = getItem(position);
 
-        viewHolder.tvTitle.setText(data.getTitle());
-        viewHolder.tvIntro.setText(data.getIntro());
-        viewHolder.tvType.setText(context.PLACE_TYPE.get(data.getType()));
+        viewHolder.tvTitle.setText(data.getPlace().getTitle());
+        viewHolder.tvIntro.setText(data.getPlace().getIntro());
+        viewHolder.tvType.setText(context.PLACE_TYPE.get(data.getPlace().getType()));
         viewHolder.isFavorite = false;
 
         //이미지 있으면 로드
-        String imageUrl = data.getImageUrl();
+        String imageUrl = data.getPlace().getImageUrl();
         if(!TextUtils.isEmpty(imageUrl)) {
             Glide.with(context).load(imageUrl).into(viewHolder.ivPicture);
         }

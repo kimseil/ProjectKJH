@@ -60,8 +60,8 @@ public class LocationGuideInfoActivity extends BaseActivity {
         locationGuide = Parcels.unwrap(inIntent.getParcelableExtra("locationGuide"));
 
         //제목과 메인사진
-        tvTitle.setText(locationGuide.getTitle());
-        String imageUrl = locationGuide.getImageUrl();
+        tvTitle.setText(locationGuide.getLocationGuide().getTitle());
+        String imageUrl = locationGuide.getLocationGuide().getImageUrl();
         if(!TextUtils.isEmpty(imageUrl)) {
             Glide.with(this).load(imageUrl).into(ivPicture);
             ivPicture.setVisibility(View.VISIBLE);
@@ -69,7 +69,7 @@ public class LocationGuideInfoActivity extends BaseActivity {
 
         //통신
         ApiService service = ApiClient.getClient().create(ApiService.class);
-        Call<ArrayList<LocationGuideInfoVO>> call = service.getLocationGuideInfoList(locationGuide.getId());
+        Call<ArrayList<LocationGuideInfoVO>> call = service.getLocationGuideInfoList(locationGuide.getLocationGuide().getId());
 
         call.enqueue(new Callback<ArrayList<LocationGuideInfoVO>>() {
             @Override
