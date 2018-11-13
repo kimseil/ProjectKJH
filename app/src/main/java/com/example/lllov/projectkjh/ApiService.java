@@ -71,4 +71,10 @@ public interface ApiService {
 
     @GET("login")
     Call<Integer> login(@Query("id") long id, @Query("nickname") String nickname);
+
+    @GET("setIsFavoriteGuide")
+    Call<Boolean> setIsFavoriteGuide(@Query("userId") long userId, @Query("guideId") int guideId);
+
+    @GET("setIsFavoritePlace")
+    Call<Boolean> setIsFavoritePlace(@Query("userId") long userId, @Query("placeId") int placeId);
 }

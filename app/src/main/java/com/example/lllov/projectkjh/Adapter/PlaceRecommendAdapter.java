@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.os.Parcel;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,15 +16,24 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.lllov.projectkjh.ApiClient;
+import com.example.lllov.projectkjh.ApiService;
 import com.example.lllov.projectkjh.BaseActivity;
 import com.example.lllov.projectkjh.DTO.DTORecommned;
+import com.example.lllov.projectkjh.DTO.LocationGuideInfoVO;
 import com.example.lllov.projectkjh.DTO.PlaceVO;
+import com.example.lllov.projectkjh.LocationGuideInfoActivity;
 import com.example.lllov.projectkjh.PlaceInfoActivity;
 import com.example.lllov.projectkjh.R;
+import com.google.gson.GsonBuilder;
 
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PlaceRecommendAdapter extends RecyclerView.Adapter<PlaceRecommendAdapter.ViewHolder> {
 
@@ -56,18 +67,23 @@ public class PlaceRecommendAdapter extends RecyclerView.Adapter<PlaceRecommendAd
         viewHolder.tvTitle.setText(data.getPlace().getTitle());
         viewHolder.tvIntro.setText(data.getPlace().getIntro());
         viewHolder.tvType.setText(context.PLACE_TYPE.get(data.getPlace().getType()));
-        viewHolder.isFavorite = false;
+        viewHolder.isFavorite = data.getIsFavorite();
+
+        //좋아요 여부 확인
+        if(viewHolder.isFavorite) {
+            Glide.with(context).load(R.drawable.ic_favorite_red).into(viewHolder.ivPicture);
+        }
 
         //이미지 있으면 로드
         String imageUrl = data.getPlace().getImageUrl();
         if(!TextUtils.isEmpty(imageUrl)) {
-            Glide.with(context).load(imageUrl).into(viewHolder.ivPicture);
+            Glide.with(context).load(imageUrl).into(viewHolder.btnFavorite);
         }
 
         viewHolder.btnFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onFavorite(viewHolder);
+                onFavorite(viewHolder, data);
             }
         });
 
@@ -104,15 +120,23 @@ public class PlaceRecommendAdapter extends RecyclerView.Adapter<PlaceRecommendAd
         }
     }
 
-    public void onFavorite(ViewHolder viewHolder) {
-        if(viewHolder.isFavorite) {
-            viewHolder.isFavorite = false;
-            viewHolder.btnFavorite.setImageResource(R.drawable.ic_favorite_border_black);
-            Toast.makeText(context, "좋아요 취소", Toast.LENGTH_SHORT).show();
-        } else {
-            viewHolder.isFavorite = true;
-            viewHolder.btnFavorite.setImageResource(R.drawable.ic_favorite_red);
-            Toast.makeText(context, "좋아요", Toast.LENGTH_SHORT).show();
-        }
+    public void onFavorite(final ViewHolder viewHolder, PlaceVO data) {
+        //통신
+        ApiService service = ApiClient.getClient().create(ApiService.class);
+        Call<Boolean> call = service.setIsFavoritePlace(context.getUserId(), data.getPlace().getId());
+
+        call.enqueue(new Callback<Boolean>() {
+            @Override
+            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                boolean isFavorite = response.body();
+                viewHolder.isFavorite = isFavorite;
+                Glide.with(context).load(isFavorite?R.drawable.ic_favorite_red:R.drawable.ic_favorite_border_black).into(viewHolder.btnFavorite);
+            }
+
+            @Override
+            public void onFailure(Call<Boolean> call, Throwable t) {
+
+            }
+        });
     }
 }

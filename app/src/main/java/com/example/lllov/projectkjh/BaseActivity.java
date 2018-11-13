@@ -59,4 +59,8 @@ public class BaseActivity extends AppCompatActivity {
         super.onBackPressed();
         overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
     }
+
+    public long getUserId() {
+        return sUserId;
+    }
 }
