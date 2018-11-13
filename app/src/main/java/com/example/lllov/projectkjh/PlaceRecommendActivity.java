@@ -45,6 +45,7 @@ public class PlaceRecommendActivity extends BaseActivity {
 
         ApiService service = ApiClient.getClient().create(ApiService.class);
         Call<ArrayList<PlaceVO>> call = service.getPlaceList(location.getId(), type, sUserId);
+        Log.e("!!!!!!!!!!!!!", sUserId + "");
 
         call.enqueue(new Callback<ArrayList<PlaceVO>>() {
             @Override
