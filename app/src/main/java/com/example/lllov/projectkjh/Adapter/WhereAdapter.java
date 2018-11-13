@@ -25,6 +25,9 @@ import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
+/*==================================================================================================
+ * 여행 검색 클릭시 나타나는 지역 선택 화면의 지역 리스트를 그리드 형태로 보여주는 어댑터
+ *=================================================================================================*/
 public class WhereAdapter extends RecyclerView.Adapter<WhereAdapter.ViewHolder> {
 
     ArrayList<LocationVO> data;

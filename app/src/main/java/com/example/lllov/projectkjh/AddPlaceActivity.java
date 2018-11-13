@@ -11,6 +11,10 @@ import com.example.lllov.projectkjh.DTO.DTOAddPlace;
 
 import java.util.ArrayList;
 
+/*==================================================================================================
+ * 장소 추가 화면
+ * 미리 찜해둔 장소를 선택하거나 등록되지 않은 장소를 직접 추가할 수 있음
+ *=================================================================================================*/
 public class AddPlaceActivity extends BaseActivity {
 
     AddPlaceAdapter favoriteAdapter, recommendAdapter;

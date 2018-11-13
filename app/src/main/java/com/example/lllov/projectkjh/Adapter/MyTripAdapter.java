@@ -15,6 +15,9 @@ import com.example.lllov.projectkjh.DTO.DTOTripInfo;
 
 import java.util.ArrayList;
 
+/*==================================================================================================
+ *
+ *=================================================================================================*/
 public class MyTripAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {

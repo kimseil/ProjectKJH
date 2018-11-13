@@ -29,6 +29,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/*==================================================================================================
+ * 가이드 리스트 선택시 해당 가이드 정보 화면
+ *=================================================================================================*/
 public class LocationGuideInfoActivity extends BaseActivity {
     Toolbar toolbar;
 
@@ -62,12 +65,13 @@ public class LocationGuideInfoActivity extends BaseActivity {
         //제목과 메인사진
         tvTitle.setText(locationGuide.getLocationGuide().getTitle());
         String imageUrl = locationGuide.getLocationGuide().getImageUrl();
+        //데이터가 있으면 이미지 로딩
         if(!TextUtils.isEmpty(imageUrl)) {
             Glide.with(this).load(imageUrl).into(ivPicture);
             ivPicture.setVisibility(View.VISIBLE);
         }
 
-        //통신
+        //가이드 정보 리스트를 요청
         ApiService service = ApiClient.getClient().create(ApiService.class);
         Call<ArrayList<LocationGuideInfoVO>> call = service.getLocationGuideInfoList(locationGuide.getLocationGuide().getId());
 
@@ -75,7 +79,6 @@ public class LocationGuideInfoActivity extends BaseActivity {
             @Override
             public void onResponse(Call<ArrayList<LocationGuideInfoVO>> call, Response<ArrayList<LocationGuideInfoVO>> response) {
                 ArrayList<LocationGuideInfoVO> data = response.body();
-                Log.e("@@@@@@@@", new GsonBuilder().setPrettyPrinting().create().toJson(data));
 
                 adapter = new LocationGuideInfoAdapter(data, LocationGuideInfoActivity.this);
                 manager = new LinearLayoutManager(LocationGuideInfoActivity.this);

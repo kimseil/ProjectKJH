@@ -14,6 +14,10 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
+/*==================================================================================================
+ * Retrofit 인터페이스
+ * 설명 더 필요
+ *=================================================================================================*/
 public interface ApiService {
     /*
     @GET("JSONServer")
@@ -41,40 +45,47 @@ public interface ApiService {
     Call<DTORegisterReceive> sendReply(@Query("shop_id") int shopId, @Query("member_id") String memberId, @Query("content") String content);
     */
 
-    //지역 그룹명
+    //지역 그룹 리스트를 가져옴(국가)
     @GET("getLocationGroupList")
     Call<ArrayList<LocationGroupVO>> getLocationGroupList();
 
-    //지역명, 사진
+    //지역 리스트를 가져옴
     @GET("getLocationList")
     Call<ArrayList<LocationVO>> getLocationList();
 
-    //지역 간략한 정보
+    //선택한 지역의 정보 리스트를 가져옴
     @GET("getLocationInfoList")
     Call<ArrayList<LocationInfoVO>> getLocationInfoList(@Query("locationId") int locationId);
 
+    //선택한 지역의 가이드 리스트와 찜 여부를 가져옴
     @GET("getLocationGuideList")
     Call<ArrayList<LocationGuideVO>> getLocationGuideList(@Query("locationId") int locationId, @Query("userId") long userId);
 
+    //선택한 가이드의 정보 리스트를 가져옴
     @GET("getLocationGuideInfoList")
     Call<ArrayList<LocationGuideInfoVO>> getLocationGuideInfoList(@Query("guideId") int guideId);
 
-    //user id도 같이 보내줘야함
+    //선택한 지역, 종류의 장소 리스트와 찜 여부를 가져옴
     @GET("getPlaceList")
     Call<ArrayList<PlaceVO>> getPlaceList(@Query("locationId") int locationId, @Query("type") int type, @Query("userId") long userId);
 
+    //선택한 장소의 정보 리스트를 가져옴
     @GET("getPlaceInfoList")
     Call<ArrayList<PlaceInfoVO>> getPlaceInfoList(@Query("placeId") int placeId);
 
+    //선택한 장소의 관련 정보 리스트를 가져옴
     @GET("getPlaceRelevantList")
     Call<ArrayList<PlaceInfoVO>> getPlaceRelevantList(@Query("placeId") int placeId);
 
+    //SNS 로그인 후 해당 아이디가 database에 없다면 회원정보를 등록시켜줌
     @GET("login")
     Call<Integer> login(@Query("id") long id, @Query("nickname") String nickname);
 
+    //현재 사용중인 회원이 찜한 가이드인지 여부
     @GET("setIsFavoriteGuide")
     Call<Boolean> setIsFavoriteGuide(@Query("userId") long userId, @Query("guideId") int guideId);
 
+    //현재 사용중인 회원이 찜한 장소인지 여부
     @GET("setIsFavoritePlace")
     Call<Boolean> setIsFavoritePlace(@Query("userId") long userId, @Query("placeId") int placeId);
 }

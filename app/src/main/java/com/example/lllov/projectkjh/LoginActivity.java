@@ -50,7 +50,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
+/*==================================================================================================
+ * sns 로그인 화면
+ * 로그인시 데이터베이스에 해당 정보를 확인하여 없을 경우 등록시켜줌
+ *=================================================================================================*/
 public class LoginActivity extends BaseActivity {
     private SessionCallback callback;
     private LoginCallback mLoginCallback;

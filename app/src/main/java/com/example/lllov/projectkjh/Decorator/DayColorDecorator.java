@@ -11,7 +11,9 @@ import com.prolificinteractive.materialcalendarview.spans.DotSpan;
 import java.util.Collection;
 import java.util.HashSet;
 
-//리스트로 받은 날짜들에 색을 입혀줌
+/*==================================================================================================
+ * 리스트 형태로 날짜를 받아 달력의 해당 날짜에 색을 입혀줌
+ *=================================================================================================*/
 public class DayColorDecorator implements DayViewDecorator {
     private int color;
     private HashSet<CalendarDay> dates;

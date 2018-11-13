@@ -35,6 +35,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/*==================================================================================================
+ * 맛집, 관광 장소 리스트 어댑터
+ * 리스트 클릭시 해당 장소의 정보 화면으로 이동
+ * 좋아요(찜) 가능
+ *=================================================================================================*/
 public class PlaceRecommendAdapter extends RecyclerView.Adapter<PlaceRecommendAdapter.ViewHolder> {
 
     ArrayList<PlaceVO> data;
@@ -70,7 +75,7 @@ public class PlaceRecommendAdapter extends RecyclerView.Adapter<PlaceRecommendAd
         viewHolder.isFavorite = data.getIsFavorite();
 
         //좋아요 여부 확인
-        Glide.with(context).load(viewHolder.isFavorite?R.drawable.ic_favorite_red:R.drawable.ic_favorite_border_black).into(viewHolder.btnFavorite);
+        Glide.with(context).load(viewHolder.isFavorite?R.drawable.ic_favorite_red:R.drawable.ic_favorite_border_white).into(viewHolder.btnFavorite);
 
         //이미지 있으면 로드
         String imageUrl = data.getPlace().getImageUrl();
@@ -78,6 +83,7 @@ public class PlaceRecommendAdapter extends RecyclerView.Adapter<PlaceRecommendAd
             Glide.with(context).load(imageUrl).into(viewHolder.ivPicture);
         }
 
+        //좋아요 버튼
         viewHolder.btnFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,6 +91,7 @@ public class PlaceRecommendAdapter extends RecyclerView.Adapter<PlaceRecommendAd
             }
         });
 
+        //리스트 클릭시 해당 장소 정보 화면
         viewHolder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -126,9 +133,10 @@ public class PlaceRecommendAdapter extends RecyclerView.Adapter<PlaceRecommendAd
         call.enqueue(new Callback<Boolean>() {
             @Override
             public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                //좋아요 여부를 가져온 후 여부에 따라 이미지 로딩
                 boolean isFavorite = response.body();
                 viewHolder.isFavorite = isFavorite;
-                Glide.with(context).load(isFavorite?R.drawable.ic_favorite_red:R.drawable.ic_favorite_border_black).into(viewHolder.btnFavorite);
+                Glide.with(context).load(isFavorite?R.drawable.ic_favorite_red:R.drawable.ic_favorite_border_white).into(viewHolder.btnFavorite);
             }
 
             @Override

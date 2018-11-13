@@ -13,6 +13,9 @@ import com.example.lllov.projectkjh.R;
 
 import java.util.ArrayList;
 
+/*==================================================================================================
+ * 지역 선택시 나오는 지역 정보 리스트 어탭터
+ *=================================================================================================*/
 public class LocationInfoAdapter extends RecyclerView.Adapter<LocationInfoAdapter.ViewHolder> {
 
     ArrayList<LocationInfoVO> data;

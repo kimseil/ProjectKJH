@@ -14,6 +14,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.parceler.Parcels;
 
+/*==================================================================================================
+ *
+ *=================================================================================================*/
 public class MapActivity extends BaseActivity implements OnMapReadyCallback{
     GoogleMap mMap;
     PlaceVO place;

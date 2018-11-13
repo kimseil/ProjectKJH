@@ -26,6 +26,10 @@ import org.parceler.Parcels;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+/*==================================================================================================
+ * 지역의 가이드탭 선택시 나타나는 가이드 리스트 화면의 뷰페이저 어댑터
+ * 정보, 맛집, 관광 페이지로 구성되어 각 가이드 정보의 리스트를 보여줌
+ *=================================================================================================*/
 public class LocationGuidePagerAdapter extends FragmentPagerAdapter {
     ArrayList<DTOLocationGuide> data;
 
@@ -50,8 +54,9 @@ public class LocationGuidePagerAdapter extends FragmentPagerAdapter {
         public static PlaceHolderFragment newInstance(int position, DTOLocationGuide data) {
             PlaceHolderFragment fragment = new PlaceHolderFragment();
             Bundle args = new Bundle();
+            //각 페이지에 position과 가이드 리스트 정보를 넘겨줌
             args.putInt("position", position);
-            args.putParcelable("data", Parcels.wrap(data));
+            args.putParcelable("data", Parcels.wrap(data)); //parcelable을 이용해 사용자클래스 객체를 넘겨줌. Parceler 라이브러리를 사용해 간단하게 사용.
             fragment.setArguments(args);
             return fragment;
         }
@@ -66,8 +71,9 @@ public class LocationGuidePagerAdapter extends FragmentPagerAdapter {
             LocationGuideContentAdapter adapter;
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
             int position = getArguments().getInt("position");
-            DTOLocationGuide data = Parcels.unwrap(getArguments().getParcelable("data"));
+            DTOLocationGuide data = Parcels.unwrap(getArguments().getParcelable("data")); //Parceler를 이용해 pacelable을 간단하게 가져옴
 
+            //페이지 번호에 따라 상단 타이틀 달라짐
             switch (position) {
                 case 0:
                     tvTitle.setText("정말 유용한\n" + data.getLocation().getName() + " 정보와 팁");

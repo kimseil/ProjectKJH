@@ -9,6 +9,9 @@ import com.prolificinteractive.materialcalendarview.DayViewFacade;
 
 import java.util.Date;
 
+/*==================================================================================================
+ * 달력의 날짜를 판단하여 오늘일 경우 초록색
+ *=================================================================================================*/
 public class TodayDecorator implements DayViewDecorator {
     private CalendarDay date;
 

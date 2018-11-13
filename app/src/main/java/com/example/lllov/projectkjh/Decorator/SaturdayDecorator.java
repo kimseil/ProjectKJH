@@ -9,6 +9,9 @@ import com.prolificinteractive.materialcalendarview.DayViewFacade;
 
 import java.util.Calendar;
 
+/*==================================================================================================
+ * 달력의 각 날짜를 판단하여 토요일일 경우 파란색
+ *=================================================================================================*/
 public class SaturdayDecorator implements DayViewDecorator {
 
     private Calendar calendar = Calendar.getInstance();

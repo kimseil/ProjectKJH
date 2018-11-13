@@ -16,6 +16,9 @@ import com.example.lllov.projectkjh.R;
 
 import java.util.ArrayList;
 
+/*==================================================================================================
+ * 장소 정보 화면 하단에 연관되는 정보 가로 리사이클러뷰 어댑터
+ *=================================================================================================*/
 public class PlaceRelevantAdapter extends RecyclerView.Adapter<PlaceRelevantAdapter.ViewHolder> {
 
     ArrayList<PlaceInfoVO> data;
@@ -47,6 +50,8 @@ public class PlaceRelevantAdapter extends RecyclerView.Adapter<PlaceRelevantAdap
         viewHolder.tvTitle.setText(data.getTitle());
         viewHolder.tvContent.setText(data.getContent());
         String imageUrl = data.getImageUrl();
+
+        //데이터가 있으면 이미지 로딩
         if (!TextUtils.isEmpty(imageUrl)) {
             Glide.with(context).load(imageUrl).into(viewHolder.ivPicture);
             viewHolder.ivPicture.setVisibility(View.VISIBLE);

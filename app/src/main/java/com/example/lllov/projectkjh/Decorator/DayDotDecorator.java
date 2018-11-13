@@ -8,7 +8,9 @@ import com.prolificinteractive.materialcalendarview.spans.DotSpan;
 import java.util.Collection;
 import java.util.HashSet;
 
-//리스트로 받은 날짜들에 점을 찍어줌
+/*==================================================================================================
+ * 리스트 형태로 날짜를 받아 달력의 해당 날짜에 점을 찍어줌
+ *=================================================================================================*/
 public class DayDotDecorator implements DayViewDecorator {
     private int color;
     private HashSet<CalendarDay> dates;

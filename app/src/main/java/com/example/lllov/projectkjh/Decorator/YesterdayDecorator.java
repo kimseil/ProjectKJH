@@ -13,6 +13,9 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
+/*==================================================================================================
+ * 달력의 날짜를 판단하여 지난 날짜일 경우 회색, 선택 불가 처리
+ *=================================================================================================*/
 public class YesterdayDecorator implements DayViewDecorator {
     private Calendar calendar = Calendar.getInstance();
 

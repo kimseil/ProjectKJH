@@ -27,6 +27,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/*==================================================================================================
+ * 지역 선택시 지역 정보 리스트를 보여줌
+ * 여행 계획을 추가할 수 있음
+ * 상단의 가이드, 맛집, 관광 버튼을 클릭해 해당 정보 화면으로 이
+ *=================================================================================================*/
 public class LocationInfoActivity extends BaseActivity {
     RecyclerView rvLocationInfo;
     LinearLayoutManager layoutManager;
@@ -50,9 +55,11 @@ public class LocationInfoActivity extends BaseActivity {
         rvLocationInfo = findViewById(R.id.rvLocationInfo);
         layoutManager = new LinearLayoutManager(this);
 
+        //지역정보를 parcelable 형태로 받아옴.
         Intent inIntent = getIntent();
         location = Parcels.unwrap(inIntent.getParcelableExtra("location"));
 
+        //지역 정보 리스트를 요청
         ApiService service = ApiClient.getClient().create(ApiService.class);
         Call<ArrayList<LocationInfoVO>> call = service.getLocationInfoList(location.getId());
 
@@ -91,6 +98,7 @@ public class LocationInfoActivity extends BaseActivity {
                 guide();
             }
         });
+        //맛집, 관광 버튼 클릭시 같은 화면에 다른 데이터를 구성하기 위해 매개변수로 타입 값을 넘겨줌
         btnRestaurant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,6 +119,7 @@ public class LocationInfoActivity extends BaseActivity {
         });
     }
 
+    //가이드 버튼
     private void guide() {
         Intent intent = new Intent(LocationInfoActivity.this, LocationGuideActivity.class);
         intent.putExtra("location", Parcels.wrap(location));
@@ -118,6 +127,7 @@ public class LocationInfoActivity extends BaseActivity {
         overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
     }
 
+    //맛집/관광 버튼
     private void commend(int type) {
         Intent intent = new Intent(LocationInfoActivity.this, PlaceRecommendActivity.class);
         intent.putExtra("location", Parcels.wrap(location));
@@ -126,6 +136,7 @@ public class LocationInfoActivity extends BaseActivity {
         overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
     }
 
+    //여행 추가 버튼
     private void addTravel() {
         Intent intent = new Intent(LocationInfoActivity.this, RegistrationTravelActivity.class);
         intent.putExtra("location", Parcels.wrap(location));

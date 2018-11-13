@@ -11,6 +11,9 @@ import com.example.lllov.projectkjh.DTO.DTOTripInfo;
 
 import java.util.ArrayList;
 
+/*==================================================================================================
+ *
+ *=================================================================================================*/
 public class MyTripActivity extends BaseActivity {
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;

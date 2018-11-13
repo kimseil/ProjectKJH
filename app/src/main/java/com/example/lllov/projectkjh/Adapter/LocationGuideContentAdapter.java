@@ -32,6 +32,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/*==================================================================================================
+ * 지역 선택시 나타나는 가이드 정보 뷰페이저의 각 페이지에 나타날 가이드 리스트 어댑터
+ *=================================================================================================*/
 public class LocationGuideContentAdapter extends RecyclerView.Adapter<LocationGuideContentAdapter.ViewHolder> {
 
     private ArrayList<LocationGuideVO> data;
@@ -69,7 +72,7 @@ public class LocationGuideContentAdapter extends RecyclerView.Adapter<LocationGu
         viewHolder.isFavorite = data.getIsFavorite();
 
         //좋아요 여부 확인
-        Glide.with(context).load(viewHolder.isFavorite?R.drawable.ic_favorite_red:R.drawable.ic_favorite_border_black).into(viewHolder.btnFavorite);
+        Glide.with(context).load(viewHolder.isFavorite?R.drawable.ic_favorite_red:R.drawable.ic_favorite_border_white).into(viewHolder.btnFavorite);
 
         //데이터 있으면 이미지 로딩
         String imageUrl = data.getLocationGuide().getImageUrl();
@@ -78,6 +81,7 @@ public class LocationGuideContentAdapter extends RecyclerView.Adapter<LocationGu
             viewHolder.ivPicture.setVisibility(View.VISIBLE);
         }
 
+        //리스트 클릭시 해당 가이드 정보 화면
         viewHolder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,6 +89,7 @@ public class LocationGuideContentAdapter extends RecyclerView.Adapter<LocationGu
             }
         });
 
+        //좋아요 버튼
         viewHolder.btnFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -121,6 +126,7 @@ public class LocationGuideContentAdapter extends RecyclerView.Adapter<LocationGu
         }
     }
 
+    //좋아요 버튼 처리
     public void onFavorite(final ViewHolder viewHolder, LocationGuideVO data) {
         ApiService service = ApiClient.getClient().create(ApiService.class);
         Call<Boolean> call = service.setIsFavoriteGuide(context.getUserId(), data.getLocationGuide().getId());
@@ -130,7 +136,7 @@ public class LocationGuideContentAdapter extends RecyclerView.Adapter<LocationGu
             public void onResponse(Call<Boolean> call, Response<Boolean> response) {
                 boolean isFavorite = response.body();
                 viewHolder.isFavorite = isFavorite;
-                Glide.with(context).load(isFavorite?R.drawable.ic_favorite_red:R.drawable.ic_favorite_border_black).into(viewHolder.btnFavorite);
+                Glide.with(context).load(isFavorite?R.drawable.ic_favorite_red:R.drawable.ic_favorite_border_white).into(viewHolder.btnFavorite);
             }
 
             @Override

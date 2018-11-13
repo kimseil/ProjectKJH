@@ -23,6 +23,11 @@ import com.kakao.auth.Session;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
 
+/*==================================================================================================
+ * 메인 화면
+ * 햄버거 버튼으로 내 여행을 확인할 수 있으며 로그아웃 등 회원정보 관리 기능
+ * 여행 검색 버튼으로 여행지 검색 화면으로 이동
+ *=================================================================================================*/
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
     LinearLayout btnFindTravel;
     TextView tv,tvName;
@@ -65,6 +70,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
         tv = findViewById(R.id.tv);
 
+        //navigationView.getHeaderView로 햄버거메뉴 상단 헤더부분을 가져와 헤더에 있는 이미지뷰를 원형으로 만들고 이미지 로드
         final View headerView = navigationView.getHeaderView(0);
         profile = headerView.findViewById(R.id.ivProfile);
         profile.setBackground(new ShapeDrawable(new OvalShape()));
@@ -76,6 +82,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
         tv.setText(name + "님");
 
+        //여행 검색 버튼
         btnFindTravel = findViewById(R.id.btnFindTravel);
         btnFindTravel.setOnClickListener(new View.OnClickListener() {
             @Override

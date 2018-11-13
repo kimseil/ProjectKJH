@@ -8,6 +8,9 @@ import android.widget.TextView;
 
 import org.parceler.Parcels;
 
+/*==================================================================================================
+ * 커스텀 툴바
+ *=================================================================================================*/
 public class ToolBar {
     private BaseActivity mActivity;
     private Toolbar mToolbar;

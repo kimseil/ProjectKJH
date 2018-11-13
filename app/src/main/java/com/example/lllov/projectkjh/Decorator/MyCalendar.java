@@ -2,6 +2,9 @@ package com.example.lllov.projectkjh.Decorator;
 
 import java.util.Calendar;
 
+/*==================================================================================================
+ * Calendar를 다루기 위한 커스텀 클래스
+ *=================================================================================================*/
 public class MyCalendar {
     public static boolean isYesterday(Calendar calendar) {
         int calYear = calendar.get(Calendar.YEAR);

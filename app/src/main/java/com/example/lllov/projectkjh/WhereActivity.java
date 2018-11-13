@@ -20,6 +20,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/*==================================================================================================
+ * 메인에서 여행 검색 버튼을 누르면 나타나는 화면
+ * 데이터베이스에 저장된 location 정보를 가져와 그리드 리사이클러뷰에 띄워줌
+ * 각 버튼 선택시 해당 지역의 정보와 일정추가 화면등을 할 수 있음
+ *=================================================================================================*/
 public class WhereActivity extends BaseActivity {
 
     Toolbar toolbar;
@@ -36,6 +41,7 @@ public class WhereActivity extends BaseActivity {
         setContentView(R.layout.activity_where);
         toolbar = new ToolBar(this).setBack().setToolbar();
 
+        //지역 리스트를 요청
         ApiService service = ApiClient.getClient().create(ApiService.class);
         Call<ArrayList<LocationVO>> call = service.getLocationList();
 
@@ -60,6 +66,7 @@ public class WhereActivity extends BaseActivity {
         });
     }
 
+    //상단에 여행을 검색할 수 있도록 함
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);

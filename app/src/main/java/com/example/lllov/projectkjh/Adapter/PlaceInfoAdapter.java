@@ -19,6 +19,9 @@ import com.example.lllov.projectkjh.R;
 
 import java.util.ArrayList;
 
+/*==================================================================================================
+ * 장소 리스트 클릭시 나오는 정보 화면의 정보 리스트 어댑터
+ *=================================================================================================*/
 public class PlaceInfoAdapter extends RecyclerView.Adapter<PlaceInfoAdapter.ViewHolder> {
 
     ArrayList<PlaceInfoVO> data;

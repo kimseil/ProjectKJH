@@ -15,6 +15,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+/*==================================================================================================
+ * 선택한 장소와 날짜를 토대로 만들어진 일정 화면
+ * 상단에 선택한 날짜 만큼 day 버튼이 있으며 클릭시 해당 날짜 리스트로 스크롤링
+ * 선택한 날짜에 맞는 일정 리스트가 만들어지며 각각에 장소와 메모를 추가할 수 있는 버튼 있음
+ *=================================================================================================*/
 public class ScheduleActivity extends BaseActivity {
     ScheduleDayAdapter scheduleDayAdapter;
     ScheduleAdapter scheduleAdapter;
@@ -41,6 +46,7 @@ public class ScheduleActivity extends BaseActivity {
 
         rvDay = findViewById(R.id.rvDay);
         scheduleDayLayoutManager = new LinearLayoutManager(this);
+        //리사이클러뷰 가로 스크롤
         scheduleDayLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
 
         scheduleDayAdapter = new ScheduleDayAdapter(dayNumber, this);
@@ -50,6 +56,8 @@ public class ScheduleActivity extends BaseActivity {
         rvSchedule = findViewById(R.id.rvSchedule);
         scheduleLayoutManager = new LinearLayoutManager(this);
         ArrayList<Long> scheduleList = new ArrayList<>();
+
+        //선택한 날짜만큼 실제 날짜 리스트를 만들어줌
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date(startDay));
         for (int i = 0; i < dayNumber; i++) {

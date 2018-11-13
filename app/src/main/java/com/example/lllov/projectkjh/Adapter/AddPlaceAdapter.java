@@ -19,6 +19,9 @@ import com.example.lllov.projectkjh.R;
 
 import java.util.ArrayList;
 
+/*==================================================================================================
+ * 장소 추가 화면의 장소 리스트 어댑터
+ *=================================================================================================*/
 public class AddPlaceAdapter extends RecyclerView.Adapter<AddPlaceAdapter.ViewHolder> {
 
     ArrayList<DTOAddPlace> data;
@@ -43,6 +46,7 @@ public class AddPlaceAdapter extends RecyclerView.Adapter<AddPlaceAdapter.ViewHo
         viewHolder.tvPlace.setText(data.get(position).getPlace());
         viewHolder.tvLocation.setText(data.get(position).getLocation());
 
+        //리스트 선택시 해당 장소 정보 화면 .. 수정 필요
         viewHolder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

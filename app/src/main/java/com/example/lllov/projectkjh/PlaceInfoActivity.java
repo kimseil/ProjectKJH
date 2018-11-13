@@ -27,6 +27,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/*==================================================================================================
+ * 장소 리스트 클릭시 나타나는 장소 정보 화면
+ *=================================================================================================*/
 public class PlaceInfoActivity extends BaseActivity {
     TextView tvTitle, tvIntro, tvText;
     ImageView ivPicture;
@@ -50,6 +53,7 @@ public class PlaceInfoActivity extends BaseActivity {
         rvContent = findViewById(R.id.rvContent);
         rvPlaceRelevant = findViewById(R.id.rvPlaceRelevant);
 
+        //parcelable 형태로 place 정보 받아옴
         Intent inIntent = getIntent();
         place = Parcels.unwrap(inIntent.getParcelableExtra("place"));
         String title = place.getPlace().getTitle();
@@ -57,8 +61,10 @@ public class PlaceInfoActivity extends BaseActivity {
         String imageUrl = place.getPlace().getImageUrl();
         int type = place.getPlace().getType();
 
+        //맛집일 경우 text 제거, 관광일 경우 "주요장소"
         tvText.setText(type/100 == 2?"":"주요장소");
 
+        //장소의 정보 리스트를 요청
         ApiService service = ApiClient.getClient().create(ApiService.class);
         Call<ArrayList<PlaceInfoVO>> call1 = service.getPlaceInfoList(place.getPlace().getId());
 
@@ -66,7 +72,6 @@ public class PlaceInfoActivity extends BaseActivity {
             @Override
             public void onResponse(Call<ArrayList<PlaceInfoVO>> call, Response<ArrayList<PlaceInfoVO>> response) {
                 ArrayList<PlaceInfoVO> data = response.body();
-                Log.e("@@@g@@@@@", new GsonBuilder().setPrettyPrinting().create().toJson(data));
                 LinearLayoutManager layoutManager = new LinearLayoutManager(PlaceInfoActivity.this);
 
                 placeInfoAdapter = new PlaceInfoAdapter(data, PlaceInfoActivity.this);
@@ -80,6 +85,7 @@ public class PlaceInfoActivity extends BaseActivity {
             }
         });
 
+        //장소의 관련 정보 리스트(가로 리사이클러뷰에 들어감)를 가져옴
         Call<ArrayList<PlaceInfoVO>> call2 = service.getPlaceRelevantList(place.getPlace().getId());
 
         call2.enqueue(new Callback<ArrayList<PlaceInfoVO>>() {
@@ -103,6 +109,7 @@ public class PlaceInfoActivity extends BaseActivity {
 
         tvTitle.setText(title);
         tvIntro.setText(intro);
+        //데이터가 있을 경우 이미지 로딩
         if (!TextUtils.isEmpty(imageUrl)) {
             Glide.with(this).load(imageUrl).into(ivPicture);
             ivPicture.setVisibility(View.VISIBLE);

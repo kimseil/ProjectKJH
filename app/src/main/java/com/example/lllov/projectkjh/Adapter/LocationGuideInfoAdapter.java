@@ -21,6 +21,9 @@ import java.util.ArrayList;
 
 import javax.security.auth.login.LoginException;
 
+/*==================================================================================================
+ * 가이드 리스트 클릭시 보이는 가이드 정보 리스트 어댑터
+ *=================================================================================================*/
 public class LocationGuideInfoAdapter extends RecyclerView.Adapter<LocationGuideInfoAdapter.ViewHolder> {
 
     ArrayList<LocationGuideInfoVO> data;
@@ -50,9 +53,9 @@ public class LocationGuideInfoAdapter extends RecyclerView.Adapter<LocationGuide
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
         LocationGuideInfoVO data = getItem(position);
 
-        Log.e("TEst", "onBindViewHolder: " + this.data.size());
         viewHolder.tvTitle.setText(data.getTitle());
         viewHolder.tvContent.setText(Html.fromHtml(data.getContent()));
+
         //url이 있으면 사진을 보여줌
         String imageUrl = data.getImageUrl();
         if (!TextUtils.isEmpty(imageUrl)) {

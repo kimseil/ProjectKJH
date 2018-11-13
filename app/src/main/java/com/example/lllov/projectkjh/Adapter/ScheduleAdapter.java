@@ -20,6 +20,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
+/*==================================================================================================
+ * 일정 추가 화면의 일정 목록 어댑터
+ * 선택한 날짜만큼 리스트가 생성됨
+ * 원하는 날짜에 장소, 메모를 추가하는 버튼 있음
+ *=================================================================================================*/
 public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder> {
     private ArrayList<Long> scheduleList;
     private BaseActivity context;
@@ -46,19 +51,22 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+        //데이터로부터 각 아이템에 해당하는 날짜를 넣어줌.
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(scheduleList.get(i));
 
+        //해당 일정이 여행 며칠째인지 ex) day1, day2, day3, ...
         viewHolder.tvDayNumber.setText("day" + (i + 1));
+        //해당 일정의 실제 날짜
         viewHolder.tvDay.setText(monthFormat.format(calendar.getTime()) + "." + dayFormat.format(calendar.getTime()) + "/" + dayOfWeek[calendar.get(Calendar.DAY_OF_WEEK) - 1]);
-
+        //장소추가 버튼
         viewHolder.btnAddPlace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addPlace();
             }
         });
-
+        //메모추가 버튼
         viewHolder.btnAddMemo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

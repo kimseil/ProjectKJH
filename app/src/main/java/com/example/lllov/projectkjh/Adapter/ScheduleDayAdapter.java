@@ -11,6 +11,10 @@ import android.widget.LinearLayout;
 import com.example.lllov.projectkjh.BaseActivity;
 import com.example.lllov.projectkjh.R;
 
+/*==================================================================================================
+ * 일정 추가 화면의 상단에 선택할 날짜 만큼 생성되는 day 버튼 어댑터
+ * 버튼 클릭시 해당하는 날짜로 스크롤(되도록 할 예정)
+ *=================================================================================================*/
 public class ScheduleDayAdapter extends RecyclerView.Adapter<ScheduleDayAdapter.ViewHolder> {
     int dayNumber;
     BaseActivity context;
