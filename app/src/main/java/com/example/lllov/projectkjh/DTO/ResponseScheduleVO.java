@@ -10,12 +10,12 @@ public class ResponseScheduleVO {
     @SerializedName("schedule")
     private ScheduleVO schedule;
     @SerializedName("location")
-    private LocationVO locagtion;
+    private LocationVO location;
 
     @ParcelConstructor
-    public ResponseScheduleVO(ScheduleVO schedule, LocationVO locagtion) {
+    public ResponseScheduleVO(ScheduleVO schedule, LocationVO location) {
         this.schedule = schedule;
-        this.locagtion = locagtion;
+        this.location = location;
     }
 
     public ScheduleVO getSchedule() {
@@ -26,11 +26,11 @@ public class ResponseScheduleVO {
         this.schedule = schedule;
     }
 
-    public LocationVO getLocagtion() {
-        return locagtion;
+    public LocationVO getLocation() {
+        return location;
     }
 
-    public void setLocagtion(LocationVO locagtion) {
-        this.locagtion = locagtion;
+    public void setLocation(LocationVO location) {
+        this.location = location;
     }
 }

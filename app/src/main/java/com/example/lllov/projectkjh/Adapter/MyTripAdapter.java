@@ -1,5 +1,6 @@
 package com.example.lllov.projectkjh.Adapter;
 
+import android.content.Intent;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.support.annotation.NonNull;
@@ -8,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -35,7 +37,7 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ViewHolder
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.fragment_mytrip,parent,false);
+        View view = inflater.inflate(R.layout.item_my_trip_row,parent,false);
 
         return new ViewHolder(view);
     }
@@ -51,13 +53,20 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ResponseScheduleVO data = getItem(position);
 
-        Glide.with(context).load(data.getLocagtion().getImageUrl()).into(holder.ivPicture);
-        holder.tvLocation.setText(data.getLocagtion().getName());
+        Glide.with(context).load(data.getLocation().getImageUrl()).into(holder.ivPicture);
+        holder.tvLocation.setText(data.getLocation().getName());
         holder.tvPeriod.setText(context.formatYMD.format(data.getSchedule().getStartDay()) + "~" + context.formatYMD.format(data.getSchedule().getEndDay()));
 
         //이미지 둥글게
         holder.ivPicture.setBackground(new ShapeDrawable(new OvalShape()));
         holder.ivPicture.setClipToOutline(true);
+
+        holder.container.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //여기해야함
+            }
+        });
     }
 
     @Override
@@ -66,6 +75,7 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ViewHolder
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
+        LinearLayout container;
         ImageView ivPicture;
         TextView tvLocation, tvPeriod;
 
@@ -74,6 +84,7 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ViewHolder
             ivPicture = view.findViewById(R.id.ivLocation);
             tvLocation = view.findViewById(R.id.tvLocation);
             tvPeriod = view.findViewById(R.id.tvPeriod);
+            container = view.findViewById(R.id.container);
         }
     }
 }
