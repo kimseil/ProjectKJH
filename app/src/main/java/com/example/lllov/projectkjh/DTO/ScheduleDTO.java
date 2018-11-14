@@ -1,40 +1,22 @@
 package com.example.lllov.projectkjh.DTO;
 
-import com.google.gson.annotations.SerializedName;
-
 import org.parceler.Parcel;
 import org.parceler.ParcelConstructor;
 
 @Parcel(Parcel.Serialization.BEAN)
-public class ScheduleVO {
-    @SerializedName("id")
-    private int id;
-    @SerializedName("startDay")
+public class ScheduleDTO {
     private long startDay;
-    @SerializedName("endDay")
     private long endDay;
-    @SerializedName("locationId")
     private int locationId;
-    @SerializedName("userId")
-    private int userId;
+    private long userId;
 
     @ParcelConstructor
-    public ScheduleVO(int id, long startDay, long endDay, int locationId, int userId) {
-        this.id = id;
+    public ScheduleDTO(long startDay, long endDay, int locationId, long userId) {
         this.startDay = startDay;
         this.endDay = endDay;
         this.locationId = locationId;
         this.userId = userId;
     }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public long getStartDay() {
         return startDay;
     }
@@ -59,11 +41,11 @@ public class ScheduleVO {
         this.locationId = locationId;
     }
 
-    public int getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
     }
 }

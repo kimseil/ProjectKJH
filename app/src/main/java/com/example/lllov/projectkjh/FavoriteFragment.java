@@ -7,9 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class Fragment_favorite extends Fragment {
+public class FavoriteFragment extends Fragment {
 
-    public Fragment_favorite (){
+    public FavoriteFragment(){
 
     }
 

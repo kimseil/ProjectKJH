@@ -5,21 +5,27 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.example.lllov.projectkjh.Fragment_favorite;
-import com.example.lllov.projectkjh.Fragment_mytrip;
+import com.example.lllov.projectkjh.BaseActivity;
+import com.example.lllov.projectkjh.DTO.FavoritePlaceVO;
+import com.example.lllov.projectkjh.DTO.ResponseScheduleVO;
+import com.example.lllov.projectkjh.FavoriteFragment;
+import com.example.lllov.projectkjh.MytripFragment;
+
+import java.util.ArrayList;
 
 public class MyTripFragmentAdapter extends FragmentStatePagerAdapter {
-    Context mcontext;
-    public MyTripFragmentAdapter(FragmentManager fm,Context context){
-        super(fm);
-        this.mcontext = context;
 
+    public MyTripFragmentAdapter(FragmentManager fm) {
+        super(fm);
     }
+
     @Override
-    public Fragment getItem(int position){
-        switch (position){
-            case 0:return new Fragment_mytrip();
-            case 1: return new Fragment_favorite();
+    public Fragment getItem(int position) {
+        switch (position) {
+            case 0:
+                return new MytripFragment();
+            case 1:
+                return new FavoriteFragment();
         }
         return null;
     }

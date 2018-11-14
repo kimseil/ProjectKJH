@@ -5,19 +5,15 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.lllov.projectkjh.Adapter.LocationInfoAdapter;
-import com.example.lllov.projectkjh.DTO.LocationInfoVO;
 import com.example.lllov.projectkjh.DTO.LocationVO;
-import com.example.lllov.projectkjh.DTO.ScheduleVO;
+import com.example.lllov.projectkjh.DTO.ScheduleDTO;
 import com.example.lllov.projectkjh.Decorator.SaturdayDecorator;
 import com.example.lllov.projectkjh.Decorator.SundayDecorator;
 import com.example.lllov.projectkjh.Decorator.TodayDecorator;
 import com.example.lllov.projectkjh.Decorator.YesterdayDecorator;
-import com.google.gson.GsonBuilder;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.CalendarMode;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
@@ -26,9 +22,7 @@ import com.prolificinteractive.materialcalendarview.OnRangeSelectedListener;
 
 import org.parceler.Parcels;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -126,7 +120,7 @@ public class RegistrationTravelActivity extends BaseActivity {
         call.enqueue(new Callback<Integer>() {
             @Override
             public void onResponse(Call<Integer> call, Response<Integer> response) {
-                ScheduleVO schedule = new ScheduleVO(0, startDay, endDay, locationId, sUserId);
+                ScheduleDTO schedule = new ScheduleDTO(startDay, endDay, locationId, sUserId);
                 Intent intent = new Intent(RegistrationTravelActivity.this, ScheduleActivity.class);
                 intent.putExtra("schedule", Parcels.wrap(schedule));
                 startActivity(intent);

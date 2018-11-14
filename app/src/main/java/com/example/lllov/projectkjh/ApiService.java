@@ -8,7 +8,8 @@ import com.example.lllov.projectkjh.DTO.LocationInfoVO;
 import com.example.lllov.projectkjh.DTO.LocationVO;
 import com.example.lllov.projectkjh.DTO.PlaceInfoVO;
 import com.example.lllov.projectkjh.DTO.PlaceVO;
-import com.example.lllov.projectkjh.DTO.ScheduleVO;
+import com.example.lllov.projectkjh.DTO.ResponseScheduleVO;
+import com.example.lllov.projectkjh.DTO.ScheduleDTO;
 
 import java.util.ArrayList;
 
@@ -97,7 +98,7 @@ public interface ApiService {
 
     //일정 리스트 가져옴
     @GET("getScheduleList")
-    Call<ArrayList<ScheduleVO>> getScheduleList(@Query("userId") long userId);
+    Call<ArrayList<ResponseScheduleVO>> getScheduleList(@Query("userId") long userId);
 
     //찜한 장소 리스트 가져옴
     @GET("getFavoritePlaceList")

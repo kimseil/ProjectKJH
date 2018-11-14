@@ -18,11 +18,11 @@ import java.util.Locale;
  *=================================================================================================*/
 public class BaseActivity extends AppCompatActivity {
     //날짜 포맷
-    SimpleDateFormat formatYMD = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
-    SimpleDateFormat formatMD = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
-    SimpleDateFormat formatYear = new SimpleDateFormat("yyyy", Locale.KOREA);
-    SimpleDateFormat formatMonth = new SimpleDateFormat("MM", Locale.KOREA);
-    SimpleDateFormat formatDay = new SimpleDateFormat("dd", Locale.KOREA);
+    public SimpleDateFormat formatYMD = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
+    public SimpleDateFormat formatMD = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
+    public SimpleDateFormat formatYear = new SimpleDateFormat("yyyy", Locale.KOREA);
+    public SimpleDateFormat formatMonth = new SimpleDateFormat("MM", Locale.KOREA);
+    public SimpleDateFormat formatDay = new SimpleDateFormat("dd", Locale.KOREA);
 
     public final static HashMap<Integer, String> PLACE_TYPE = new HashMap<>(); // 장소의 각 코드에 맞는 타입을 정의
     public static long sUserId; // 로그인 시 회원id

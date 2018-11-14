@@ -19,12 +19,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.lllov.projectkjh.DTO.ScheduleVO;
+import com.example.lllov.projectkjh.DTO.ScheduleDTO;
 import com.kakao.auth.Session;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
-
-import org.parceler.Parcels;
 
 /*==================================================================================================
  * 메인 화면
@@ -35,7 +33,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     LinearLayout btnFindTravel;
     TextView tv,tvName;
     ImageView profile;
-    ScheduleVO schedule;
+    ScheduleDTO schedule;
 
     @SuppressLint("ResourceType")
     @Override
@@ -119,7 +117,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         switch (item.getItemId()) {
             case R.id.nav_a:
                 intent = new Intent(MainActivity.this, MyTripActivity.class);
-                intent.putExtra("schedule",Parcels.wrap(this.schedule));
                 startActivity(intent);
                 overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
                 break;
