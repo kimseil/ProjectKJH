@@ -1,17 +1,14 @@
 package com.example.lllov.projectkjh.Adapter;
 
-import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.example.lllov.projectkjh.BaseActivity;
-import com.example.lllov.projectkjh.DTO.FavoritePlaceVO;
-import com.example.lllov.projectkjh.DTO.ResponseScheduleVO;
 import com.example.lllov.projectkjh.FavoriteFragment;
 import com.example.lllov.projectkjh.MytripFragment;
-
-import java.util.ArrayList;
+/*==================================================================================================
+ * 네비게이션의 내 여행의 어댑터
+ *=================================================================================================*/
 
 public class MyTripFragmentAdapter extends FragmentStatePagerAdapter {
 

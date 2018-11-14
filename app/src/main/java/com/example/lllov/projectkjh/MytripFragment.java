@@ -11,9 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.lllov.projectkjh.Adapter.MyTripAdapter;
-import com.example.lllov.projectkjh.Adapter.PlaceRecommendAdapter;
-import com.example.lllov.projectkjh.DTO.DTOTripInfo;
-import com.example.lllov.projectkjh.DTO.PlaceVO;
 import com.example.lllov.projectkjh.DTO.ResponseScheduleVO;
 import com.google.gson.GsonBuilder;
 
@@ -24,6 +21,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.example.lllov.projectkjh.BaseActivity.sUserId;
+/*==================================================================================================
+ * '내 여행' 탭 화면
+ *=================================================================================================*/
 
 public class MytripFragment extends Fragment {
     RecyclerView recyclerView;

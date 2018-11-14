@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 /*==================================================================================================
- *
+ * 내 정보 화면
  *=================================================================================================*/
 public class MyInfoActivity extends BaseActivity{
     @Override

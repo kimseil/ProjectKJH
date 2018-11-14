@@ -15,7 +15,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import org.parceler.Parcels;
 
 /*==================================================================================================
- *
+ * DB에서 장소의 위도,경도를 불러와 구글맵으로 보여주는 화면
  *=================================================================================================*/
 public class MapActivity extends BaseActivity implements OnMapReadyCallback{
     GoogleMap mMap;

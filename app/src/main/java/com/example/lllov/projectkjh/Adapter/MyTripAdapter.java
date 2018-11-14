@@ -16,12 +16,11 @@ import com.bumptech.glide.Glide;
 import com.example.lllov.projectkjh.BaseActivity;
 import com.example.lllov.projectkjh.DTO.ResponseScheduleVO;
 import com.example.lllov.projectkjh.R;
-import com.example.lllov.projectkjh.DTO.DTOTripInfo;
 
 import java.util.ArrayList;
 
 /*==================================================================================================
- *
+ * '내 여행'의 recyclerview를 구성하는 어댑터
  *=================================================================================================*/
 public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ViewHolder> {
     private ArrayList<ResponseScheduleVO> data;
