@@ -123,6 +123,7 @@ public class RegistrationTravelActivity extends BaseActivity {
                 ScheduleVO schedule = response.body();
                 Intent intent = new Intent(RegistrationTravelActivity.this, ScheduleActivity.class);
                 intent.putExtra("schedule", Parcels.wrap(schedule));
+                intent.putExtra("location", Parcels.wrap(location));
                 startActivity(intent);
                 finish();
                 overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);

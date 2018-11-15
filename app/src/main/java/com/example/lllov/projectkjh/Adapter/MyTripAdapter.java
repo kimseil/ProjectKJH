@@ -14,8 +14,13 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.lllov.projectkjh.BaseActivity;
+import com.example.lllov.projectkjh.DTO.LocationVO;
 import com.example.lllov.projectkjh.DTO.ResponseScheduleVO;
+import com.example.lllov.projectkjh.DTO.ScheduleVO;
 import com.example.lllov.projectkjh.R;
+import com.example.lllov.projectkjh.ScheduleActivity;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -51,10 +56,12 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ResponseScheduleVO data = getItem(position);
+        final ScheduleVO schedule = data.getSchedule();
+        final LocationVO location = data.getLocation();
 
-        Glide.with(context).load(data.getLocation().getImageUrl()).into(holder.ivPicture);
-        holder.tvLocation.setText(data.getLocation().getName());
-        holder.tvPeriod.setText(context.formatYMD.format(data.getSchedule().getStartDay()) + "~" + context.formatYMD.format(data.getSchedule().getEndDay()));
+        Glide.with(context).load(location.getImageUrl()).into(holder.ivPicture);
+        holder.tvLocation.setText(location.getName());
+        holder.tvPeriod.setText(context.formatYMD.format(schedule.getStartDay()) + " ~ " + context.formatYMD.format(schedule.getEndDay()));
 
         //이미지 둥글게
         holder.ivPicture.setBackground(new ShapeDrawable(new OvalShape()));
@@ -63,7 +70,12 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ViewHolder
         holder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //여기해야함
+                Intent intent = new Intent(context, ScheduleActivity.class);
+                intent.putExtra("schedule", Parcels.wrap(schedule));
+                intent.putExtra("location", Parcels.wrap(location));
+                context.startActivity(intent);
+                context.finish();
+                context.overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
             }
         });
     }
