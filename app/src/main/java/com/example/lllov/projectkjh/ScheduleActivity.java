@@ -10,7 +10,7 @@ import android.widget.Button;
 
 import com.example.lllov.projectkjh.Adapter.ScheduleAdapter;
 import com.example.lllov.projectkjh.Adapter.ScheduleDayAdapter;
-import com.example.lllov.projectkjh.DTO.ScheduleDTO;
+import com.example.lllov.projectkjh.DTO.ScheduleVO;
 
 import org.parceler.Parcels;
 
@@ -32,7 +32,7 @@ public class ScheduleActivity extends BaseActivity {
 
     RecyclerView rvDay, rvSchedule;
 
-    ScheduleDTO schedule;
+    ScheduleVO schedule;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

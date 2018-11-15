@@ -19,7 +19,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.lllov.projectkjh.DTO.ScheduleDTO;
 import com.kakao.auth.Session;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
@@ -33,7 +32,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     LinearLayout btnFindTravel;
     TextView tv,tvName;
     ImageView profile;
-    ScheduleDTO schedule;
 
     @SuppressLint("ResourceType")
     @Override

@@ -9,7 +9,7 @@ import com.example.lllov.projectkjh.DTO.LocationVO;
 import com.example.lllov.projectkjh.DTO.PlaceInfoVO;
 import com.example.lllov.projectkjh.DTO.PlaceVO;
 import com.example.lllov.projectkjh.DTO.ResponseScheduleVO;
-import com.example.lllov.projectkjh.DTO.ScheduleDTO;
+import com.example.lllov.projectkjh.DTO.ScheduleVO;
 
 import java.util.ArrayList;
 
@@ -94,7 +94,7 @@ public interface ApiService {
 
     //여행 일정 등록
     @GET("registrationTravel")
-    Call<Integer> registrationTravel(@Query("startDay") long startDay, @Query("endDay") long endDay, @Query("locationId") int locationId, @Query("userId") long userId);
+    Call<ScheduleVO> registrationTravel(@Query("startDay") long startDay, @Query("endDay") long endDay, @Query("locationId") int locationId, @Query("userId") long userId);
 
     //일정 리스트 가져옴
     @GET("getScheduleList")

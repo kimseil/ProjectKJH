@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.lllov.projectkjh.DTO.LocationVO;
-import com.example.lllov.projectkjh.DTO.ScheduleDTO;
+import com.example.lllov.projectkjh.DTO.ScheduleVO;
 import com.example.lllov.projectkjh.Decorator.SaturdayDecorator;
 import com.example.lllov.projectkjh.Decorator.SundayDecorator;
 import com.example.lllov.projectkjh.Decorator.TodayDecorator;
@@ -115,20 +115,21 @@ public class RegistrationTravelActivity extends BaseActivity {
     public void commit() {
         //스케쥴 등록
         ApiService service = ApiClient.getClient().create(ApiService.class);
-        Call<Integer> call = service.registrationTravel(startDay, endDay, locationId, sUserId);
+        Call<ScheduleVO> call = service.registrationTravel(startDay, endDay, locationId, sUserId);
 
-        call.enqueue(new Callback<Integer>() {
+        call.enqueue(new Callback<ScheduleVO>() {
             @Override
-            public void onResponse(Call<Integer> call, Response<Integer> response) {
-                ScheduleDTO schedule = new ScheduleDTO(startDay, endDay, locationId, sUserId);
+            public void onResponse(Call<ScheduleVO> call, Response<ScheduleVO> response) {
+                ScheduleVO schedule = response.body();
                 Intent intent = new Intent(RegistrationTravelActivity.this, ScheduleActivity.class);
                 intent.putExtra("schedule", Parcels.wrap(schedule));
                 startActivity(intent);
+                finish();
                 overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
             }
 
             @Override
-            public void onFailure(Call<Integer> call, Throwable t) {
+            public void onFailure(Call<ScheduleVO> call, Throwable t) {
 
             }
         });
