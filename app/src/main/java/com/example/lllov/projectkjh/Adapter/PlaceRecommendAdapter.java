@@ -1,31 +1,24 @@
 package com.example.lllov.projectkjh.Adapter;
 
 import android.content.Intent;
-import android.os.Parcel;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.lllov.projectkjh.ApiClient;
 import com.example.lllov.projectkjh.ApiService;
 import com.example.lllov.projectkjh.BaseActivity;
-import com.example.lllov.projectkjh.DTO.DTORecommned;
-import com.example.lllov.projectkjh.DTO.LocationGuideInfoVO;
+import com.example.lllov.projectkjh.DTO.FavoritePlaceVO;
 import com.example.lllov.projectkjh.DTO.PlaceVO;
-import com.example.lllov.projectkjh.LocationGuideInfoActivity;
 import com.example.lllov.projectkjh.PlaceInfoActivity;
 import com.example.lllov.projectkjh.R;
-import com.google.gson.GsonBuilder;
 
 import org.parceler.Parcels;
 
@@ -96,7 +89,8 @@ public class PlaceRecommendAdapter extends RecyclerView.Adapter<PlaceRecommendAd
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, PlaceInfoActivity.class);
-                intent.putExtra("place", Parcels.wrap(data));
+                FavoritePlaceVO place = new FavoritePlaceVO(data.getPlace().getId(), data.getPlace().getType(), data.getPlace().getTitle(), data.getPlace().getIntro(), data.getPlace().getImageUrl(), data.getPlace().getLatitude(), data.getPlace().getLongitude(), data.getPlace().getLocationId());
+                intent.putExtra("place", Parcels.wrap(place));
                 context.startActivity(intent);
                 context.overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
             }

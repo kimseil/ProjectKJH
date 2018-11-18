@@ -1,15 +1,27 @@
 package com.example.lllov.projectkjh;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 
 import com.example.lllov.projectkjh.Adapter.AddPlaceAdapter;
-import com.example.lllov.projectkjh.DTO.DTOAddPlace;
+import com.example.lllov.projectkjh.DTO.FavoritePlaceVO;
+import com.example.lllov.projectkjh.DTO.LocationVO;
+import com.example.lllov.projectkjh.DTO.ResponseScheduleVO;
+import com.example.lllov.projectkjh.DTO.ScheduleVO;
+import com.google.gson.GsonBuilder;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /*==================================================================================================
  * 장소 추가 화면
@@ -21,38 +33,63 @@ public class AddPlaceActivity extends BaseActivity {
     LinearLayoutManager favoriteManager, recommnedManager;
     RecyclerView rvFavorite, rvRecommend;
 
+    public ResponseScheduleVO schedules;
+    public LocationVO location;
+    public ScheduleVO schedule;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_place);
         Toolbar toolbar = new ToolBar(this).setBack().setToolbar();
 
+        Intent inIntent = getIntent();
+        schedules = Parcels.unwrap(inIntent.getParcelableExtra("schedules"));
+        location = schedules.getLocation();
+        schedule = schedules.getSchedule();
+
         favoriteManager = new LinearLayoutManager(this);
         recommnedManager = new LinearLayoutManager(this);
         rvFavorite = findViewById(R.id.rvFavorite);
         rvRecommend = findViewById(R.id.rvRecommend);
 
-        ArrayList<DTOAddPlace> recommendData = new ArrayList<>();
-        recommendData.add(new DTOAddPlace("null", "스위소텔 난카이 오사카", "난바"));
-        recommendData.add(new DTOAddPlace("null", "도톤보리", "난바"));
-        recommendData.add(new DTOAddPlace("null", "이치란 도톤보리 점 본관", "난바"));
-        recommendData.add(new DTOAddPlace("null", "오사카 도큐 REI 호텔", "우메다"));
-        recommendData.add(new DTOAddPlace("null", "유니버설 스튜디오 재팬", "베이에어리어"));
-        recommendData.add(new DTOAddPlace("null", "카니도라쿠 도톤보리 본점", "난바"));
-        recommendData.add(new DTOAddPlace("null", "551호라이 에비스바시 본점", "난바"));
-        recommendData.add(new DTOAddPlace("null", "호텔 일 그란데 우메다", "우메다"));
-        recommendData.add(new DTOAddPlace("null", "오사카 성", ""));
-        recommendData.add(new DTOAddPlace("null", "호텔 WBF 남바 이나리", "난바"));
-        recommendAdapter = new AddPlaceAdapter(recommendData, this);
-        rvRecommend.setLayoutManager(recommnedManager);
-        rvRecommend.setAdapter(recommendAdapter);
+        ApiService service = ApiClient.getClient().create(ApiService.class);
+        Call<ArrayList<FavoritePlaceVO>> call = service.getFavoriteLocationPlaceList(sUserId, location.getId());
 
-        ArrayList<DTOAddPlace> favoriteData = new ArrayList<>();
-        favoriteData.add(new DTOAddPlace("null", "오사카 도큐 REI 호텔", "우메다"));
-        favoriteData.add(new DTOAddPlace("null", "유니버설 스튜디오 재팬", "베이에어리어"));
-        favoriteData.add(new DTOAddPlace("null", "카니도라쿠 도톤보리 본점", "난바"));
-        favoriteAdapter = new AddPlaceAdapter(favoriteData, this);
-        rvFavorite.setLayoutManager(favoriteManager);
-        rvFavorite.setAdapter(favoriteAdapter);
+        call.enqueue(new Callback<ArrayList<FavoritePlaceVO>>() {
+            @Override
+            public void onResponse(Call<ArrayList<FavoritePlaceVO>> call, Response<ArrayList<FavoritePlaceVO>> response) {
+                ArrayList<FavoritePlaceVO> data = response.body();
+                Log.e("log 1 : ", new GsonBuilder().setPrettyPrinting().create().toJson(data));
+
+                favoriteAdapter = new AddPlaceAdapter(data, AddPlaceActivity.this);
+                rvFavorite.setLayoutManager(favoriteManager);
+                rvFavorite.setAdapter(favoriteAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<FavoritePlaceVO>> call, Throwable t) {
+
+            }
+        });
+
+        Call<ArrayList<FavoritePlaceVO>> call2 = service.getPlaceAllList(location.getId());
+
+        call2.enqueue(new Callback<ArrayList<FavoritePlaceVO>>() {
+            @Override
+            public void onResponse(Call<ArrayList<FavoritePlaceVO>> call, Response<ArrayList<FavoritePlaceVO>> response) {
+                ArrayList<FavoritePlaceVO> data = response.body();
+                Log.e("log 2 : ", new GsonBuilder().setPrettyPrinting().create().toJson(data));
+
+                recommendAdapter = new AddPlaceAdapter(data, AddPlaceActivity.this);
+                rvRecommend.setLayoutManager(recommnedManager);
+                rvRecommend.setAdapter(recommendAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<FavoritePlaceVO>> call, Throwable t) {
+
+            }
+        });
     }
 }

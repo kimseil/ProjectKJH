@@ -5,14 +5,12 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.lllov.projectkjh.Adapter.MyTripAdapter;
 import com.example.lllov.projectkjh.DTO.ResponseScheduleVO;
-import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
 
@@ -52,7 +50,6 @@ public class MytripFragment extends Fragment {
             @Override
             public void onResponse(Call<ArrayList<ResponseScheduleVO>> call, Response<ArrayList<ResponseScheduleVO>> response) {
                 ArrayList<ResponseScheduleVO> data = response.body();
-                Log.e("getScheduleList Log", new GsonBuilder().setPrettyPrinting().create().toJson(data));
 
                 myTripAdapter = new MyTripAdapter(data, (BaseActivity)getActivity());
                 recyclerView.setHasFixedSize(true);

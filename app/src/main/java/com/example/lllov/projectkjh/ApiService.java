@@ -68,6 +68,10 @@ public interface ApiService {
     @GET("getLocationGuideInfoList")
     Call<ArrayList<LocationGuideInfoVO>> getLocationGuideInfoList(@Query("guideId") int guideId);
 
+    //선택한 지역의 장소리스트를 가져옴
+    @GET("getPlaceAllList")
+    Call<ArrayList<FavoritePlaceVO>> getPlaceAllList(@Query("locationId") int locationId);
+
     //선택한 지역, 종류의 장소 리스트와 찜 여부를 가져옴
     @GET("getPlaceList")
     Call<ArrayList<PlaceVO>> getPlaceList(@Query("locationId") int locationId, @Query("type") int type, @Query("userId") long userId);

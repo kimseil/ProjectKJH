@@ -11,6 +11,7 @@ import android.widget.Button;
 import com.example.lllov.projectkjh.Adapter.ScheduleAdapter;
 import com.example.lllov.projectkjh.Adapter.ScheduleDayAdapter;
 import com.example.lllov.projectkjh.DTO.LocationVO;
+import com.example.lllov.projectkjh.DTO.ResponseScheduleVO;
 import com.example.lllov.projectkjh.DTO.ScheduleVO;
 
 import org.parceler.Parcels;
@@ -33,6 +34,7 @@ public class ScheduleActivity extends BaseActivity {
 
     RecyclerView rvDay, rvSchedule;
 
+    public ResponseScheduleVO schedules;
     public ScheduleVO schedule;
     public LocationVO location;
 
@@ -47,8 +49,9 @@ public class ScheduleActivity extends BaseActivity {
 
         //Parcelable 형태의 schedule 데이터를 가져옴
         Intent inIntent = getIntent();
-        schedule = Parcels.unwrap(inIntent.getParcelableExtra("schedule"));
-        location = Parcels.unwrap(inIntent.getParcelableExtra("location"));
+        schedules = Parcels.unwrap(inIntent.getParcelableExtra("schedules"));
+        schedule = schedules.getSchedule();
+        location = schedules.getLocation();
         long startDay = schedule.getStartDay();
         long endDay = schedule.getEndDay();
         //선택한 일정이 며칠인지.

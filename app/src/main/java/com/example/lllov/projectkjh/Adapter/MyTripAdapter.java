@@ -71,8 +71,8 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ViewHolder
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ScheduleActivity.class);
-                intent.putExtra("schedule", Parcels.wrap(schedule));
-                intent.putExtra("location", Parcels.wrap(location));
+                ResponseScheduleVO schedules = new ResponseScheduleVO(schedule, location);
+                intent.putExtra("schedules", Parcels.wrap(schedules));
                 context.startActivity(intent);
                 context.finish();
                 context.overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);

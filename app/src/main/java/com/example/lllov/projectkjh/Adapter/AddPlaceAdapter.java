@@ -1,10 +1,10 @@
 package com.example.lllov.projectkjh.Adapter;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +12,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.lllov.projectkjh.BaseActivity;
-import com.example.lllov.projectkjh.DTO.DTOAddPlace;
+import com.example.lllov.projectkjh.DTO.FavoritePlaceVO;
 import com.example.lllov.projectkjh.PlaceInfoActivity;
 import com.example.lllov.projectkjh.R;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -24,10 +27,10 @@ import java.util.ArrayList;
  *=================================================================================================*/
 public class AddPlaceAdapter extends RecyclerView.Adapter<AddPlaceAdapter.ViewHolder> {
 
-    ArrayList<DTOAddPlace> data;
+    ArrayList<FavoritePlaceVO> data;
     BaseActivity context;
 
-    public AddPlaceAdapter(ArrayList<DTOAddPlace> data, BaseActivity context) {
+    public AddPlaceAdapter(ArrayList<FavoritePlaceVO> data, BaseActivity context) {
         this.data = data;
         this.context = context;
     }
@@ -41,18 +44,41 @@ public class AddPlaceAdapter extends RecyclerView.Adapter<AddPlaceAdapter.ViewHo
         return new ViewHolder(view);
     }
 
+    public FavoritePlaceVO getItem(int position) {
+        if (data == null) {
+            return null;
+        }
+        return data.get(position);
+    }
+
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
-        viewHolder.tvPlace.setText(data.get(position).getPlace());
-        viewHolder.tvLocation.setText(data.get(position).getLocation());
+        final FavoritePlaceVO data = getItem(position);
 
-        //리스트 선택시 해당 장소 정보 화면 .. 수정 필요
+        viewHolder.tvPlace.setText(data.getTitle());
+        viewHolder.tvLocation.setText(context.PLACE_TYPE.get(data.getType()));
+
+        //이미지 있으면 로드
+        String imageUrl = data.getImageUrl();
+        if(!TextUtils.isEmpty(imageUrl)) {
+            Glide.with(context).load(imageUrl).into(viewHolder.ivPicture);
+        }
+
+        //리스트 클릭시 해당 장소 정보 화면
         viewHolder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, PlaceInfoActivity.class);
+                intent.putExtra("place", Parcels.wrap(data));
                 context.startActivity(intent);
                 context.overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
+            }
+        });
+
+        viewHolder.btnSelect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
             }
         });
     }

@@ -7,7 +7,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,9 +14,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.lllov.projectkjh.Adapter.PlaceInfoAdapter;
 import com.example.lllov.projectkjh.Adapter.PlaceRelevantAdapter;
+import com.example.lllov.projectkjh.DTO.FavoritePlaceVO;
 import com.example.lllov.projectkjh.DTO.PlaceInfoVO;
-import com.example.lllov.projectkjh.DTO.PlaceVO;
-import com.google.gson.GsonBuilder;
 
 import org.parceler.Parcels;
 
@@ -38,7 +36,7 @@ public class PlaceInfoActivity extends BaseActivity {
     PlaceInfoAdapter placeInfoAdapter;
     RecyclerView rvContent, rvPlaceRelevant;
 
-    PlaceVO place;
+    FavoritePlaceVO place;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,17 +54,17 @@ public class PlaceInfoActivity extends BaseActivity {
         //parcelable 형태로 place 정보 받아옴
         Intent inIntent = getIntent();
         place = Parcels.unwrap(inIntent.getParcelableExtra("place"));
-        String title = place.getPlace().getTitle();
-        String intro = place.getPlace().getIntro();
-        String imageUrl = place.getPlace().getImageUrl();
-        int type = place.getPlace().getType();
+        String title = place.getTitle();
+        String intro = place.getIntro();
+        String imageUrl = place.getImageUrl();
+        int type = place.getType();
 
         //맛집일 경우 text 제거, 관광일 경우 "주요장소"
         tvText.setText(type/100 == 2?"":"주요장소");
 
         //장소의 정보 리스트를 요청
         ApiService service = ApiClient.getClient().create(ApiService.class);
-        Call<ArrayList<PlaceInfoVO>> call1 = service.getPlaceInfoList(place.getPlace().getId());
+        Call<ArrayList<PlaceInfoVO>> call1 = service.getPlaceInfoList(place.getId());
 
         call1.enqueue(new Callback<ArrayList<PlaceInfoVO>>() {
             @Override
@@ -86,7 +84,7 @@ public class PlaceInfoActivity extends BaseActivity {
         });
 
         //장소의 관련 정보 리스트(가로 리사이클러뷰에 들어감)를 가져옴
-        Call<ArrayList<PlaceInfoVO>> call2 = service.getPlaceRelevantList(place.getPlace().getId());
+        Call<ArrayList<PlaceInfoVO>> call2 = service.getPlaceRelevantList(place.getId());
 
         call2.enqueue(new Callback<ArrayList<PlaceInfoVO>>() {
             @Override

@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.lllov.projectkjh.DTO.LocationVO;
+import com.example.lllov.projectkjh.DTO.ResponseScheduleVO;
 import com.example.lllov.projectkjh.DTO.ScheduleVO;
 import com.example.lllov.projectkjh.Decorator.SaturdayDecorator;
 import com.example.lllov.projectkjh.Decorator.SundayDecorator;
@@ -23,6 +25,7 @@ import com.prolificinteractive.materialcalendarview.OnRangeSelectedListener;
 import org.parceler.Parcels;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -102,6 +105,7 @@ public class RegistrationTravelActivity extends BaseActivity {
             public void onRangeSelected(@NonNull MaterialCalendarView widget, @NonNull List<CalendarDay> dates) {
                 //날짜 범위 선택시 시작날짜와 끝날짜를 입력해주고 버튼 활성
                 startDay = dates.get(0).getDate().getTime();
+                Log.e("##############", new Date(startDay).toString());
                 endDay = dates.get(dates.size() - 1).getDate().getTime();
                 btnCommit.setText(formatYMD.format(startDay) + " - " + formatMD.format(endDay) + " / 등록완료");
                 btnCommit.setEnabled(true);
@@ -122,8 +126,8 @@ public class RegistrationTravelActivity extends BaseActivity {
             public void onResponse(Call<ScheduleVO> call, Response<ScheduleVO> response) {
                 ScheduleVO schedule = response.body();
                 Intent intent = new Intent(RegistrationTravelActivity.this, ScheduleActivity.class);
-                intent.putExtra("schedule", Parcels.wrap(schedule));
-                intent.putExtra("location", Parcels.wrap(location));
+                ResponseScheduleVO schedules = new ResponseScheduleVO(schedule, location);
+                intent.putExtra("schedules", Parcels.wrap(schedules));
                 startActivity(intent);
                 finish();
                 overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);

@@ -15,6 +15,8 @@ import com.example.lllov.projectkjh.BaseActivity;
 import com.example.lllov.projectkjh.R;
 import com.example.lllov.projectkjh.ScheduleActivity;
 
+import org.parceler.Parcels;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -50,13 +52,13 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
         //데이터로부터 각 아이템에 해당하는 날짜를 넣어줌.
         Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(scheduleList.get(i));
+        calendar.setTimeInMillis(scheduleList.get(position));
 
         //해당 일정이 여행 며칠째인지 ex) day1, day2, day3, ...
-        viewHolder.tvDayNumber.setText("day" + (i + 1));
+        viewHolder.tvDayNumber.setText("day" + (position + 1));
         //해당 일정의 실제 날짜
         viewHolder.tvDay.setText(monthFormat.format(calendar.getTime()) + "." + dayFormat.format(calendar.getTime()) + "/" + dayOfWeek[calendar.get(Calendar.DAY_OF_WEEK) - 1]);
         //장소추가 버튼
@@ -97,12 +99,14 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
 
     private void addPlace() {
         Intent intent = new Intent(context, AddPlaceActivity.class);
+        intent.putExtra("schedules", Parcels.wrap(((ScheduleActivity)context).schedules));
         context.startActivity(intent);
         context.overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
     }
 
     private void addmemo() {
         Intent intent = new Intent(context, AddPlaceActivity.class);
+        intent.putExtra("schedules", Parcels.wrap(((ScheduleActivity)context).schedules));
         context.startActivity(intent);
         context.overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
     }
