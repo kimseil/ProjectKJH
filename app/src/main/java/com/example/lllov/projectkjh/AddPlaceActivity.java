@@ -6,14 +6,12 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 
 import com.example.lllov.projectkjh.Adapter.AddPlaceAdapter;
 import com.example.lllov.projectkjh.DTO.FavoritePlaceVO;
 import com.example.lllov.projectkjh.DTO.LocationVO;
 import com.example.lllov.projectkjh.DTO.ResponseScheduleVO;
 import com.example.lllov.projectkjh.DTO.ScheduleVO;
-import com.google.gson.GsonBuilder;
 
 import org.parceler.Parcels;
 
@@ -60,7 +58,6 @@ public class AddPlaceActivity extends BaseActivity {
             @Override
             public void onResponse(Call<ArrayList<FavoritePlaceVO>> call, Response<ArrayList<FavoritePlaceVO>> response) {
                 ArrayList<FavoritePlaceVO> data = response.body();
-                Log.e("log 1 : ", new GsonBuilder().setPrettyPrinting().create().toJson(data));
 
                 favoriteAdapter = new AddPlaceAdapter(data, AddPlaceActivity.this);
                 rvFavorite.setLayoutManager(favoriteManager);
@@ -79,7 +76,6 @@ public class AddPlaceActivity extends BaseActivity {
             @Override
             public void onResponse(Call<ArrayList<FavoritePlaceVO>> call, Response<ArrayList<FavoritePlaceVO>> response) {
                 ArrayList<FavoritePlaceVO> data = response.body();
-                Log.e("log 2 : ", new GsonBuilder().setPrettyPrinting().create().toJson(data));
 
                 recommendAdapter = new AddPlaceAdapter(data, AddPlaceActivity.this);
                 rvRecommend.setLayoutManager(recommnedManager);

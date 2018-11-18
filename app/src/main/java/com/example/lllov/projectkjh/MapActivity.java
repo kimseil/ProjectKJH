@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.example.lllov.projectkjh.DTO.PlaceVO;
+import com.example.lllov.projectkjh.DTO.FavoritePlaceVO;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -19,7 +19,7 @@ import org.parceler.Parcels;
  *=================================================================================================*/
 public class MapActivity extends BaseActivity implements OnMapReadyCallback{
     GoogleMap mMap;
-    PlaceVO place;
+    FavoritePlaceVO place;
     Double latitude,longitude;
     String name;
 
@@ -31,9 +31,9 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback{
         Intent inIntent = getIntent();
         place = Parcels.unwrap(inIntent.getParcelableExtra("place"));
 
-        latitude = Double.parseDouble(place.getPlace().getLatitude());
-        longitude = Double.parseDouble(place.getPlace().getLongitude());
-        name = place.getPlace().getTitle();
+        latitude = Double.parseDouble(place.getLatitude());
+        longitude = Double.parseDouble(place.getLongitude());
+        name = place.getTitle();
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);

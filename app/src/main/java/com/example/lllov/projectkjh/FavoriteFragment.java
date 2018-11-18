@@ -5,14 +5,12 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.lllov.projectkjh.Adapter.FavoriteFragmentAdapter;
 import com.example.lllov.projectkjh.DTO.FavoritePlaceVO;
-import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
 
@@ -52,7 +50,6 @@ public class FavoriteFragment extends Fragment {
             @Override
             public void onResponse(Call<ArrayList<FavoritePlaceVO>> call, Response<ArrayList<FavoritePlaceVO>> response) {
                 ArrayList<FavoritePlaceVO> data = response.body();
-                Log.e("getFavoriteList Log", new GsonBuilder().setPrettyPrinting().create().toJson(data));
 
                 favoriteFragmentAdapter = new FavoriteFragmentAdapter(data, (BaseActivity)getActivity());
                 recyclerView.setHasFixedSize(true);

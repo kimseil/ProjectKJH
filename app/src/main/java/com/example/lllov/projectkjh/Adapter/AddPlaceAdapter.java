@@ -78,7 +78,7 @@ public class AddPlaceAdapter extends RecyclerView.Adapter<AddPlaceAdapter.ViewHo
         viewHolder.btnSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+
             }
         });
     }
