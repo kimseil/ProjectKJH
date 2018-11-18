@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import com.example.lllov.projectkjh.FavoriteFragment;
 import com.example.lllov.projectkjh.MytripFragment;
 /*==================================================================================================
- * 네비게이션의 내 여행의 어댑터
+ * 네비게이션의 내 여행 어댑터
  *=================================================================================================*/
 
 public class MyTripFragmentAdapter extends FragmentStatePagerAdapter {
