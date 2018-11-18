@@ -1,6 +1,5 @@
 package com.example.lllov.projectkjh.Adapter;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
@@ -13,10 +12,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.lllov.projectkjh.BaseActivity;
 import com.example.lllov.projectkjh.DTO.FavoritePlaceVO;
-import com.example.lllov.projectkjh.PlaceInfoActivity;
 import com.example.lllov.projectkjh.R;
-
-import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -60,6 +56,7 @@ public class FavoriteFragmentAdapter extends RecyclerView.Adapter<FavoriteFragme
         holder.tvIntro.setText(data.getIntro());
         holder.tvType.setText(context.PLACE_TYPE.get(data.getType()));
 
+        /*
         //리스트 클릭시 해당 장소 정보 화면
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +67,7 @@ public class FavoriteFragmentAdapter extends RecyclerView.Adapter<FavoriteFragme
                 context.overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
             }
         });
+        */
     }
 
     @Override
