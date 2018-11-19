@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.lllov.projectkjh.AddPlaceActivity;
 import com.example.lllov.projectkjh.BaseActivity;
+import com.example.lllov.projectkjh.MemoActivity;
 import com.example.lllov.projectkjh.R;
 import com.example.lllov.projectkjh.ScheduleActivity;
 
@@ -72,7 +73,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
         viewHolder.btnAddMemo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addmemo();
+                addMemo();
             }
         });
     }
@@ -104,8 +105,8 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
         context.overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
     }
 
-    private void addmemo() {
-        Intent intent = new Intent(context, AddPlaceActivity.class);
+    private void addMemo() {
+        Intent intent = new Intent(context, MemoActivity.class);
         intent.putExtra("schedules", Parcels.wrap(((ScheduleActivity)context).schedules));
         context.startActivity(intent);
         context.overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);

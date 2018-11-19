@@ -6,16 +6,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
 
-import com.example.lllov.projectkjh.Adapter.LocationInfoAdapter;
 import com.example.lllov.projectkjh.Adapter.PlaceRecommendAdapter;
-import com.example.lllov.projectkjh.DTO.DTORecommned;
-import com.example.lllov.projectkjh.DTO.LocationInfoVO;
 import com.example.lllov.projectkjh.DTO.LocationVO;
 import com.example.lllov.projectkjh.DTO.PlaceVO;
-import com.google.gson.GsonBuilder;
 
 import org.parceler.Parcels;
 
@@ -32,7 +26,7 @@ import retrofit2.Response;
  *=================================================================================================*/
 public class PlaceRecommendActivity extends BaseActivity {
     LinearLayoutManager layoutManager;
-    RecyclerView rvRecommned;
+    RecyclerView rvRecommend;
     PlaceRecommendAdapter adapter;
 
     LocationVO location;
@@ -60,9 +54,9 @@ public class PlaceRecommendActivity extends BaseActivity {
 
                 adapter = new PlaceRecommendAdapter(data, PlaceRecommendActivity.this);
                 layoutManager = new LinearLayoutManager(PlaceRecommendActivity.this);
-                rvRecommned = findViewById(R.id.rvCommend);
-                rvRecommned.setLayoutManager(layoutManager);
-                rvRecommned.setAdapter(adapter);
+                rvRecommend = findViewById(R.id.rvCommend);
+                rvRecommend.setLayoutManager(layoutManager);
+                rvRecommend.setAdapter(adapter);
             }
 
             @Override

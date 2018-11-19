@@ -32,6 +32,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     LinearLayout btnFindTravel;
     TextView tv,tvName;
     ImageView profile;
+    String name;
 
     @SuppressLint("ResourceType")
     @Override
@@ -65,7 +66,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         //LoginActivity에서 송신한 데이터 수신
         Intent intent = getIntent();
 
-        String name = intent.getExtras().getString("name");
+        name = intent.getExtras().getString("name");
         final String profilePath = intent.getExtras().getString("profile");
 
         tv = findViewById(R.id.tv);
@@ -112,31 +113,37 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Intent intent;
 
-        switch (item.getItemId()) {
-            case R.id.nav_a:
-                intent = new Intent(MainActivity.this, MyTripActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
-                break;
-            case R.id.nav_b:
-                intent = new Intent(MainActivity.this, MyInfoActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
-                break;
-            case R.id.nav_c:
-                if(Session.getCurrentSession().isOpened())
-                    onClickLogout();
-                else
-                    Toast.makeText(this,"이미 로그아웃 되어있습니다.",Toast.LENGTH_SHORT).show();
-                break;
-            default:
-                break;
+        if(!name.equals("GUEST")) {
+
+            switch (item.getItemId()) {
+                case R.id.nav_a:
+                    intent = new Intent(MainActivity.this, MyTripActivity.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
+                    break;
+                case R.id.nav_b:
+                    intent = new Intent(MainActivity.this, MyInfoActivity.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
+                    break;
+                case R.id.nav_c:
+                    if (Session.getCurrentSession().isOpened())
+                        onClickLogout();
+                    else
+                        Toast.makeText(this, "이미 로그아웃 되어있습니다.", Toast.LENGTH_SHORT).show();
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            Toast.makeText(this,"로그인 후 이용이 가능합니다.",Toast.LENGTH_SHORT).show();
         }
 
         DrawerLayout drawer = findViewById(R.id.dl);
         drawer.closeDrawer(GravityCompat.START);
         return false;
     }
+
 
     private void onClickLogout() {
         UserManagement.getInstance().requestLogout(new LogoutResponseCallback() {

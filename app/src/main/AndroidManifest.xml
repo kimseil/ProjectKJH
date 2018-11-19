@@ -5,6 +5,10 @@
 
     <uses-permission android:name="android.permission.INTERNETR"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature android:name="android.hardware.camera2"/>
 
     <application
         android:allowBackup="false"
@@ -16,6 +20,16 @@
         android:theme="@style/AppTheme"
         android:name=".Interlink.GlobalApplication"
         tools:ignore="GoogleAppIndexingWarning">
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.example.lllov.projectkjh"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
@@ -58,6 +72,7 @@
         <activity android:name=".AddPlaceActivity" />
         <activity android:name=".PlaceInfoActivity"/>
         <activity android:name=".LocationGuideInfoActivity"/>
+        <activity android:name=".MemoActivity"/>
     </application>
 
 </manifest>
