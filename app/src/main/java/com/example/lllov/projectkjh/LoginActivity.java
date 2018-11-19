@@ -7,7 +7,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -15,10 +14,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.lllov.projectkjh.Adapter.LocationGuideInfoAdapter;
-import com.example.lllov.projectkjh.Adapter.LocationInfoAdapter;
-import com.example.lllov.projectkjh.DTO.LocationGuideInfoVO;
-import com.example.lllov.projectkjh.DTO.LocationInfoVO;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -27,7 +22,6 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
-import com.google.gson.GsonBuilder;
 import com.kakao.auth.AuthType;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
@@ -43,7 +37,6 @@ import org.json.JSONObject;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import retrofit2.Call;
@@ -198,6 +191,7 @@ public class LoginActivity extends BaseActivity {
                     });
 
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.putExtra("name",nickname);
                     intent.putExtra("profile",profileImagePath); 
                     startActivity(intent);
