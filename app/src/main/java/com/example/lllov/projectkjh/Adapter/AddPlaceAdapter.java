@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,14 +14,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.lllov.projectkjh.AddPlaceActivity;
+import com.example.lllov.projectkjh.ApiClient;
+import com.example.lllov.projectkjh.ApiService;
 import com.example.lllov.projectkjh.BaseActivity;
 import com.example.lllov.projectkjh.DTO.FavoritePlaceVO;
 import com.example.lllov.projectkjh.PlaceInfoActivity;
 import com.example.lllov.projectkjh.R;
+import com.example.lllov.projectkjh.ScheduleActivity;
 
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /*==================================================================================================
  * 장소 추가 화면의 장소 리스트 어댑터
@@ -78,7 +87,26 @@ public class AddPlaceAdapter extends RecyclerView.Adapter<AddPlaceAdapter.ViewHo
         viewHolder.btnSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ApiService service = ApiClient.getClient().create(ApiService.class);
+                Call<Integer> call = service.addScheduleInfoPlace(((AddPlaceActivity)context).day, ((AddPlaceActivity)context).number + 1, data.getId(), ((AddPlaceActivity)context).schedule.getId());
+                Log.e("test", ((AddPlaceActivity)context).day + " " + ((AddPlaceActivity)context).number + " " + data.getId() + " " + ((AddPlaceActivity)context).schedule.getId());
 
+                call.enqueue(new Callback<Integer>() {
+                    @Override
+                    public void onResponse(Call<Integer> call, Response<Integer> response) {
+                        Intent intent = new Intent(context, ScheduleActivity.class);
+                        intent.putExtra("schedules", Parcels.wrap(((AddPlaceActivity)context).schedules));
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        context.startActivity(intent);
+                        context.finish();
+                        context.overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
+                    }
+
+                    @Override
+                    public void onFailure(Call<Integer> call, Throwable t) {
+
+                    }
+                });
             }
         });
     }

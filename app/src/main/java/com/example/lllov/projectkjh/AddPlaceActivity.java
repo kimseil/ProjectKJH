@@ -34,6 +34,8 @@ public class AddPlaceActivity extends BaseActivity {
     public ResponseScheduleVO schedules;
     public LocationVO location;
     public ScheduleVO schedule;
+    public long day;
+    public int number;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,6 +47,8 @@ public class AddPlaceActivity extends BaseActivity {
         schedules = Parcels.unwrap(inIntent.getParcelableExtra("schedules"));
         location = schedules.getLocation();
         schedule = schedules.getSchedule();
+        day = inIntent.getLongExtra("day", 0);
+        number = inIntent.getIntExtra("number", 0);
 
         favoriteManager = new LinearLayoutManager(this);
         recommnedManager = new LinearLayoutManager(this);

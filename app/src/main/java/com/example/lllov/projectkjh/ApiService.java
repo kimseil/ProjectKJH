@@ -8,6 +8,7 @@ import com.example.lllov.projectkjh.DTO.LocationInfoVO;
 import com.example.lllov.projectkjh.DTO.LocationVO;
 import com.example.lllov.projectkjh.DTO.PlaceInfoVO;
 import com.example.lllov.projectkjh.DTO.PlaceVO;
+import com.example.lllov.projectkjh.DTO.ResponseScheduleInfoVO;
 import com.example.lllov.projectkjh.DTO.ResponseScheduleVO;
 import com.example.lllov.projectkjh.DTO.ScheduleVO;
 
@@ -111,4 +112,11 @@ public interface ApiService {
     //특정 지역의 찜한 장소 리스트 가져옴
     @GET("getFavoriteLocationPlaceList")
     Call<ArrayList<FavoritePlaceVO>> getFavoriteLocationPlaceList(@Query("userId") long userId, @Query("locationId") int locationId);
+
+    //특정 스케쥴, 특정 날짜의 스케쥴 리스트를 가져옴
+    @GET("getScheduleInfoList")
+    Call<ArrayList<ResponseScheduleInfoVO>> getScheduleInfoList(@Query("scheduleId") int scheduleId, @Query("day") long day);
+
+    @GET("addScheduleInfoPlace")
+    Call<Integer> addScheduleInfoPlace(@Query("day") long day, @Query("number") int number, @Query("placeId") int placeId, @Query("scheduleId") int scheduleId);
 }
