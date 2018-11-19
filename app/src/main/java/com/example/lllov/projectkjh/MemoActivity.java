@@ -44,7 +44,7 @@ public class MemoActivity extends BaseActivity {
         deleteStatusBar();
         setContentView(R.layout.activity_memo);
 
-        Toolbar toolbar = new ToolBar(this).setBack().setToolbar();
+        Toolbar toolbar = new ToolBar(this).setBack().setTitle("메모").setToolbar();
     }
 
     //카메라에서 사진 촬영

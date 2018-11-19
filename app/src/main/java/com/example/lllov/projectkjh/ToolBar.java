@@ -23,7 +23,7 @@ public class ToolBar {
 
         mToolbar = mActivity.findViewById(R.id.toolbar);
 
-        tvToolbarTitle = mActivity.findViewById(R.id.tvTitle);
+        tvToolbarTitle = mActivity.findViewById(R.id.tvToolbarTitle);
         btnBack = mActivity.findViewById(R.id.btnBack);
         btnMap = mActivity.findViewById(R.id.btnMap);
 
