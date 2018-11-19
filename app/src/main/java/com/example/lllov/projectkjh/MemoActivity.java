@@ -18,6 +18,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -42,6 +43,8 @@ public class MemoActivity extends BaseActivity {
         //스테이터스바 제거
         deleteStatusBar();
         setContentView(R.layout.activity_memo);
+
+        Toolbar toolbar = new ToolBar(this).setBack().setToolbar();
     }
 
     //카메라에서 사진 촬영
