@@ -16,8 +16,10 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="50dp"
         android:text="이름"
+        android:layout_marginTop="4dp"
+        android:textStyle="bold"
         android:textColor="@color/Black"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/ivPicture"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,10 +27,11 @@
     <TextView
         android:id="@+id/tvIntro"
         android:layout_width="0dp"
+        android:layout_marginTop="6dp"
         android:layout_height="wrap_content"
         android:text="이곳은 설명이 들어가는 부분입니다."
         android:textColor="@color/DimGray"
-        android:textSize="16sp"
+        android:textSize="15sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="@+id/tvTitle"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
@@ -38,6 +41,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="장소타입"
+        android:layout_marginTop="10dp"
         android:textColor="@color/Gray"
         android:textSize="16sp"
         app:layout_constraintLeft_toLeftOf="parent"

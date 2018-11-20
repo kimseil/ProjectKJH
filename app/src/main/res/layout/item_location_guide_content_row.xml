@@ -11,11 +11,12 @@
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="0dp"
+        android:layout_marginTop="4dp"
         android:layout_height="wrap_content"
         android:layout_marginRight="10dp"
         android:text="제목"
         android:textColor="@color/Black"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/ivPicture"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,7 +29,7 @@
         android:layout_marginRight="10dp"
         android:text="내용"
         android:textColor="@color/DimGray"
-        android:textSize="16sp"
+        android:textSize="15sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="@+id/tvTitle"
         app:layout_constraintTop_toBottomOf="@id/tvTitle" />
