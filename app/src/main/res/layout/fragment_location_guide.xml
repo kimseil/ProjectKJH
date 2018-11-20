@@ -10,7 +10,7 @@
         android:id="@+id/ivPicture"
         android:layout_width="0dp"
         android:layout_height="100dp"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
         android:src="@drawable/dokyo"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
