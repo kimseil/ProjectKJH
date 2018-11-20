@@ -61,7 +61,7 @@ public class PlaceInfoActivity extends BaseActivity {
         int type = place.getType();
 
         //맛집일 경우 text 제거, 관광일 경우 "주요장소"
-        tvText.setText(type/100 == 2?"":"주요장소");
+        tvText.setText(type/100 == 2?"메뉴":"주요장소");
 
         //장소의 정보 리스트를 요청
         ApiService service = ApiClient.getClient().create(ApiService.class);
