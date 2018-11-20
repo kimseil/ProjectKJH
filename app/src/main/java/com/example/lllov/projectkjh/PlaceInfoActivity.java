@@ -29,7 +29,7 @@ import retrofit2.Response;
  * 장소 리스트 클릭시 나타나는 장소 정보 화면
  *=================================================================================================*/
 public class PlaceInfoActivity extends BaseActivity {
-    TextView tvTitle, tvIntro, tvText;
+    TextView tvTitle, tvType, tvIntro, tvText;
     ImageView ivPicture;
 
     PlaceRelevantAdapter placeRelevantAdapter;
@@ -45,6 +45,7 @@ public class PlaceInfoActivity extends BaseActivity {
         Toolbar toolbar = new ToolBar(this).setBack().setMap().setToolbar();
 
         tvTitle = findViewById(R.id.tvTitle);
+        tvType = findViewById(R.id.tvType);
         tvIntro = findViewById(R.id.tvIntro);
         tvText = findViewById(R.id.tvText);
         ivPicture = findViewById(R.id.ivPicture);
@@ -106,6 +107,7 @@ public class PlaceInfoActivity extends BaseActivity {
         });
 
         tvTitle.setText(title);
+        tvType.setText(PLACE_TYPE.get(type));
         tvIntro.setText(intro);
         //데이터가 있을 경우 이미지 로딩
         if (!TextUtils.isEmpty(imageUrl)) {

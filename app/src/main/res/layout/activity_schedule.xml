@@ -2,7 +2,8 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/White">
 
     <include
         android:id="@+id/toolbar"
@@ -12,9 +13,9 @@
         android:id="@+id/layout_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/LightSteelBlue"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        android:background="@drawable/border_under_white2"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <android.support.v7.widget.RecyclerView

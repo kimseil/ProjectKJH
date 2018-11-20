@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/White"
-    >
+    android:background="@color/White">
 
     <include
         android:id="@+id/toolbar"
@@ -14,14 +13,13 @@
         android:id="@+id/layout_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/White"
+        android:background="@drawable/border_under_white"
         android:orientation="vertical"
+        android:paddingVertical="16dp"
+        android:paddingStart="24dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        android:paddingStart="24dp"
-        android:paddingVertical="16dp"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <TextView
             android:layout_width="wrap_content"
@@ -29,8 +27,7 @@
             android:gravity="center_vertical"
             android:text="여행일정 등록"
             android:textColor="@color/Black"
-            android:textSize="20sp"
-            />
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -49,24 +46,22 @@
         android:background="@color/White"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_title"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/layout_title" />
 
     <Button
         android:id="@+id/btnCommit"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="0dp"
         android:layout_height="56dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@drawable/button_base"
-        android:textColor="@color/Gray"
-        android:textStyle="bold"
-        android:textSize="15sp"
-        android:text="가는날 / 오는날을 선택해주세요."
-        android:enabled="false"
         android:layout_margin="10dp"
-        style="?android:attr/borderlessButtonStyle"
-        />
+        android:background="@color/newBlue"
+        android:text=""
+        android:textColor="@color/White"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

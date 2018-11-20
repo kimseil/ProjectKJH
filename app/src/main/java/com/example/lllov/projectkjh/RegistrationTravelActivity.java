@@ -97,7 +97,7 @@ public class RegistrationTravelActivity extends BaseActivity {
                     widget.clearSelection();
                     btnCommit.setText("가는날, 오는날을 선택해주세요");
                 }
-                btnCommit.setEnabled(false);
+                btnCommit.setVisibility(View.GONE);
             }
         });
         cv.setOnRangeSelectedListener(new OnRangeSelectedListener() {
@@ -108,7 +108,7 @@ public class RegistrationTravelActivity extends BaseActivity {
                 Log.e("##############", new Date(startDay).toString());
                 endDay = dates.get(dates.size() - 1).getDate().getTime();
                 btnCommit.setText(formatYMD.format(startDay) + " - " + formatMD.format(endDay) + " / 등록완료");
-                btnCommit.setEnabled(true);
+                btnCommit.setVisibility(View.VISIBLE);
             }
         });
 
