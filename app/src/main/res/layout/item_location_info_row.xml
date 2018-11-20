@@ -53,21 +53,11 @@
             android:text="내용입니다"
             android:textSize="18sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
-            android:text="자세히"
-            android:focusable="true"
-            android:clickable="true"
-            android:textColor="@color/Navy" />
-
         <View
+            android:layout_marginTop="30dp"
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#888888" />
+            android:layout_height="1dp"
+            android:background="@color/LightGray" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

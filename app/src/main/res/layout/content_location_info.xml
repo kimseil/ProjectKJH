@@ -30,11 +30,20 @@
             android:textColor="@color/Black"
             android:textSize="16sp" />
 
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/LightGray"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            />
+
         <TextView
             android:id="@+id/btnRestaurant"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginStart="16dp"
             android:clickable="true"
             android:focusable="true"
             android:gravity="center_vertical"
@@ -42,11 +51,20 @@
             android:textColor="@color/Black"
             android:textSize="16sp" />
 
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/LightGray"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            />
+
         <TextView
             android:id="@+id/btnLocation"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginStart="16dp"
             android:clickable="true"
             android:focusable="true"
             android:gravity="center_vertical"

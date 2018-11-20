@@ -8,6 +8,7 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:elevation="0dp"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <include
@@ -19,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/White"
-            app:tabSelectedTextColor="@color/Black"
+            app:tabSelectedTextColor="@color/newBlue"
             app:tabTextColor="@color/LightLightGray">
 
         </android.support.design.widget.TabLayout>
